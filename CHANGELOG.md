@@ -1,3 +1,207 @@
+# Version 1.5.5
+## Added features and functionality
++ Added: Added two new operations to the __ASPM__ service collection.
+    - _GetCSPMInventoryBAServices_
+    - _GetCSPMInventoryServiceDetails_
+    - `_endpoint/_aspm.py`
+    - `aspm.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_aspm.py`
+
++ Added: Added "SPL", "AI translated" and "__all__" as allowed values for the `language` argument in the _GetArchiveExport_ operation within the __CAO Hunting__ service collection.
+    - `_endpoint/_cao_hunting.py`
+    - `cao_hunting.py`
+
++ Added: Added `include_translated_content` argument to the _GetIntelligenceQueries_ operation within the __CAO Hunting__ service collection.
+    - `_endpoint/_cao_hunting.py`
+    - `cao_hunting.py`
+
++ Added: Added new _cloud_registration_azure_trigger_health_check_ operation to the __Cloud Azure Registration__ service collection.
+    - `_endpoint/_cloud_azure_registration.py`
+    - `_endpoint/deprecated/_cloud_azure_registration.py`
+    - `cloud_azure_registration.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_cloud_azure_registration.py`
+
++ Added: Added new filter option (`control.extension.status`) as an allowed value to the _cloud_security_assets_combined_compliance_by_account_ operation within the __Cloud Security Assets__ service collection.
+    - `_endpoint/_cloud_security_assets.py`
+    - `_endpoint/deprecated/_cloud_security_assets.py`
+    - `cloud_security_assets.py`
+
++ Updated: Removed three options (`application_security.business_applications`, `application_security.business_criticality` and `application_security.service_names`) and added 7 options (`control.benchmark.name`, `control.benchmark.version`, `control.framework`, `control.requirement`, `control.type`, `control.version`, and `non_compliant.rule_name`) as allowed filters in the _cloud_security_assets_queries_ operation within the __Cloud Security Assets__ service collection.
+    - `_endpoint/_cloud_security_assets.py`
+    - `_endpoint/deprecated/_cloud_security_assets.py`
+    - `cloud_security_assets.py`
+
++ Added: Added new __Cloud Security Compliance__ service collection with 2 new operations.
+    - `_endpoint/__init__.py`
+    - `_endpoint/_cloud_security_compliance.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/_cloud_security_compliance.py`
+    - `__init__.py`
+    - `cloud_security_compliance.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_cloud_security_compliance.py`
+
++ Added: Added new _CombinedDetections_ operation to the __Cloud Snapshots__ service collection.
+    - `_endpoint/_cloud_snapshots.py`
+    - `cloud_snapshots.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_cloud_snapshots.py`
+
++ Added: Added `dspm_host_account_id`, `dspm_host_integration_role_name`, and `dspm_host_scanner_role_name` arguments to the _GetD4CAWSAccountScriptsAttachment_ operation within the __D4C Registration__ service collection.
+    - `_endpoint/_d4c_registration.py`
+    - `d4c_registration.py`
+
++ Added: Added `facet` argument to the _combined_applications_ operation within the __Discover__ service collection.
+    - `_endpoint/_discover.py`
+    - `_endpoint/deprecated/_discover.py`
+    - `discover.py`
+
++ Added: Added "scan_details.scan_id", "scan_details.schedule_id", "scan_details.scan_date", and "vulnerability_assessment_date" as allowed values for the `filter` argument in the _combined_hosts_ and _query_hosts_ operations within the __Discover__ service collection.
+    - `_endpoint/_discover.py`
+    - `_endpoint/deprecated/_discover.py`
+    - `discover.py`
+
++ Added: Added _FetchFilesDownloadInfo_ operation to the __Downloads__ service collection. Deprecated _DownloadFile_ and _EnumerateFile_.
+    - `_endpoint/_downloads.py`
+    - `downloads.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_downloads.py`
+
++ Added: Added _PolicyChecks_, _GetReportByReference_ and _GetReportByScanID_ operations to the __Falcon Container__ service collection.
+    - `_endpoint/_falcon_container.py`
+    - `_util/_functions.py`
+    - `_util/_uber.py`
+    - `falcon_container.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_falcon_container.py`
+
++ Updated: Added 9 possible values for the `sort` argument in the _CombinedHiddenDevicesByFilter_ and _CombinedDevicesByFilter_ operations within the __Hosts__ service collection.
+
+    - Added: _device_policies.exposure-management.applied_
+    - Added: _device_policies.exposure-management.policy_id_
+    - Added: _device_policies.exposure-management.policy_type_
+    - Added: _device_policies.logscale-collector.applied_
+    - Added: _device_policies.logscale-collector.policy_id_
+    - Added: _device_policies.logscale-collector.policy_type_
+    - Added: _device_policies.cloud-ml.policy_id_
+    - Added: _device_policies.cloud-ml.policy_type_
+    - Added: _device_policies.cloud-ml.applied_
+    - `_endpoint/_hosts.py`
+    - `hosts.py`
+
++ Added: Added `limit`, `from` and `to` arguments to the _QueryDeviceLoginHistoryV2_ operation within the __Hosts__ service collection.
+    - `_endpoint/_hosts.py`
+    - `hosts.py`
+
++ Added: Added "reports.slug" as an allowed `filter` value to the _QueryIntelIndicatorEntities_ and _QueryIntelIndicatorIds_ operations within the __Intel__ service collection.
+    - `_endpoint/_intel.py`
+    - `intel.py`
+
++ Added: Added "summary" as an allowed `filter` value to the _QueryIntelReportEntities_ and _QueryIntelReportIds_ operations within the __Intel__ service collection.
+    - `_endpoint/_intel.py`
+    - `intel.py`
+
++ Added: Added "any" as an allowed `feed_interval` value to the _QueryFeedArchives_ operation within the __Intelligence Feeds__ service collection.
+    - `_endpoint/_intelligence_feeds.py`
+    - `intelligence_feeds.py`
+
++ Updated: Adds the `file_name` argument to the _UploadFileQuickScanPro_ operation within the __Quick Scan Pro__ service collection.
+    - `_endpoint/_quick_scan_pro.py`
+
++ Added: Added new _GetSensorUsageHourly_ operation to the __Sensor Usage__ service collection.
+    - `_endpoint/_sensor_usage.py`
+    - `sensor_usage.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_sensor_usage.py`
+    > Thanks go out to @atav982 for submitting this update! 🙇
+
++ Added: Added "uuid" as an allowed `filter` value in the _queryUserV1_ operation within the __User Management__ service collection.
+    - `_endpoint/_user_management.py`
+    - `user_management.py`
+
++ Updated: Added the _entitiesRolesGETV2_ operation and deprecated the _entitiesRolesV1_ operation within the __User Management__ service collection.
+    - `_endpoint/_user_management.py`
+    - `user_management.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_user_management.py`
+
++ Added: Added new _WorkflowDefinitionsStatus_ operation to the __Workflows__ service class.
+    - `_constant/__init__.py`
+    - `_endpoint/_workflows.py`
+    - `workflows.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_workflows.py`
+    - Special thanks go out to @dweissbacher for contributing this update and related unit tests! 🙇
+
+## Issues resolved
++ Fixed: Resolved path interpolation issue for the `search_id` keyword when using the Uber Class to call the _GetSearchStatusV1_ operation. Closes #1365.
+    - `_util/_uber.py`
+    - Thanks go out to @yakeeliuliu for reporting this issue! 🙇
+
++ Fixed: Resolved body payload generation issue with the _userActionV1_ operation within the __UserManagement__ service class.
+    - `user_management.py`
+
++ Fixed: Resolved availability issue with FDR service collection endpoints within the endpoint module. Closes #1371.
+    - `_endpoint/__init__.py`
+    > Thanks go out to @Don-Swanson-Adobe for reporting this issue! 🙇
+
++ Fixed: Body payload issue with the _userActionV1_ operation within the __User Management__ service class.
+    - `user_management.py`
+    > Thanks go out to @Matth3wW for identifying and resolving this issue! 🙇
+
+
+## Other
++ Updated: Cosmetic updates to operation descriptions for the _GetIntelligenceQueries_ and _SearchIntelligenceQueries_ operations within the __CAO Hunting__ service collection.
+    - `_endpoint/_cao_hunting.py`
+
++ Updated: Converted `offset` argument data type from _String_ to _Integer_ in the _QueryActivityByCaseID_ and _QueryCasesIdsByFilter_ operations within the __Message Center__ service collection.
+    - `_endpoint/_message_center.py`
+    - `message_center.py`
+
++ Updated: Cosmetic updates to parameter descriptions in the _cloud_security_registration_oci_get_account_ operation within the __Cloud OCI Registration__ service collection.
+    - `_endpoint/_cloud_oci_registration.py`
+    - `_endpoint/deprecated/_cloud_oci_registration.py`
+
++ Updated: Cosmetic update to parameter descriptions in the _SearchAndReadContainerAlerts_ operation within the __Container Alerts__ service collection.
+    - `_endpoint/_container_alerts.py`
+
++ Updated: Cosmentic update adding "image_digest" as an allowed value to the `filter` argument description in the _ReadDetectsCountBySeverity_, _ReadDetectionsCountByType_, _ReadDetectionsCount_, _ReadCombinedDetections_, _ReadDetections_, and _SearchDetections_ operations within the __Container Detections__ service collection.
+    - `_endpoint/_container_detections.py`
+
++ Updated: Cosmetic update to the `limit` and `offset` descriptions in the _ReadCombinedDetections_, _GetRuntimeDetectionsCombinedV2_, _ReadDetections_, and _SearchDetections_ operations within the __Container Detections__ service collection.
+    - `_endpoint/_container_detections.py`
+
++ Updated: Cosmetic update to operation and parameter descriptions in the _GetCombinedImages_, _CombinedImageDetail_, and _ReadCombinedImagesExport_ operations within the __Container Images__ service collection.
+    - `_endpoint/_container_images.py`
+
++ Updated: Cosmetic update to operation and parameter descriptions in the _ReadPackagesByFixableVulnCount_, _ReadPackagesByVulnCount_, _ReadPackagesCombinedExport_, _ReadPackagesCombined_, and _ReadPackagesCombinedV2_ operations within the __Container Packages__ service collection.
+    - `_endpoint/_container_packages.py`
+
++ Updated: Cosmetic update to operation and parameter descriptions in the _ReadVulnerabilityCountByActivelyExploited_, _ReadVulnerabilityCountByCPSRating_, _ReadVulnerabilityCountByCVSSScore_, _ReadVulnerabilityCountBySeverity_, _ReadVulnerabilityCount_, _ReadVulnerabilitiesByImageCount_, _ReadVulnerabilitiesPublicationDate_, _ReadCombinedVulnerabilitiesDetails_, _ReadCombinedVulnerabilitiesInfo_, and _ReadCombinedVulnerabilities_ operations within the __Container Vulnerabilities__ service collection.
+    - `_endpoint/_container_vulnerabilities.py`
+
++ Deprecated: Deprecated the __Detects__ service collection and all included endpoints. Closes #1378.
+    - `_endpoint/_detects.py`
+    - `_endpoint/deprecated/_mapping.py`
+    - `detects.py`
+    > Thanks go out to @djacquensf9 for reporting this update! 🙇
+
++ Updated: Cosmetic update to the `limit` and `offset` descriptions in the _SearchAndReadDriftIndicatorEntities_ and _SearchDriftIndicators_ operations within the __Drift Indicators__ service collection.
+    - `_endpoint/_container_detections.py`
+
++ Updated: Cosmetic update to the `sort` enum and `filter` argument description in the _GetHostMigrationIDsV1_ and _GetMigrationIDsV1_ operations within the __Host Migration__ service collection.
+    - `_endpoint/_host_migration.py`
+
++ Updated: Cosmetic update to remove unnecessary Authorization headers from the _post_graphql_, _GetSensorDetails_, _get_policy_rules_, _delete_policy_rules_, and _get_policy_rules_query_ operations within the __Identity Protection__ service collection.
+    - `_endpoint/_identity_protection.py`
+
++ Updated: Cosmetic update to the `limit` and `offset` argument descriptions in the _SearchAndRReadUnidentifiedContainers_ operation within the __Unidentified Containers__ service collection.
+    - `_endpoint/_unidentified_containers.py`
+
+---
+
 # Version 1.5.4
 ## Added features and functionality
 + Added: Added _tag_key_ and _tag_value_ as allowed values for the `filter` parameter in the _cloud_security_assets_combined_compliance_by_account_ operation within the __Cloud Security Assets__ service collection.
