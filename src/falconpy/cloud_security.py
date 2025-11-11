@@ -373,3 +373,11 @@ class CloudSecurity(ServiceClass):
             keywords=kwargs,
             params=parameters
             )
+
+    CombinedCloudRisks = combined_cloud_risks
+    ListCloudGroups = list_cloud_groups
+    ListCloudGroupsByID = list_cloud_groups_by_id
+    CreateCloudGroup = create_cloud_group
+    UpdateCloudGroup = update_cloud_group
+    DeleteCloudGroups = delete_cloud_groups
+    ListGroupIDs = list_group_ids
