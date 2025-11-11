@@ -1,12 +1,26 @@
 # Version 1.5.5
 ## Added features and functionality
++ Added: Added the new __Cloud Security Detections__ service collection with 2 operations.
+    - _CSPMEvaluationsIOMEntities_
+    - _CSPMEvaluationsIOMQueries_
+    - `__init__.py`
+    - `cloud_security_detections.py`
+    - `_endpoint/__init__.py`
+    - `_endpoint/_cloud_security_detections.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/_cloud_security_detections.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_cloud_security_detections.py`
+
+
+
 + Added: Added the new __Cloud Security Compliance__ service collection with 2 operations.
     - _CloudComplianceFrameworkPostureSummaries_
     - _CloudComplianceRulePostureSummaries_
     - `__init__.py`
+    - `cloud_security_compliance.py`
     - `_endpoint/__init__.py`
     - `_endpoint/_cloud_security_compliance.py`
-    - `cloud_security_compliance.py`
     - `_endpoint/deprecated/__init__.py`
     - `_endpoint/deprecated/_cloud_security_compliance.py`
     > Unit testing expanded to complete code coverage.
@@ -21,11 +35,11 @@
     - _DeleteCloudGroups_
     - _ListCloudGroupIDs_
     - `__init__.py`
+    - `cloud_security.py`
     - `_endpoint/__init__.py`
     - `_endpoint/_cloud_security.py`
     - `_payload/__init__.py`
     - `_payload/_cloud_security`
-    - `cloud_security.py`
     - `_endpoint/deprecated/__init__.py`
     - `_endpoint/deprecated/_cloud_security.py`
     > Unit testing expanded to complete code coverage.
@@ -55,11 +69,11 @@
     - _QueryComplianceFrameworks_
     - _QueryRule_
     - `__init__.py`
+    - `cloud_policies.py`
     - `_endpoint/__init__.py`
     - `_endpoint/_cloud_policies.py`
     - `_payload/__init__.py`
     - `_payload/_cloud_policies.py`
-    - `cloud_policies.py`
     > Unit testing expanded to complete code coverage.
     - `tests/test_cloud_policies.py`
 
