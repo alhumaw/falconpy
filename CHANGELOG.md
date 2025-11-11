@@ -1,5 +1,14 @@
 # Version 1.5.5
 ## Added features and functionality
++ Added: Added the new __Cloud Security__ service collection with 7 operations.
+    - _combined\_cloud\_risks_
+    - _ListCloudGroupsExternal_
+    - _ListCloudGroupsByIDExternal_
+    - _CreateCloudGroupExternal_
+    - _UpdateCloudGroupExternal_
+    - _DeleteCloudGroupsExternal_
+    - _ListCloudGroupIDsExternal_
+
 + Added: Added the new __Cloud Policies__ service collection with 22 operations.
     - _ReplaceControlRules_
     - _GetComplianceControls_
