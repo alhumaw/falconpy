@@ -695,7 +695,7 @@ class CloudPolicies(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="DeleteRule",
+            operation_id="DeleteRuleMixin0",
             keywords=kwargs,
             params=parameters
             )
@@ -844,7 +844,7 @@ Use the `|asc` or `|desc` suffix to specify sort direction.
     GetRule = get_rule
     CreateRule = create_rule
     UpdateRule = update_rule
-    DeleteRule = delete_rule
+    DeleteRuleMixin0 = delete_rule
     QueryComplianceControls = query_compliance_controls
     QueryComplianceFrameworks = query_compliance_frameworks
     QueryRule = query_rule
