@@ -101,7 +101,7 @@ def cloud_security_create_group_payload(passed_keywords: dict) -> Dict[str, List
         image_keys = ["filters", "repository", "tag", "registry"]
         for key in image_keys:
             if passed_keywords.get(key, None) is not None:
-                image[key] =passed_keywords.get(key, None)
+                image[key] = passed_keywords.get(key, None)
         selectors["images"] = [image]
     
     returned_payload["selectors"] = selectors

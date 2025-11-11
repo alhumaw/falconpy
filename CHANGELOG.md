@@ -1,13 +1,20 @@
 # Version 1.5.5
 ## Added features and functionality
 + Added: Added the new __Cloud Security__ service collection with 7 operations.
-    - _combined\_cloud\_risks_
-    - _ListCloudGroupsExternal_
-    - _ListCloudGroupsByIDExternal_
-    - _CreateCloudGroupExternal_
-    - _UpdateCloudGroupExternal_
-    - _DeleteCloudGroupsExternal_
-    - _ListCloudGroupIDsExternal_
+    - _CombinedCloudRisks_
+    - _ListCloudGroups_
+    - _ListCloudGroupsByID_
+    - _CreateCloudGroup_
+    - _UpdateCloudGroup_
+    - _DeleteCloudGroups_
+    - _ListCloudGroupIDs_
+    - `_endpoint/__init__.py`
+    - `_endpoint/_cloud_security.py`
+    - `_payload/__init__.py`
+    - `_payload/_cloud_security`
+    - `cloud_security.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_cloud_security.py`
 
 + Added: Added the new __Cloud Policies__ service collection with 22 operations.
     - _ReplaceControlRules_

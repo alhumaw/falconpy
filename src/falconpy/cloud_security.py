@@ -6,7 +6,7 @@
 |.  |___|__| |_____|________|_____|____   |____|__| |__|__|__|_____|
 |:  1   |                         |:  1   |
 |::.. . |   CROWDSTRIKE FALCON    |::.. . |    FalconPy
-`-------'                         `-------'
+-------'                         -------'
 
 OAuth2 API - Customer SDK
 
@@ -59,43 +59,23 @@ class CloudSecurity(ServiceClass):
         """Gets cloud risks with full details based on filters and sort criteria
 
         Keyword arguments:
-        filter -- FQL string to filter results in Falcon Query Language (FQL). Supported fields: 
-- `account_id`
-- `account_name`
-- `asset_gcrn`
-- `asset_id`
-- `asset_name`
-- `asset_region`
-- `asset_type`
-- `cloud_group`
-- `cloud_provider`
-- `first_seen`
-- `last_seen`
-- `resolved_at`
-- `risk_factor`
-- `rule_id`
-- `rule_name`
-- `service_category`
-- `severity`
-- `status`
-- `suppressed_by`
-- `suppressed_reason`
-- `tags`
-        sort -- The field to sort on. Use `|asc` or `|desc` suffix to specify sort direction.Supported fields: 
-- `account_id`
-- `account_name`
-- `asset_id`
-- `asset_name`
-- `asset_region`
-- `asset_type`
-- `cloud_provider`
-- `first_seen`
-- `last_seen`
-- `resolved_at`
-- `rule_name`
-- `service_category`
-- `severity`
-- `status`
+        filter -- FQL string to filter results in Falcon Query Language (FQL).
+            Supported fields:
+                  account_id            account_name        asset_gcrn
+                  asset_id              asset_name          asset_region
+                  asset_type            cloud_group         cloud_provider
+                  first_seen            last_seen           resolved_at
+                  risk_factor           rule_id             rule_name
+                  service_category      severity            status
+                  suppressed_by         suppressed_reason   tags
+
+        sort -- The field to sort on. Use |asc or |desc suffix to specify sort direction.
+            Supported fields:
+                account_id          account_name            asset_id
+                asset_name          asset_region            asset_type
+                cloud_provider      first_seen              last_seen
+                resolved_at         rule_name               service_category
+                severity            status
         limit -- The maximum number of items to return. When not specified or 0, 500 is used. When larger than 1000, 1000 is used.
         offset -- Offset returned risks
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
@@ -112,36 +92,30 @@ class CloudSecurity(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="combined_cloud_risks",
+            operation_id="CombinedCloudRisks",
             keywords=kwargs,
             params=parameters
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def ListCloudGroupsExternal(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def list_cloud_groups(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
         """Query Cloud Groups and returns entities
 
         Keyword arguments:
         filter -- A valid FQL filter. Supports filtering groups by:
-Group properties:
-- `name`
-- `description`
-- `created_at`
-- `updated_at`
+                  Group properties:
+                    name            description
+                    created_at      updated_at
 
-Selector properties:
-- `cloud_provider`
-- `account_id`
-- `region`
-- `cloud_provider_tag`
-- `image_registry`
-- `image_repository`
-- `image_tag`
+                  Selector properties:
+                    cloud_provider      account_id
+                    region              cloud_provider_tag
+                    image_registry      image_repository
+                    image_tag
 
-Group tags:
-- `business_unit`
-- `business_impact`
-- `environment`
+                  Group tags:
+                    business_unit       business_impact
+                    environment
         sort -- A valid sort string.
         offset -- The starting position of the list operation.
         limit -- The maximum number of cloud groups to retrieve.
@@ -159,13 +133,13 @@ Group tags:
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="ListCloudGroupsExternal",
+            operation_id="ListCloudGroups",
             keywords=kwargs,
             params=parameters
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def ListCloudGroupsByIDExternal(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def list_cloud_groups_by_id(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
         """List Cloud Groups By ID
 
         Keyword arguments:
@@ -184,13 +158,17 @@ Group tags:
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="ListCloudGroupsByIDExternal",
+            operation_id="ListCloudGroupsByID",
             keywords=kwargs,
             params=parameters
             )
 
-    @force_default(defaults=["parameters"], default_types=["dict"])
-    def CreateCloudGroupExternal(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    @force_default(defaults=["body", "parameters"], default_types=["dict", "dict"])
+    def create_cloud_group(self: object,
+                           body: dict = None,
+                           parameters: dict = None,
+                           **kwargs
+                           ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Create a Cloud Group. The created_by field will be set to the API client ID.
 
         Keyword arguments:
@@ -253,14 +231,17 @@ Group tags:
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CreateCloudGroupExternal",
+            operation_id="CreateCloudGroup",
             keywords=kwargs,
             params=parameters,
             body=body
             )
 
-    @force_default(defaults=["parameters"], default_types=["dict"])
-    def UpdateCloudGroupExternal(self: object, group: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    @force_default(defaults=["body"], default_types=["dict"])
+    def update_cloud_group(self: object,
+                           group: dict = None,
+                           **kwargs
+                           ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Update Cloud Group
 
         Keyword arguments:
@@ -306,7 +287,6 @@ Group tags:
                         ]
                     }
                 }
-        parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
 
@@ -323,14 +303,13 @@ Group tags:
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="UpdateCloudGroupExternal",
+            operation_id="UpdateCloudGroup",
             keywords=kwargs,
-            params=parameters,
-            group=group
+            body=group
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def DeleteCloudGroupsExternal(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def delete_cloud_groups(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
         """Delete Cloud Groups in batch
 
         Keyword arguments:
@@ -349,36 +328,30 @@ Group tags:
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="DeleteCloudGroupsExternal",
+            operation_id="DeleteCloudGroups",
             keywords=kwargs,
             params=parameters
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def ListCloudGroupIDsExternal(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def list_group_ids(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
         """Query Cloud Groups and returns IDs
 
         Keyword arguments:
         filter -- A valid FQL filter. Supports filtering groups by:
-Group properties:
-- `name`
-- `description`
-- `created_at`
-- `updated_at`
+                  Group properties:
+                    name            description
+                    created_at      updated_at
 
-Selector properties:
-- `cloud_provider`
-- `account_id`
-- `region`
-- `cloud_provider_tag`
-- `image_registry`
-- `image_repository`
-- `image_tag`
+                  Selector properties:
+                    cloud_provider      account_id
+                    region              cloud_provider_tag
+                    image_registry      image_repository
+                    image_tag
 
-Group tags:
-- `business_unit`
-- `business_impact`
-- `environment`
+                  Group tags:
+                    business_unit       business_impact
+                    environment
         sort -- A valid sort string.
         offset -- The starting position of the list operation.
         limit -- The maximum number of cloud groups to retrieve.
@@ -396,8 +369,7 @@ Group tags:
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="ListCloudGroupIDsExternal",
+            operation_id="ListCloudGroupIDs",
             keywords=kwargs,
             params=parameters
             )
-
