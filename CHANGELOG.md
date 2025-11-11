@@ -1,3 +1,29 @@
+# Version 1.5.5
+## Added features and functionality
++ Added: Added the new __Cloud Policies__ service collection with 22 operations.
+    - _ReplaceControlRules_
+    - _GetComplianceControls_
+    - _CreateComplianceControl_
+    - _UpdateComplianceControl_
+    - _DeleteComplianceControl_
+    - _RenameSectionComplianceFramework_
+    - _GetComplianceFrameworks_
+    - _CreateComplianceFramework_
+    - _UpdateComplianceFramework_
+    - _DeleteComplianceFramework_
+    - _GetEvaluationResult_
+    - _GetRuleOverride_
+    - _CreateRuleOverride_
+    - _UpdateRuleOverride_
+    - _DeleteRuleOverride_
+    - _GetRule_
+    - _CreateRuleMixin0_
+    - _UpdateRule_
+    - _DeleteRuleMixin0_
+    - _QueryComplianceControls_
+    - _QueryComplianceFrameworks_
+    - _QueryRule_
+
 # Version 1.5.4
 ## Added features and functionality
 + Added: Added _tag_key_ and _tag_value_ as allowed values for the `filter` parameter in the _cloud_security_assets_combined_compliance_by_account_ operation within the __Cloud Security Assets__ service collection.
