@@ -32,6 +32,13 @@
     - _QueryComplianceControls_
     - _QueryComplianceFrameworks_
     - _QueryRule_
+    - `_endpoint/__init__.py`
+    - `_endpoint/_cloud_policies.py`
+    - `_payload/__init__.py`
+    - `_payload/_cloud_policies.py`
+    - `cloud_policies.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_cloud_policies.py`
 
 # Version 1.5.4
 ## Added features and functionality

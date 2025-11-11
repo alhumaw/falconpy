@@ -40,7 +40,13 @@ from ._util import force_default, process_service_request
 from ._result import Result
 from ._service_class import ServiceClass
 from ._endpoint._cloud_policies import _cloud_policies_endpoints as Endpoints
-from ._payload._cloud_policies import cloud_policies_rule_assign_payload, cloud_policies_compliance_control_payload, cloud_policies_evaluation_payload, cloud_policies_rule_override_payload, cloud_policies_rule_create_payload, cloud_policies_rule_update_payload
+from ._payload._cloud_policies import (cloud_policies_rule_assign_payload,
+                                       cloud_policies_compliance_control_payload,
+                                       cloud_policies_evaluation_payload,
+                                       cloud_policies_rule_override_payload,
+                                       cloud_policies_rule_create_payload,
+                                       cloud_policies_rule_update_payload
+                                       )
 
 class CloudPolicies(ServiceClass):
     """The only requirement to instantiate an instance of this class is one of the following.
@@ -54,9 +60,13 @@ class CloudPolicies(ServiceClass):
     - a previously-authenticated instance of the authentication service class (oauth2.py)
     - a valid token provided by the authentication service class (oauth2.py)
     """
-    @force_default(defaults=["parameters"], default_types=["dict"])
-    def ReplaceControlRules(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Assign rules to a compliance control (full replace)
+    @force_default(defaults=["body", "parameters"], default_types=["dict", "dict"])
+    def replace_control_rules(self: object,
+                              body: dict = None,
+                              parameters: dict = None,
+                              **kwargs
+                              ) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Assign rules to a compliance control (full replace).
 
         Keyword arguments:
         ids -- The UUID of the compliance control to assign rules to
@@ -76,7 +86,6 @@ class CloudPolicies(ServiceClass):
 
         Swagger URL
         https://assets.falcon.crowdstrike.com/support/api/swagger.html#/cloud-policies/ReplaceControlRules
-
         """
         if not body:
             body = cloud_policies_rule_assign_payload(passed_keywords=kwargs)
@@ -91,8 +100,8 @@ class CloudPolicies(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def GetComplianceControls(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Get compliance controls by ID
+    def get_compliance_controls(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Get compliance controls by ID.
 
         Keyword arguments:
         ids -- The uuids of compliance controls to retrieve
@@ -105,7 +114,7 @@ class CloudPolicies(ServiceClass):
         HTTP Method: GET
 
         Swagger URL
-
+        https://assets.falcon.crowdstrike.com/support/api/swagger.html#/cloud-policies/GetComplianceControls
         """
         return process_service_request(
             calling_object=self,
@@ -115,9 +124,9 @@ class CloudPolicies(ServiceClass):
             params=parameters
             )
 
-    @force_default(defaults=["parameters"], default_types=["dict"])
-    def CreateComplianceControl(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Create a new custom compliance control
+    @force_default(defaults=["body"], default_types=["dict"])
+    def create_compliance_control(self: object, body: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Create a new custom compliance control.
 
         Keyword arguments:
         body -- Full body payload dictionary in JSON format. Not required if using other keywords.
@@ -127,7 +136,6 @@ class CloudPolicies(ServiceClass):
                     "name": "string",
                     "section_name": "string"
                 }
-        parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
 
@@ -146,13 +154,12 @@ class CloudPolicies(ServiceClass):
             endpoints=Endpoints,
             operation_id="CreateComplianceControl",
             keywords=kwargs,
-            params=parameters,
             body=body
             )
 
-    @force_default(defaults=["parameters"], default_types=["dict"])
-    def UpdateComplianceControl(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Update a custom compliance control
+    @force_default(defaults=["body", "parameters"], default_types=["dict", "dict"])
+    def update_compliance_control(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Update a custom compliance control.
 
         Keyword arguments:
         ids -- The uuid of compliance control to update
@@ -185,8 +192,8 @@ class CloudPolicies(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def DeleteComplianceControl(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Delete custom compliance controls
+    def delete_compliance_control(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Delete custom compliance controls.
 
         Keyword arguments:
         ids -- The uuids of compliance control to delete
@@ -200,7 +207,6 @@ class CloudPolicies(ServiceClass):
 
         Swagger URL
         https://assets.falcon.crowdstrike.com/support/api/swagger.html#/cloud-policies/DeleteComplianceControl
-
         """
         return process_service_request(
             calling_object=self,
@@ -211,8 +217,12 @@ class CloudPolicies(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def RenameSectionComplianceFramework(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Rename a section in a custom compliance framework
+    def rename_section_compliance_framework(self: object,
+                                            body: dict = None,
+                                            parameters: dict = None,
+                                            **kwargs
+                                            ) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Rename a section in a custom compliance framework.
 
         Keyword arguments:
         ids -- The uuid of compliance framework containing the section to rename
@@ -245,8 +255,8 @@ class CloudPolicies(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def GetComplianceFrameworks(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Get compliance frameworks by ID
+    def get_compliance_frameworks(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Get compliance frameworks by ID.
 
         Keyword arguments:
         ids -- The uuids of compliance frameworks to retrieve
@@ -269,9 +279,9 @@ class CloudPolicies(ServiceClass):
             params=parameters
             )
 
-    @force_default(defaults=["parameters"], default_types=["dict"])
-    def CreateComplianceFramework(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Create a new custom compliance framework
+    @force_default(defaults=["body"], default_types=["dict"])
+    def create_compliance_framework(self: object, body: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Create a new custom compliance framework.
 
         Keyword arguments:
         body -- Full body payload dictionary in JSON format. Not required if using other keywords.
@@ -280,7 +290,6 @@ class CloudPolicies(ServiceClass):
                     "description": "string",
                     "name": "string"
                 }
-        parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
 
@@ -299,13 +308,16 @@ class CloudPolicies(ServiceClass):
             endpoints=Endpoints,
             operation_id="CreateComplianceFramework",
             keywords=kwargs,
-            params=parameters,
             body=body
             )
 
-    @force_default(defaults=["parameters"], default_types=["dict"])
-    def UpdateComplianceFramework(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Update a custom compliance framework
+    @force_default(defaults=["body", "parameters"], default_types=["dict", "dict"])
+    def update_compliance_framework(self: object,
+                                    body: dict = None,
+                                    parameters: dict = None,
+                                    **kwargs
+                                    ) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Update a custom compliance framework.
 
         Keyword arguments:
         ids -- The uuids of compliance framework to update
@@ -339,8 +351,8 @@ class CloudPolicies(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def DeleteComplianceFramework(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Delete a custom compliance framework and all associated controls and rule assignments
+    def delete_compliance_framework(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Delete a custom compliance framework and all associated controls and rule assignments.
 
         Keyword arguments:
         ids -- The uuids of compliance framework to delete
@@ -354,7 +366,6 @@ class CloudPolicies(ServiceClass):
 
         Swagger URL
         https://assets.falcon.crowdstrike.com/support/api/swagger.html#/cloud-policies/DeleteComplianceFramework
-
         """
         return process_service_request(
             calling_object=self,
@@ -364,9 +375,13 @@ class CloudPolicies(ServiceClass):
             params=parameters
             )
 
-    @force_default(defaults=["parameters"], default_types=["dict"])
-    def GetEvaluationResult(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Gets evaluation results based on the provided rule
+    @force_default(defaults=["body", "parameters"], default_types=["dict", "dict"])
+    def get_evaluation_result(self: object,
+                              body: dict = None,
+                              parameters: dict = None,
+                              **kwargs
+                              ) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Gets evaluation results based on the provided rule.
 
         Keyword arguments:
         cloud_provider -- Cloud Service Provider of the provided IDs
@@ -401,8 +416,8 @@ class CloudPolicies(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def GetRuleOverride(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Get a rule override
+    def get_rule_override(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Get a rule override.
 
         Keyword arguments:
         ids -- The uuids of rule overrides to retrieve
@@ -425,9 +440,9 @@ class CloudPolicies(ServiceClass):
             params=parameters
             )
 
-    @force_default(defaults=["parameters"], default_types=["dict"])
-    def CreateRuleOverride(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Create a new rule override
+    @force_default(defaults=["body"], default_types=["dict"])
+    def create_rule_override(self: object, body: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Create a new rule override.
 
         Keyword arguments:
         body -- Full body payload dictionary in JSON format. Not required if using other keywords.
@@ -445,7 +460,6 @@ class CloudPolicies(ServiceClass):
                         }
                     ]
                 }
-        parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
 
@@ -464,13 +478,12 @@ class CloudPolicies(ServiceClass):
             endpoints=Endpoints,
             operation_id="CreateRuleOverride",
             keywords=kwargs,
-            params=parameters,
             body=body
             )
 
-    @force_default(defaults=["parameters"], default_types=["dict"])
-    def UpdateRuleOverride(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Update a rule override
+    @force_default(defaults=["body"], default_types=["dict"])
+    def update_rule_override(self: object, body: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Update a rule override.
 
         Keyword arguments:
         body -- Full body payload dictionary in JSON format. Not required if using other keywords.
@@ -488,7 +501,6 @@ class CloudPolicies(ServiceClass):
                         }
                     ]
                 }
-        parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
 
@@ -507,13 +519,12 @@ class CloudPolicies(ServiceClass):
             endpoints=Endpoints,
             operation_id="UpdateRuleOverride",
             keywords=kwargs,
-            params=parameters,
             body=body
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def DeleteRuleOverride(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Delete a rule override
+    def delete_rule_override(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Delete a rule override.
 
         Keyword arguments:
         ids -- The uuids of rule overrides to delete
@@ -537,8 +548,8 @@ class CloudPolicies(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def GetRule(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Get a rule by id
+    def get_rule(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Get a rule by id.
 
         Keyword arguments:
         ids -- The uuids of rules to retrieve
@@ -561,13 +572,14 @@ class CloudPolicies(ServiceClass):
             params=parameters
             )
 
-    @force_default(defaults=["parameters"], default_types=["dict"])
-    def CreateRuleMixin0(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Create a new rule
+    @force_default(defaults=["body"], default_types=["dict"])
+    def create_rule(self: object, body: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Create a new rule.
 
         Keyword arguments:
-        body -- Full body payload dictionary in JSON format. Not required if using other keywords. For Custom Rule, logic is mandatory and parent_rule_id should not be specified.
-For Managed Rule duplication, parent_rule_id is mandatory and logic should be not specified.
+        body -- Full body payload dictionary in JSON format. Not required if using other keywords. 
+                For Custom Rule, logic is mandatory and parent_rule_id should not be specified.
+                For Managed Rule duplication, parent_rule_id is mandatory and logic should be not specified.
                 {
                     "alert_info": "string",
                     "attack_types": "string",
@@ -590,7 +602,6 @@ For Managed Rule duplication, parent_rule_id is mandatory and logic should be no
                     "severity": 0,
                     "subdomain": "string"
                 }
-        parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
 
@@ -607,15 +618,14 @@ For Managed Rule duplication, parent_rule_id is mandatory and logic should be no
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CreateRuleMixin0",
+            operation_id="CreateRule",
             keywords=kwargs,
-            params=parameters,
             body=body
             )
 
-    @force_default(defaults=["parameters"], default_types=["dict"])
-    def UpdateRule(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Update a rule
+    @force_default(defaults=["body"], default_types=["dict"])
+    def update_rule(self: object, body: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Update a rule.
 
         Keyword arguments:
         body -- Full body payload dictionary in JSON format. Not required if using other keywords.
@@ -644,7 +654,6 @@ For Managed Rule duplication, parent_rule_id is mandatory and logic should be no
                     "severity": 0,
                     "uuid": "string"
                 }
-        parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
 
@@ -663,13 +672,12 @@ For Managed Rule duplication, parent_rule_id is mandatory and logic should be no
             endpoints=Endpoints,
             operation_id="UpdateRule",
             keywords=kwargs,
-            params=parameters,
             body=body
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def DeleteRuleMixin0(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Delete a rule
+    def delete_rule(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Delete a rule.
 
         Keyword arguments:
         ids -- The uuids of rules to delete
@@ -687,40 +695,32 @@ For Managed Rule duplication, parent_rule_id is mandatory and logic should be no
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="DeleteRuleMixin0",
+            operation_id="DeleteRule",
             keywords=kwargs,
             params=parameters
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def QueryComplianceControls(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Query for compliance controls by various parameters
+    def query_compliance_controls(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Query for compliance controls by various parameters.
 
         Keyword arguments:
-        filter -- FQL filter, allowed props: 
-	
-*compliance_control_name*	
-*compliance_control_authority*	
-*compliance_control_type*	
-*compliance_control_section*	
-*compliance_control_requirement*	
-*compliance_control_benchmark_name*	
-*compliance_control_benchmark_version*	
+        filter -- The filter expression that should be used to limit the results. String.
+                  Allowed filter fields:
+                    compliance_control_name                 compliance_control_authority	
+                    compliance_control_type 	            compliance_control_section 	
+                    compliance_control_requirement	        compliance_control_benchmark_name	
+                    compliance_control_benchmark_version	
 
         limit -- The maximum number of resources to return. The maximum allowed is 500.
         offset -- The number of results to skip before starting to return results.
-        sort -- Field to sort on. Sortable fields: 
-	
-*compliance_control_name*	
-*compliance_control_authority*	
-*compliance_control_type*	
-*compliance_control_section*	
-*compliance_control_requirement*	
-*compliance_control_benchmark_name*	
-*compliance_control_benchmark_version*	
- 
+        sort -- The sort expression that should be used to sort the results. String.
+                Sortable fields:
+                    compliance_control_authority	        compliance_control_type 	            
+                    compliance_control_section              compliance_control_requirement	        
+                    compliance_control_benchmark_name	    compliance_control_benchmark_version	
 
-Use the `|asc` or `|desc` suffix to specify sort direction.
+        Use the `|asc` or `|desc` suffix to specify sort direction.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -731,7 +731,6 @@ Use the `|asc` or `|desc` suffix to specify sort direction.
 
         Swagger URL
         https://assets.falcon.crowdstrike.com/support/api/swagger.html#/cloud-policies/QueryComplianceControls
-        
         """
         return process_service_request(
             calling_object=self,
@@ -742,25 +741,22 @@ Use the `|asc` or `|desc` suffix to specify sort direction.
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def QueryComplianceFrameworks(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Query for compliance frameworks by various parameters
+    def query_compliance_frameworks(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Query for compliance frameworks by various parameters.
 
         Keyword arguments:
-        filter -- FQL filter, allowed properties: 
-	
-*compliance_framework_name*	
-*compliance_framework_version*	
-*compliance_framework_authority*	
+        filter -- The filter expression that should be used to limit the results. String.
+                  Allowed filter fields:
+                    compliance_framework_name       compliance_framework_version
+                    compliance_framework_authority
 
         limit -- The maximum number of resources to return. The maximum allowed is 500.
         offset -- The number of results to skip before starting to return results.
-        sort -- Field to sort on. Sortable fields: 
-	
-*compliance_framework_name*	
-*compliance_framework_version*	
-*compliance_framework_authority*	
- 
-
+        sort -- The sort expression that should be used to sort the results. String.
+                Sortable fields:
+                    compliance_framework_name       compliance_framework_version
+                    compliance_framework_authority
+                
 Use the `|asc` or `|desc` suffix to specify sort direction.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
@@ -772,7 +768,6 @@ Use the `|asc` or `|desc` suffix to specify sort direction.
 
         Swagger URL
         https://assets.falcon.crowdstrike.com/support/api/swagger.html#/cloud-policies/QueryComplianceFrameworks
-
         """
         return process_service_request(
             calling_object=self,
@@ -783,64 +778,35 @@ Use the `|asc` or `|desc` suffix to specify sort direction.
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def QueryRule(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Query for rules by various parameters
+    def query_rule(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+        """Query for rules by various parameters.
 
         Keyword arguments:
-        filter -- FQL filter, allowed properties: 
-	
-*rule_origin*	
-*rule_parent_uuid*	
-*rule_name*	
-*rule_description*	
-*rule_domain*	
-*rule_status*	
-*rule_severity*	
-*rule_short_code*	
-*rule_service*	
-*rule_resource_type*	
-*rule_provider*	
-*rule_subdomain*	
-*rule_auto_remediable*	
-*rule_control_requirement*	
-*rule_control_section*	
-*rule_compliance_benchmark*	
-*rule_compliance_framework*	
-*rule_mitre_tactic*	
-*rule_mitre_technique*	
-*rule_created_at*	
-*rule_updated_at*	
-*rule_updated_by*	
+        filter -- The filter expression that should be used to limit the results. String.
+                  Allowed filter fields:
+                    rule_origin                         rule_parent_uuid                    rule_name
+                    rule_description                    rule_domain                         rule_status
+                    rule_severity                       rule_short_code                     rule_service
+                    rule_resource_type                  rule_provider                       rule_subdomain
+                    rule_auto_remediable                rule_control_requirement            rule_control_section
+                    rule_compliance_benchmark           rule_compliance_framework           rule_mitre_tactic
+                    rule_mitre_technique                rule_created_at                     rule_updated_at
+                    rule_updated_by
 
         limit -- The maximum number of resources to return. The maximum allowed is 500.
         offset -- The number of results to skip before starting to return results.
-        sort -- Field to sort on. Sortable fields: 
-	
-*rule_origin*	
-*rule_parent_uuid*	
-*rule_name*	
-*rule_description*	
-*rule_domain*	
-*rule_status*	
-*rule_severity*	
-*rule_short_code*	
-*rule_service*	
-*rule_resource_type*	
-*rule_provider*	
-*rule_subdomain*	
-*rule_auto_remediable*	
-*rule_control_requirement*	
-*rule_control_section*	
-*rule_compliance_benchmark*	
-*rule_compliance_framework*	
-*rule_mitre_tactic*	
-*rule_mitre_technique*	
-*rule_created_at*	
-*rule_updated_at*	
-*rule_updated_by*	
- 
+        sort -- The sort expression that should be used to sort the results. String.
+                Sortable fields:
+                  rule_origin                         rule_parent_uuid                    rule_name
+                  rule_description                    rule_domain                         rule_status
+                  rule_severity                       rule_short_code                     rule_service
+                  rule_resource_type                  rule_provider                       rule_subdomain
+                  rule_auto_remediable                rule_control_requirement            rule_control_section
+                  rule_compliance_benchmark           rule_compliance_framework           rule_mitre_tactic
+                  rule_mitre_technique                rule_created_at                     rule_updated_at
+                  rule_updated_by
 
-Use the `|asc` or `|desc` suffix to specify sort direction.
+        Use the `|asc` or `|desc` suffix to specify sort direction.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -859,3 +825,26 @@ Use the `|asc` or `|desc` suffix to specify sort direction.
             keywords=kwargs,
             params=parameters
             )
+
+    ReplaceControlRules = replace_control_rules
+    GetComplianceControls = get_compliance_controls
+    CreateComplianceControl = create_compliance_control
+    UpdateComplianceControl = update_compliance_control
+    DeleteComplianceControl = delete_compliance_control
+    RenameSectionComplianceFramework = rename_section_compliance_framework
+    GetComplianceFrameworks = get_compliance_frameworks
+    CreateComplianceFramework = create_compliance_framework
+    UpdateComplianceFramework = update_compliance_framework
+    DeleteComplianceFramework = delete_compliance_framework
+    GetEvaluationResult = get_evaluation_result
+    GetRuleOverride = get_rule_override
+    CreateRuleOverride = create_rule_override
+    UpdateRuleOverride = update_rule_override
+    DeleteRuleOverride = delete_rule_override
+    GetRule = get_rule
+    CreateRule = create_rule
+    UpdateRule = update_rule
+    DeleteRule = delete_rule
+    QueryComplianceControls = query_compliance_controls
+    QueryComplianceFrameworks = query_compliance_frameworks
+    QueryRule = query_rule
