@@ -1,5 +1,17 @@
 # Version 1.5.5
 ## Added features and functionality
++ Added: Added the new __Cloud Security Compliance__ service collection with 2 operations.
+    - _CloudComplianceFrameworkPostureSummaries_
+    - _CloudComplianceRulePostureSummaries_
+    - `__init__.py`
+    - `_endpoint/__init__.py`
+    - `_endpoint/_cloud_security_compliance.py`
+    - `cloud_security_compliance.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/_cloud_security_compliance.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_cloud_security_compliance.py`
+
 + Added: Added the new __Cloud Security__ service collection with 7 operations.
     - _CombinedCloudRisks_
     - _ListCloudGroups_
@@ -8,11 +20,14 @@
     - _UpdateCloudGroup_
     - _DeleteCloudGroups_
     - _ListCloudGroupIDs_
+    - `__init__.py`
     - `_endpoint/__init__.py`
     - `_endpoint/_cloud_security.py`
     - `_payload/__init__.py`
     - `_payload/_cloud_security`
     - `cloud_security.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/_cloud_security.py`
     > Unit testing expanded to complete code coverage.
     - `tests/test_cloud_security.py`
 
@@ -39,6 +54,7 @@
     - _QueryComplianceControls_
     - _QueryComplianceFrameworks_
     - _QueryRule_
+    - `__init__.py`
     - `_endpoint/__init__.py`
     - `_endpoint/_cloud_policies.py`
     - `_payload/__init__.py`
