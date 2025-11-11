@@ -1,5 +1,5 @@
-# test_cloud_security_detections.py
-# This class tests the CloudSecurityDetections service class
+# test_cloud_security_rules_admin.py
+# This class tests the CloudSecurityRulesAdmin service class
 
 # import json
 import os
@@ -11,11 +11,11 @@ from tests import test_authorization as Authorization
 # Import our sibling src folder into the path
 sys.path.append(os.path.abspath('src'))
 # Classes to test - manually imported from sibling folder
-from falconpy import CloudSecurityDetections
+from falconpy import CorrelationRulesAdmin
 
 auth = Authorization.TestAuthorization()
 config = auth.getConfigObject()
-falcon = CloudSecurityDetections(auth_object=config)
+falcon = CorrelationRulesAdmin(auth_object=config)
 AllowedResponses = [200, 201, 207, 400, 403, 404, 429]
 
 
@@ -23,12 +23,11 @@ class TestCloudSecurityAssets:
     def test_all_code_paths(self):
         error_checks = True
         tests = {
-            "cspm_evaluations_iom_entities": falcon.cspm_evaluations_iom_entities(ids = "1234567"),
-            "cspm_evaluations_iom_queries": falcon.cspm_evaluations_iom_queries()
+            "cspm_evaluations_iom_entities": falcon.change_correlation_rule_owner(body={}),
         }
         for key in tests:
             if tests[key]["status_code"] not in AllowedResponses:
                 error_checks = False
-                print(key)
-                print(tests[key])
+            # print(key)
+            # print(tests[key])
         assert error_checks

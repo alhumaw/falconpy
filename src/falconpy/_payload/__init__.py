@@ -80,6 +80,7 @@ from ._container import (
     export_job_payload,
     inventory_scan_payload
     )
+from ._correlation_rules_admin import correlation_rules_admin_payload
 from ._content_update_policy import content_update_policy_action_payload, content_update_policy_payload
 from ._delivery_settings import delivery_settings_payload
 from ._detects import update_detects_payload
@@ -202,5 +203,5 @@ __all__ = [
     "scheduled_task_payload", "automation_policy_payload", "policy_host_group_payload",
     "automation_live_query_payload", "cloud_policies_rule_update_payload", "cloud_policies_compliance_control_payload",
     "cloud_policies_rule_create_payload", "cloud_policies_rule_override_payload", "cloud_policies_rule_assign_payload",
-    "cloud_policies_evaluation_payload", "cloud_security_create_group_payload"
+    "cloud_policies_evaluation_payload", "cloud_security_create_group_payload", "correlation_rules_admin_payload"
 ]

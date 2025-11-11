@@ -1,5 +1,5 @@
-# test_cloud_security_assets.py
-# This class tests the cloud_security_assets service class
+# test_cloud_security_compliance.py
+# This class tests the CloudSecurityCompliance service class
 
 # import json
 import os

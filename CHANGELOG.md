@@ -1,5 +1,18 @@
 # Version 1.5.5
 ## Added features and functionality
++ Added: Added the new __Correlation Rules Admin__ service collection with 1 operation.
+    - _ChangeCorrelationRuleOwner_
+    - `__init__.py`
+    - `correlation_rules_admin.py`
+    - `_endpoint/__init__.py`
+    - `_endpoint/_correlation_rules_admin.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/_correlation_rules_admin.py`
+    - `_payload/__init__.py`
+    - `_payload/_correlation_rules_admin.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_correlation_rules_admin.py`
+
 + Added: Added the new __Cloud Security Detections__ service collection with 2 operations.
     - _CSPMEvaluationsIOMEntities_
     - _CSPMEvaluationsIOMQueries_
