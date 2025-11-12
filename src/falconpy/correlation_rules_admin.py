@@ -82,8 +82,9 @@ class CorrelationRulesAdmin(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="ChangeCorrelationRuleOwner",
+            operation_id="entities_rules_ownership_put_v1",
             keywords=kwargs,
             body=body
             )
 
+    entities_rules_ownership_put_v1 = change_correlation_rule_owner

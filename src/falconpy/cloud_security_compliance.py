@@ -55,7 +55,7 @@ class CloudSecurityCompliance(ServiceClass):
     - a valid token provided by the authentication service class (oauth2.py)
     """
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def cloud_compliance_framework_posture_summaries(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def framework_posture_summaries(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
         """Get sections and requirements with scores for benchmarks.
 
         Keyword arguments:
@@ -83,13 +83,13 @@ class CloudSecurityCompliance(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CloudComplianceFrameworkPostureSummaries",
+            operation_id="cloud_compliance_framework_posture_summaries",
             keywords=kwargs,
             params=parameters
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def cloud_compliance_rule_posture_summaries(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def rule_posture_summaries(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
         """Get compliance score and counts for rules.
 
         Keyword arguments:
@@ -118,10 +118,10 @@ class CloudSecurityCompliance(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CloudComplianceRulePostureSummaries",
+            operation_id="cloud_compliance_rule_posture_summaries",
             keywords=kwargs,
             params=parameters
             )
 
-    CloudComplianceFrameworkPostureSummaries = cloud_compliance_framework_posture_summaries
-    CloudComplianceRulePostureSummaries = cloud_compliance_rule_posture_summaries
+    cloud_compliance_framework_posture_summaries =  framework_posture_summaries
+    cloud_compliance_rule_posture_summaries = rule_posture_summaries

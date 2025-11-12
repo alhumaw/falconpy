@@ -23,8 +23,8 @@ class TestCloudSecurityAssets:
     def test_all_code_paths(self):
         error_checks = True
         tests = {
-            "cspm_evaluations_iom_entities": falcon.cspm_evaluations_iom_entities(ids = "1234567"),
-            "cspm_evaluations_iom_queries": falcon.cspm_evaluations_iom_queries()
+            "cspm_evaluations_iom_entities": falcon.get_iom_entities(ids = "1234567"),
+            "cspm_evaluations_iom_queries": falcon.query_iom_entities()
         }
         for key in tests:
             if tests[key]["status_code"] not in AllowedResponses:

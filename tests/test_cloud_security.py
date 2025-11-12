@@ -28,12 +28,12 @@ class TestCloudPolicies:
         error_checks = True
         tests = {
             "combined_cloud_risks": falcon.combined_cloud_risks(),
-            "ListCloudGroups": falcon.list_cloud_groups(),
-            "ListCloudGroupsByID": falcon.list_cloud_groups_by_id(),
-            "CreateCloudGroup": falcon.create_cloud_group(body={}),
-            "UpdateCloudGroup": falcon.update_cloud_group(group={}),
-            "DeleteCloudGroups": falcon.delete_cloud_groups(ids="1234567"),
-            "ListCloudGroupIDs": falcon.list_group_ids()
+            "ListCloudGroupsExternal": falcon.list_cloud_groups(),
+            "ListCloudGroupsByIDExternal": falcon.list_cloud_groups_by_id(),
+            "CreateCloudGroupExternal": falcon.create_cloud_group(body={}),
+            "UpdateCloudGroupExternal": falcon.update_cloud_group(group={}),
+            "DeleteCloudGroupsExternal": falcon.delete_cloud_groups(ids="1234567"),
+            "ListCloudGroupIDsExternal": falcon.list_group_ids()
         }
         for key in tests:
             if tests[key]["status_code"] not in AllowedResponses:

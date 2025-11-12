@@ -38,7 +38,7 @@ For more information, please refer to <https://unlicense.org>
 
 _cloud_security_compliance_endpoints = [
   [
-    "CloudComplianceFrameworkPostureSummaries",
+    "cloud_compliance_framework_posture_summaries",
     "GET",
     "/cloud-security-compliance/entities/framework-posture-summaries/v1",
     "Get sections and requirements with scores for benchmarks.",
@@ -67,7 +67,7 @@ _cloud_security_compliance_endpoints = [
     ]
   ],
   [
-    "CloudComplianceRulePostureSummaries",
+    "cloud_compliance_rule_posture_summaries",
     "GET",
     "/cloud-security-compliance/entities/rule-posture-summaries/v1",
     "Get compliance score and counts for rules.",

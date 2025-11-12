@@ -1,6 +1,7 @@
-"""
-test_data_protection_configuration.py - This class tests the DataProtectionConfiguration service class
-"""
+# test_data_protection_configuration.py
+# This class tests the DataProtectionConfiguration service class
+
+# import json
 import os
 import sys
 import pytest
@@ -16,616 +17,417 @@ from falconpy import DataProtectionConfiguration
 auth = Authorization.TestAuthorization()
 config = auth.getConfigObject()
 falcon = DataProtectionConfiguration(auth_object=config)
-AllowedResponses = [200, 201, 202, 207, 400, 401, 403, 404, 429, 500, 501]
+AllowedResponses = [200, 201, 207, 400, 403, 404, 429]
 
 
 class TestDataProtectionConfiguration:
-    """
-    DataProtectionConfiguration Service Class test harness
-    """
-
-    def test_query_classifications_v2(self):
-        """Test query classifications endpoint"""
-        assert bool(
-            falcon.query_classifications(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_classifications_v2_alias(self):
-        """Test query classifications endpoint using PascalCase alias"""
-        assert bool(
-            falcon.QueryClassificationsV2(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_classification_v2(self):
-        """Test get classification endpoint"""
-        # Try to get a classification ID first
-        query_result = falcon.query_classifications(limit=1)
-        test_id = "1234567890"  # Default fallback ID
-        if query_result["status_code"] in [200, 201] and query_result.get("body", {}).get("resources"):
-            test_id = query_result["body"]["resources"][0]
-        
-        assert bool(
-            falcon.get_classification(ids=test_id)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_classification_v2_alias(self):
-        """Test get classification endpoint using PascalCase alias"""
-        assert bool(
-            falcon.GetClassificationV2(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_classification_v2(self):
-        """Test create classification endpoint"""
-        test_payload = {
-            "resources": [{
-                "name": "Test Classification",
-                "classification_properties": {
-                    "protection_mode": "monitor",
-                    "evidence_duplication_enabled": True
-                }
-            }]
-        }
-        assert bool(
-            falcon.create_classification(body=test_payload)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_classification_v2_alias(self):
-        """Test create classification endpoint using PascalCase alias"""
-        test_payload = {
-            "resources": [{
-                "name": "Test Classification Alias",
-                "classification_properties": {
-                    "protection_mode": "monitor"
-                }
-            }]
-        }
-        assert bool(
-            falcon.CreateClassificationV2(body=test_payload)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_update_classifications_v2(self):
-        """Test update classifications endpoint"""
-        test_payload = {
-            "resources": [{
-                "name": "Updated Test Classification",
-                "classification_properties": {
-                    "protection_mode": "block"
-                }
-            }]
-        }
-        assert bool(
-            falcon.update_classifications(body=test_payload)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_update_classifications_v2_alias(self):
-        """Test update classifications endpoint using PascalCase alias"""
-        assert bool(
-            falcon.UpdateClassificationsV2(body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_delete_classification_v2(self):
-        """Test delete classification endpoint"""
-        assert bool(
-            falcon.delete_classification(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_delete_classification_v2_alias(self):
-        """Test delete classification endpoint using PascalCase alias"""
-        assert bool(
-            falcon.DeleteClassificationV2(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_cloud_applications_v2(self):
-        """Test query cloud applications endpoint"""
-        assert bool(
-            falcon.query_cloud_applications(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_cloud_applications_v2_alias(self):
-        """Test query cloud applications endpoint using PascalCase alias"""
-        assert bool(
-            falcon.QueryCloudApplicationsV2(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_cloud_application(self):
-        """Test get cloud application endpoint"""
-        assert bool(
-            falcon.get_cloud_application(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_cloud_application_alias(self):
-        """Test get cloud application endpoint using PascalCase alias"""
-        assert bool(
-            falcon.GetCloudApplication(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_cloud_application(self):
-        """Test create cloud application endpoint"""
-        test_payload = {
-            "name": "Test Cloud App",
-            "description": "Test description",
-            "urls": [{
-                "fqdn": "example.com",
-                "path": "/test"
-            }]
-        }
-        assert bool(
-            falcon.create_cloud_application(body=test_payload)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_cloud_application_alias(self):
-        """Test create cloud application endpoint using PascalCase alias"""
-        assert bool(
-            falcon.CreateCloudApplication(body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_update_cloud_application(self):
-        """Test update cloud application endpoint"""
-        assert bool(
-            falcon.update_cloud_application(id="1234567890", body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_update_cloud_application_alias(self):
-        """Test update cloud application endpoint using PascalCase alias"""
-        assert bool(
-            falcon.UpdateCloudApplication(id="1234567890", body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_delete_cloud_application(self):
-        """Test delete cloud application endpoint"""
-        assert bool(
-            falcon.delete_cloud_application(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_delete_cloud_application_alias(self):
-        """Test delete cloud application endpoint using PascalCase alias"""
-        assert bool(
-            falcon.DeleteCloudApplication(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_content_patterns_v2(self):
-        """Test query content patterns endpoint"""
-        assert bool(
-            falcon.query_content_patterns(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_content_patterns_v2_alias(self):
-        """Test query content patterns endpoint using PascalCase alias"""
-        assert bool(
-            falcon.QueryContentPatternsV2(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_content_pattern(self):
-        """Test get content pattern endpoint"""
-        assert bool(
-            falcon.get_content_pattern(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_content_pattern_alias(self):
-        """Test get content pattern endpoint using PascalCase alias"""
-        assert bool(
-            falcon.GetContentPattern(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_content_pattern(self):
-        """Test create content pattern endpoint"""
-        test_payload = {
-            "name": "Test Pattern",
-            "category": "test",
-            "description": "Test pattern description",
-            "regexes": ["test.*pattern"],
-            "min_match_threshold": 1
-        }
-        assert bool(
-            falcon.create_content_pattern(body=test_payload)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_content_pattern_alias(self):
-        """Test create content pattern endpoint using PascalCase alias"""
-        assert bool(
-            falcon.CreateContentPattern(body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_update_content_pattern(self):
-        """Test update content pattern endpoint"""
-        assert bool(
-            falcon.update_content_pattern(id="1234567890", body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_update_content_pattern_alias(self):
-        """Test update content pattern endpoint using PascalCase alias"""
-        assert bool(
-            falcon.UpdateContentPattern(id="1234567890", body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_delete_content_pattern(self):
-        """Test delete content pattern endpoint"""
-        assert bool(
-            falcon.delete_content_pattern(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_delete_content_pattern_alias(self):
-        """Test delete content pattern endpoint using PascalCase alias"""
-        assert bool(
-            falcon.DeleteContentPattern(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_enterprise_accounts_v2(self):
-        """Test query enterprise accounts endpoint"""
-        assert bool(
-            falcon.query_enterprise_accounts(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_enterprise_accounts_v2_alias(self):
-        """Test query enterprise accounts endpoint using PascalCase alias"""
-        assert bool(
-            falcon.QueryEnterpriseAccountsV2(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_enterprise_account(self):
-        """Test get enterprise account endpoint"""
-        assert bool(
-            falcon.get_enterprise_account(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_enterprise_account_alias(self):
-        """Test get enterprise account endpoint using PascalCase alias"""
-        assert bool(
-            falcon.GetEnterpriseAccount(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_enterprise_account(self):
-        """Test create enterprise account endpoint"""
-        assert bool(
-            falcon.create_enterprise_account(body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_enterprise_account_alias(self):
-        """Test create enterprise account endpoint using PascalCase alias"""
-        assert bool(
-            falcon.CreateEnterpriseAccount(body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_update_enterprise_account(self):
-        """Test update enterprise account endpoint"""
-        assert bool(
-            falcon.update_enterprise_account(id="1234567890", body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_update_enterprise_account_alias(self):
-        """Test update enterprise account endpoint using PascalCase alias"""
-        assert bool(
-            falcon.UpdateEnterpriseAccount(id="1234567890", body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_delete_enterprise_account(self):
-        """Test delete enterprise account endpoint"""
-        assert bool(
-            falcon.delete_enterprise_account(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_delete_enterprise_account_alias(self):
-        """Test delete enterprise account endpoint using PascalCase alias"""
-        assert bool(
-            falcon.DeleteEnterpriseAccount(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_file_type_v2(self):
-        """Test query file type endpoint"""
-        assert bool(
-            falcon.query_file_type(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_file_type_v2_alias(self):
-        """Test query file type endpoint using PascalCase alias"""
-        assert bool(
-            falcon.QueryFileTypeV2(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_file_type(self):
-        """Test get file type endpoint"""
-        assert bool(
-            falcon.get_file_type(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_file_type_alias(self):
-        """Test get file type endpoint using PascalCase alias"""
-        assert bool(
-            falcon.GetFileType(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_sensitivity_label_v2(self):
-        """Test query sensitivity labels endpoint"""
-        assert bool(
-            falcon.query_sensitivity_label(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_sensitivity_label_v2_alias(self):
-        """Test query sensitivity labels endpoint using PascalCase alias"""
-        assert bool(
-            falcon.QuerySensitivityLabelV2(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_sensitivity_label_v2(self):
-        """Test get sensitivity label endpoint"""
-        assert bool(
-            falcon.get_sensitivity_label(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_sensitivity_label_v2_alias(self):
-        """Test get sensitivity label endpoint using PascalCase alias"""
-        assert bool(
-            falcon.GetSensitivityLabelV2(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_sensitivity_label_v2(self):
-        """Test create sensitivity label endpoint"""
-        test_payload = {
-            "name": "Test Label",
-            "display_name": "Test Display Name",
-            "external_id": "test-ext-id",
-            "label_provider": "test-provider"
-        }
-        assert bool(
-            falcon.create_sensitivity_label(body=test_payload)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_sensitivity_label_v2_alias(self):
-        """Test create sensitivity label endpoint using PascalCase alias"""
-        assert bool(
-            falcon.CreateSensitivityLabelV2(body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_delete_sensitivity_label_v2(self):
-        """Test delete sensitivity label endpoint"""
-        assert bool(
-            falcon.delete_sensitivity_label(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_delete_sensitivity_label_v2_alias(self):
-        """Test delete sensitivity label endpoint using PascalCase alias"""
-        assert bool(
-            falcon.DeleteSensitivityLabelV2(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_policies_v2(self):
-        """Test query policies endpoint"""
-        assert bool(
-            falcon.query_policies(platform_name="win", limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_policies_v2_alias(self):
-        """Test query policies endpoint using PascalCase alias"""
-        assert bool(
-            falcon.QueryPoliciesV2(platform_name="mac", limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_policies_v2(self):
-        """Test get policies endpoint"""
-        assert bool(
-            falcon.get_policies(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_policies_v2_alias(self):
-        """Test get policies endpoint using PascalCase alias"""
-        assert bool(
-            falcon.GetPoliciesV2(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_policy_v2(self):
-        """Test create policy endpoint"""
-        test_payload = {
-            "resources": [{
-                "name": "Test Policy",
-                "description": "Test policy description",
-                "policy_properties": {
-                    "enable_content_inspection": True,
-                    "protection_mode": "monitor"
-                },
-                "precedence": 100
-            }]
-        }
-        assert bool(
-            falcon.create_policy(platform_name="win", body=test_payload)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_policy_v2_alias(self):
-        """Test create policy endpoint using PascalCase alias"""
-        assert bool(
-            falcon.CreatePolicyV2(platform_name="win", body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_update_policies_v2(self):
-        """Test update policies endpoint"""
-        assert bool(
-            falcon.update_policies(platform_name="win", body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_update_policies_v2_alias(self):
-        """Test update policies endpoint using PascalCase alias"""
-        assert bool(
-            falcon.UpdatePoliciesV2(platform_name="mac", body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_delete_policies(self):
-        """Test delete policies endpoint"""
-        assert bool(
-            falcon.delete_policies(ids="1234567890", platform_name="win")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_delete_policies_alias(self):
-        """Test delete policies endpoint using PascalCase alias"""
-        assert bool(
-            falcon.DeletePoliciesV2(ids="1234567890", platform_name="mac")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_web_locations_v2(self):
-        """Test query web locations endpoint"""
-        assert bool(
-            falcon.query_web_locations(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_query_web_locations_v2_alias(self):
-        """Test query web locations endpoint using PascalCase alias"""
-        assert bool(
-            falcon.QueryWebLocationsV2(limit=1)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_web_location_v2(self):
-        """Test get web location endpoint"""
-        assert bool(
-            falcon.get_web_location(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_get_web_location_v2_alias(self):
-        """Test get web location endpoint using PascalCase alias"""
-        assert bool(
-            falcon.GetWebLocationV2(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_web_location_v2(self):
-        """Test create web location endpoint"""
-        test_payload = {
-            "web_locations": [{
-                "name": "Test Web Location",
-                "type": "custom",
-                "location_type": "url"
-            }]
-        }
-        assert bool(
-            falcon.create_web_location(body=test_payload)["status_code"] in AllowedResponses
-        ) is True
-
-    def test_create_web_location_v2_alias(self):
-        """Test create web location endpoint using PascalCase alias"""
-        assert bool(
-            falcon.CreateWebLocationV2(body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_update_web_location_v2(self):
-        """Test update web location endpoint"""
-        assert bool(
-            falcon.update_web_location(id="1234567890", body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_update_web_location_v2_alias(self):
-        """Test update web location endpoint using PascalCase alias"""
-        assert bool(
-            falcon.UpdateWebLocationV2(id="1234567890", body={})["status_code"] in AllowedResponses
-        ) is True
-
-    def test_entities_web_location_delete_v2(self):
-        """Test delete web location endpoint"""
-        assert bool(
-            falcon.delete_web_location(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_entities_web_location_delete_v2_alias(self):
-        """Test delete web location endpoint using PascalCase alias"""
-        assert bool(
-            falcon.DeleteWebLocationV2(ids="1234567890")["status_code"] in AllowedResponses
-        ) is True
-
-    def test_generate_errors(self):
-        """Test error handling by forcing network failures"""
-        # Save original base_url
-        original_url = falcon.base_url
-        # Set invalid URL to force errors
-        falcon.base_url = "https://nowhere.invalid"
-        
-        error_checks = True
-        tests = {
-            "query_classifications": falcon.query_classifications(limit=1)["status_code"],
-            "get_classification": falcon.get_classification(ids="test")["status_code"],
-            "create_classification": falcon.create_classification(body={})["status_code"],
-            "update_classification": falcon.update_classifications(body={})["status_code"],
-            "delete_classification": falcon.delete_classification(ids="test")["status_code"],
-            "query_cloud_apps": falcon.query_cloud_applications(limit=1)["status_code"],
-            "get_cloud_app": falcon.get_cloud_application(ids="test")["status_code"],
-            "create_cloud_app": falcon.create_cloud_application(body={})["status_code"],
-            "query_content_patterns": falcon.query_content_patterns(limit=1)["status_code"],
-            "get_content_pattern": falcon.get_content_pattern(ids="test")["status_code"],
-            "query_policies": falcon.query_policies(platform_name="win", limit=1)["status_code"],
-            "get_policies": falcon.get_policies(ids="test")["status_code"],
-            "query_web_locations": falcon.query_web_locations(limit=1)["status_code"],
-            "get_web_location": falcon.get_web_location(ids="test")["status_code"]
-        }
-        
-        # Restore original URL
-        falcon.base_url = original_url
-        
-        for key in tests:
-            if tests[key] not in [400, 500]:
-                error_checks = False
-                # Uncomment for debugging
-                # print(f"{key} test returned a {tests[key]} status code")
-        
-        assert error_checks is True
-
     @pytest.mark.skipif(config.base_url == "https://api.laggar.gcw.crowdstrike.com",
                         reason="Unit testing unavailable on US-GOV-1"
                         )
     def test_all_code_paths(self):
-        """Comprehensive test of all main endpoints"""
         error_checks = True
         tests = {
-            # Query endpoints
-            "query_classifications_v2": falcon.query_classifications(limit=1),
-            "query_cloud_applications_v2": falcon.query_cloud_applications(limit=1),
-            "query_content_patterns_v2": falcon.query_content_patterns(limit=1),
-            "query_enterprise_accounts_v2": falcon.query_enterprise_accounts(limit=1),
-            "query_file_type_v2": falcon.query_file_type(limit=1),
-            "query_sensitivity_label_v2": falcon.query_sensitivity_label(limit=1),
-            "query_policies_v2": falcon.query_policies(platform_name="win", limit=1),
-            "query_web_locations_v2": falcon.query_web_locations(limit=1),
+            # Classification methods
+            "entities_classification_get_v2": falcon.get_classification(ids="test-id"),
+            "entities_classification_post_v2": falcon.create_classification(body={}),
+            "entities_classification_patch_v2": falcon.update_classifications(body={}),
+            "entities_classification_delete_v2": falcon.delete_classification(ids="test-id"),
             
-            # Entity endpoints with test IDs
-            "get_classification_v2": falcon.get_classification(ids="1234567890"),
-            "get_cloud_application": falcon.get_cloud_application(ids="1234567890"),
-            "get_content_pattern": falcon.get_content_pattern(ids="1234567890"),
-            "get_enterprise_account": falcon.get_enterprise_account(ids="1234567890"),
-            "get_file_type": falcon.get_file_type(ids="1234567890"),
-            "get_sensitivity_label_v2": falcon.get_sensitivity_label(ids="1234567890"),
-            "get_policies_v2": falcon.get_policies(ids="1234567890"),
-            "get_web_location_v2": falcon.get_web_location(ids="1234567890"),
+            # Cloud application methods
+            "entities_cloud_application_get": falcon.get_cloud_application(ids="test-id"),
+            "entities_cloud_application_create": falcon.create_cloud_application(body={}),
+            "entities_cloud_application_patch": falcon.update_cloud_application(id="test-id", body={}),
+            "entities_cloud_application_delete": falcon.delete_cloud_application(ids="test-id"),
             
-            # Create endpoints with minimal payloads
-            "create_classification_v2": falcon.create_classification(body={}),
-            "create_cloud_application": falcon.create_cloud_application(body={}),
-            "create_content_pattern": falcon.create_content_pattern(body={}),
-            "create_enterprise_account": falcon.create_enterprise_account(body={}),
-            "create_sensitivity_label_v2": falcon.create_sensitivity_label(body={}),
-            "create_policy_v2": falcon.create_policy(platform_name="win", body={}),
-            "create_web_location_v2": falcon.create_web_location(body={}),
+            # Content pattern methods
+            "entities_content_pattern_get": falcon.get_content_pattern(ids="test-id"),
+            "entities_content_pattern_create": falcon.create_content_pattern(body={}),
+            "entities_content_pattern_patch": falcon.update_content_pattern(id="test-id", body={}),
+            "entities_content_pattern_delete": falcon.delete_content_pattern(ids="test-id"),
             
-            # PascalCase alias tests
-            "QueryClassificationsV2": falcon.QueryClassificationsV2(limit=1),
-            "GetClassificationV2": falcon.GetClassificationV2(ids="1234567890"),
-            "CreateClassificationV2": falcon.CreateClassificationV2(body={}),
-            "QueryCloudApplicationsV2": falcon.QueryCloudApplicationsV2(limit=1),
-            "GetCloudApplication": falcon.GetCloudApplication(ids="1234567890"),
-            "CreateCloudApplication": falcon.CreateCloudApplication(body={}),
+            # Enterprise account methods
+            "entities_enterprise_account_get": falcon.get_enterprise_account(ids="test-id"),
+            "entities_enterprise_account_create": falcon.create_enterprise_account(body={}),
+            "entities_enterprise_account_patch": falcon.update_enterprise_account(body={}),
+            "entities_enterprise_account_delete": falcon.delete_enterprise_account(ids="test-id"),
+            
+            # File type methods
+            "entities_file_type_get": falcon.get_file_type(ids="test-id"),
+            
+            # Sensitivity label methods
+            "entities_sensitivity_label_get_v2": falcon.get_sensitivity_label(ids="test-id"),
+            "entities_sensitivity_label_create_v2": falcon.create_sensitivity_label(body={}),
+            "entities_sensitivity_label_delete_v2": falcon.delete_sensitivity_label(ids="test-id"),
+            
+            # Policy methods
+            "entities_policy_get_v2": falcon.get_policies(ids="test-id"),
+            "entities_policy_post_v2": falcon.create_policy(platform_name="win", body={}),
+            "entities_policy_patch_v2": falcon.update_policies(platform_name="win", body={}),
+            "entities_policy_delete_v2": falcon.delete_policies(ids="test-id", platform_name="win"),
+            
+            # Web location methods
+            "entities_web_location_get_v2": falcon.get_web_location(ids="test-id"),
+            "entities_web_location_create_v2": falcon.create_web_location(body={}),
+            "entities_web_location_patch_v2": falcon.update_web_location(id="test-id", body={}),
+            "entities_web_location_delete_v2": falcon.delete_web_location(ids="test-id"),
+            
+            # Query methods
+            "queries_classification_get_v2": falcon.query_classifications(),
+            "queries_cloud_application_get_v2": falcon.query_cloud_applications(),
+            "queries_content_pattern_get_v2": falcon.query_content_patterns(),
+            "queries_enterprise_account_get_v2": falcon.query_enterprise_accounts(),
+            "queries_file_type_get_v2": falcon.query_file_type(),
+            "queries_sensitivity_label_get_v2": falcon.query_sensitivity_label(),
+            "queries_policy_get_v2": falcon.query_policies(platform_name="win"),
+            "queries_web_location_get_v2": falcon.query_web_locations(),
         }
-        
         for key in tests:
             if tests[key]["status_code"] not in AllowedResponses:
                 error_checks = False
-                print(f"Failed test: {key}")
-                print(f"Status code: {tests[key]['status_code']}")
-        
-        assert error_checks is True
+                print(key)
+                print(tests[key])
+        assert error_checks
 
-    def test_missing_keyword_parameters(self):
-        """Test error handling for missing required parameters"""
-        # Test various methods with invalid arguments to ensure proper error handling
-        assert bool(
-            falcon.query_classifications("Invalid argument")["status_code"] == 500
-        ) is True
-        
-        assert bool(
-            falcon.get_classification("Invalid argument")["status_code"] == 500
-        ) is True
-        
-        assert bool(
-            falcon.create_classification("Invalid argument")["status_code"] == 500
-        ) is True
+    def test_classification_with_keywords(self):
+        """Test classification methods using keyword arguments."""
+        error_checks = True
+        tests = {
+            "get_classification_keywords": falcon.get_classification(ids=["test-id-1", "test-id-2"]),
+            "create_classification_keywords": falcon.create_classification(
+                resources=[{
+                    "name": "test-classification",
+                    "classification_properties": {
+                        "protection_mode": "monitor",
+                        "evidence_duplication_enabled": True,
+                        "content_patterns": ["pattern1"],
+                        "file_types": ["doc", "pdf"],
+                        "sensitivity_labels": ["label1"],
+                        "web_sources": ["source1"],
+                        "rules": [{
+                            "description": "test rule",
+                            "detection_severity": "informational",
+                            "response_action": "allow",
+                            "user_scope": "all",
+                            "trigger_detection": True,
+                            "notify_end_user": True,
+                            "enable_printer_egress": True,
+                            "enable_usb_devices": True,
+                            "enable_web_locations": True,
+                            "web_locations_scope": "all"
+                        }]
+                    }
+                }]
+            ),
+            "update_classifications_keywords": falcon.update_classifications(
+                resources=[{
+                    "name": "updated-classification",
+                    "classification_properties": {
+                        "protection_mode": "block",
+                        "evidence_duplication_enabled": False
+                    }
+                }]
+            ),
+            "delete_classification_keywords": falcon.delete_classification(ids=["test-id-1"])
+        }
+        for key in tests:
+            if tests[key]["status_code"] not in AllowedResponses:
+                error_checks = False
+                print(key)
+                print(tests[key])
+        assert error_checks
+
+    def test_cloud_application_with_keywords(self):
+        """Test cloud application methods using keyword arguments."""
+        error_checks = True
+        tests = {
+            "get_cloud_application_keywords": falcon.get_cloud_application(ids=["app-id-1", "app-id-2"]),
+            "create_cloud_application_keywords": falcon.create_cloud_application(
+                name="test-app",
+                description="Test cloud application",
+                urls=[{
+                    "fqdn": "example.com",
+                    "path": "/api"
+                }]
+            ),
+            "update_cloud_application_keywords": falcon.update_cloud_application(
+                id="app-id-1",
+                name="updated-app",
+                description="Updated cloud application"
+            ),
+            "delete_cloud_application_keywords": falcon.delete_cloud_application(ids=["app-id-1"])
+        }
+        for key in tests:
+            if tests[key]["status_code"] not in AllowedResponses:
+                error_checks = False
+                print(key)
+                print(tests[key])
+        assert error_checks
+
+    def test_content_pattern_with_keywords(self):
+        """Test content pattern methods using keyword arguments."""
+        error_checks = True
+        tests = {
+            "get_content_pattern_keywords": falcon.get_content_pattern(ids=["pattern-id-1", "pattern-id-2"]),
+            "create_content_pattern_keywords": falcon.create_content_pattern(
+                name="test-pattern",
+                description="Test content pattern",
+                category="pii",
+                region="us",
+                min_match_threshold=1,
+                example="123-45-6789",
+                regexes=[r"\d{3}-\d{2}-\d{4}"]
+            ),
+            "update_content_pattern_keywords": falcon.update_content_pattern(
+                id="pattern-id-1",
+                name="updated-pattern",
+                description="Updated content pattern"
+            ),
+            "delete_content_pattern_keywords": falcon.delete_content_pattern(ids=["pattern-id-1"])
+        }
+        for key in tests:
+            if tests[key]["status_code"] not in AllowedResponses:
+                error_checks = False
+                print(key)
+                print(tests[key])
+        assert error_checks
+
+    def test_enterprise_account_with_keywords(self):
+        """Test enterprise account methods using keyword arguments."""
+        error_checks = True
+        tests = {
+            "get_enterprise_account_keywords": falcon.get_enterprise_account(ids=["account-id-1", "account-id-2"]),
+            "create_enterprise_account_keywords": falcon.create_enterprise_account(body={}),
+            "update_enterprise_account_keywords": falcon.update_enterprise_account(id="account-id-1", body={}),
+            "delete_enterprise_account_keywords": falcon.delete_enterprise_account(ids=["account-id-1"])
+        }
+        for key in tests:
+            if tests[key]["status_code"] not in AllowedResponses:
+                error_checks = False
+                print(key)
+                print(tests[key])
+        assert error_checks
+
+    def test_sensitivity_label_with_keywords(self):
+        """Test sensitivity label methods using keyword arguments."""
+        error_checks = True
+        tests = {
+            "get_sensitivity_label_keywords": falcon.get_sensitivity_label(ids=["label-id-1", "label-id-2"]),
+            "create_sensitivity_label_keywords": falcon.create_sensitivity_label(
+                name="test-label",
+                display_name="Test Label",
+                external_id="external-123",
+                label_provider="microsoft",
+                plugins_configuration_id="config-123",
+                co_authoring=True,
+                synced=True
+            ),
+            "delete_sensitivity_label_keywords": falcon.delete_sensitivity_label(ids=["label-id-1"])
+        }
+        for key in tests:
+            if tests[key]["status_code"] not in AllowedResponses:
+                error_checks = False
+                print(key)
+                print(tests[key])
+        assert error_checks
+
+    def test_policy_with_keywords(self):
+        """Test policy methods using keyword arguments."""
+        error_checks = True
+        tests = {
+            "get_policies_keywords": falcon.get_policies(ids=["policy-id-1", "policy-id-2"]),
+            "create_policy_keywords": falcon.create_policy(
+                platform_name="win",
+                resources=[{
+                    "name": "test-policy",
+                    "description": "Test data protection policy",
+                    "precedence": 1,
+                    "policy_properties": {
+                        "allow_notifications": "default",
+                        "block_notifications": "default",
+                        "enable_content_inspection": True,
+                        "enable_context_inspection": True,
+                        "enable_network_inspection": True,
+                        "enable_clipboard_inspection": True,
+                        "min_confidence_level": "low",
+                        "inspection_depth": "balanced",
+                        "similarity_detection": True,
+                        "similarity_threshold": "10",
+                        "evidence_duplication_enabled_default": True,
+                        "evidence_download_enabled": True,
+                        "evidence_encrypted_enabled": True,
+                        "classifications": ["classification-1"]
+                    }
+                }]
+            ),
+            "update_policies_keywords": falcon.update_policies(
+                platform_name="win",
+                resources=[{
+                    "name": "updated-policy",
+                    "description": "Updated data protection policy",
+                    "precedence": 2
+                }]
+            ),
+            "delete_policies_keywords": falcon.delete_policies(ids=["policy-id-1"], platform_name="win")
+        }
+        for key in tests:
+            if tests[key]["status_code"] not in AllowedResponses:
+                error_checks = False
+                print(key)
+                print(tests[key])
+        assert error_checks
+
+    def test_web_location_with_keywords(self):
+        """Test web location methods using keyword arguments."""
+        error_checks = True
+        tests = {
+            "get_web_location_keywords": falcon.get_web_location(ids=["location-id-1", "location-id-2"]),
+            "create_web_location_keywords": falcon.create_web_location(
+                web_locations=[{
+                    "name": "test-location",
+                    "type": "custom",
+                    "location_type": "url",
+                    "application_id": "app-123",
+                    "enterprise_account_id": "account-123"
+                }]
+            ),
+            "update_web_location_keywords": falcon.update_web_location(
+                id="location-id-1",
+                web_locations=[{
+                    "name": "updated-location",
+                    "type": "custom"
+                }]
+            ),
+            "delete_web_location_keywords": falcon.delete_web_location(ids=["location-id-1"])
+        }
+        for key in tests:
+            if tests[key]["status_code"] not in AllowedResponses:
+                error_checks = False
+                print(key)
+                print(tests[key])
+        assert error_checks
+
+    def test_query_methods_with_filters(self):
+        """Test query methods with various filter parameters."""
+        error_checks = True
+        tests = {
+            "query_classifications_with_filter": falcon.query_classifications(
+                filter="name:'test'",
+                limit=10,
+                offset=0,
+                sort="name"
+            ),
+            "query_cloud_applications_with_filter": falcon.query_cloud_applications(
+                filter="name:'test'",
+                sort="name",
+                limit=50,
+                offset=0
+            ),
+            "query_content_patterns_with_filter": falcon.query_content_patterns(
+                filter="category:'pii'",
+                sort="name",
+                limit=25,
+                offset=0
+            ),
+            "query_enterprise_accounts_with_filter": falcon.query_enterprise_accounts(
+                filter="name:'test'",
+                sort="name",
+                limit=100,
+                offset=0
+            ),
+            "query_file_type_with_filter": falcon.query_file_type(
+                filter="name:'pdf'",
+                sort="name",
+                limit=20,
+                offset=0
+            ),
+            "query_sensitivity_label_with_filter": falcon.query_sensitivity_label(
+                filter="name:'confidential'",
+                sort="name",
+                limit=30,
+                offset=0
+            ),
+            "query_policies_with_filter": falcon.query_policies(
+                platform_name="win",
+                filter="name:'test'",
+                sort="name",
+                limit=40,
+                offset=0
+            ),
+            "query_web_locations_with_filter": falcon.query_web_locations(
+                filter="name:'test'",
+                type="custom",
+                limit=60,
+                offset=0
+            )
+        }
+        for key in tests:
+            if tests[key]["status_code"] not in AllowedResponses:
+                error_checks = False
+                print(key)
+                print(tests[key])
+        assert error_checks
+
+    def test_alias_methods(self):
+        """Test that all alias methods work correctly."""
+        error_checks = True
+        tests = {
+            # Classification aliases
+            "entities_classification_get_v2_alias": falcon.entities_classification_get_v2(ids="test-id"),
+            "entities_classification_post_v2_alias": falcon.entities_classification_post_v2(body={}),
+            "entities_classification_patch_v2_alias": falcon.entities_classification_patch_v2(body={}),
+            "entities_classification_delete_v2_alias": falcon.entities_classification_delete_v2(ids="test-id"),
+            
+            # Cloud application aliases
+            "entities_cloud_application_get_alias": falcon.entities_cloud_application_get(ids="test-id"),
+            "entities_cloud_application_create_alias": falcon.entities_cloud_application_create(body={}),
+            "entities_cloud_application_patch_alias": falcon.entities_cloud_application_patch(id="test-id", body={}),
+            "entities_cloud_application_delete_alias": falcon.entities_cloud_application_delete(ids="test-id"),
+            
+            # Content pattern aliases
+            "entities_content_pattern_get_alias": falcon.entities_content_pattern_get(ids="test-id"),
+            "entities_content_pattern_create_alias": falcon.entities_content_pattern_create(body={}),
+            "entities_content_pattern_patch_alias": falcon.entities_content_pattern_patch(id="test-id", body={}),
+            "entities_content_pattern_delete_alias": falcon.entities_content_pattern_delete(ids="test-id"),
+            
+            # Enterprise account aliases
+            "entities_enterprise_account_get_alias": falcon.entities_enterprise_account_get(ids="test-id"),
+            "entities_enterprise_account_create_alias": falcon.entities_enterprise_account_create(body={}),
+            "entities_enterprise_account_patch_alias": falcon.entities_enterprise_account_patch(body={}),
+            "entities_enterprise_account_delete_alias": falcon.entities_enterprise_account_delete(ids="test-id"),
+            
+            # File type alias
+            "entities_file_type_get_alias": falcon.entities_file_type_get(ids="test-id"),
+            
+            # Sensitivity label aliases
+            "entities_sensitivity_label_get_v2_alias": falcon.entities_sensitivity_label_get_v2(ids="test-id"),
+            "entities_sensitivity_label_create_v2_alias": falcon.entities_sensitivity_label_create_v2(body={}),
+            "entities_sensitivity_label_delete_v2_alias": falcon.entities_sensitivity_label_delete_v2(ids="test-id"),
+            
+            # Policy aliases
+            "entities_policy_get_v2_alias": falcon.entities_policy_get_v2(ids="test-id"),
+            "entities_policy_post_v2_alias": falcon.entities_policy_post_v2(platform_name="win", body={}),
+            "entities_policy_patch_v2_alias": falcon.entities_policy_patch_v2(platform_name="win", body={}),
+            "entities_policy_delete_v2_alias": falcon.entities_policy_delete_v2(ids="test-id", platform_name="win"),
+            
+            # Web location aliases
+            "entities_web_location_get_v2_alias": falcon.entities_web_location_get_v2(ids="test-id"),
+            "entities_web_location_create_v2_alias": falcon.entities_web_location_create_v2(body={}),
+            "entities_web_location_patch_v2_alias": falcon.entities_web_location_patch_v2(id="test-id", body={}),
+            "entities_web_location_delete_v2_alias": falcon.entities_web_location_delete_v2(ids="test-id"),
+            
+            # Query aliases
+            "queries_classification_get_v2_alias": falcon.queries_classification_get_v2(),
+            "queries_cloud_application_get_v2_alias": falcon.queries_cloud_application_get_v2(),
+            "queries_content_pattern_get_v2_alias": falcon.queries_content_pattern_get_v2(),
+            "queries_enterprise_account_get_v2_alias": falcon.queries_enterprise_account_get_v2(),
+            "queries_file_type_get_v2_alias": falcon.queries_file_type_get_v2(),
+            "queries_sensitivity_label_get_v2_alias": falcon.queries_sensitivity_label_get_v2(),
+            "queries_policy_get_v2_alias": falcon.queries_policy_get_v2(platform_name="win"),
+            "queries_web_location_get_v2_alias": falcon.queries_web_location_get_v2()
+        }
+        for key in tests:
+            if tests[key]["status_code"] not in AllowedResponses:
+                error_checks = False
+                print(key)
+                print(tests[key])
+        assert error_checks

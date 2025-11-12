@@ -38,7 +38,7 @@ For more information, please refer to <https://unlicense.org>
 
 _cloud_security_detections_endpoints = [
   [
-    "CSPMEvaluationsIOMEntities",
+    "cspm_evaluations_iom_entities",
     "GET",
     "/cloud-security-evaluations/entities/ioms/v1",
     "Gets IOMs based on the provided IDs",
@@ -58,7 +58,7 @@ _cloud_security_detections_endpoints = [
     ]
   ],
   [
-    "CSPMEvaluationsIOMQueries",
+    "cspm_evaluations_iom_queries",
     "GET",
     "/cloud-security-evaluations/queries/ioms/v1",
     "Gets a list of IOM IDs for the given parameters, filters and sort criteria.",

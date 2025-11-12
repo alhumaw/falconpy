@@ -81,7 +81,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="GetClassificationV2",
+            operation_id="entities_classification_get_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -157,7 +157,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CreateClassificationV2",
+            operation_id="entities_classification_post_v2",
             keywords=kwargs,
             body=body
             )
@@ -233,7 +233,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="UpdateClassificationsV2",
+            operation_id="entities_classification_patch_v2",
             keywords=kwargs,
             body=body
             )
@@ -258,7 +258,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="DeleteClassificationV2",
+            operation_id="entities_classification_delete_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -283,7 +283,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="GetCloudApplication",
+            operation_id="entities_cloud_application_get",
             keywords=kwargs,
             params=parameters
             )
@@ -320,7 +320,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CreateCloudApplication",
+            operation_id="entities_cloud_application_create",
             keywords=kwargs,
             body=body
             )
@@ -349,7 +349,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="UpdateCloudApplication",
+            operation_id="entities_cloud_application_patch",
             keywords=kwargs,
             params=parameters,
             body=body
@@ -375,7 +375,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="DeleteCloudApplication",
+            operation_id="entities_cloud_application_delete",
             keywords=kwargs,
             params=parameters
             )
@@ -400,7 +400,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="GetContentPattern",
+            operation_id="entities_content_pattern_get",
             keywords=kwargs,
             params=parameters
             )
@@ -438,7 +438,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CreateContentPattern",
+            operation_id="entities_content_pattern_create",
             keywords=kwargs,
             body=body
             )
@@ -472,7 +472,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="UpdateContentPattern",
+            operation_id="entities_content_pattern_patch",
             keywords=kwargs,
             params=parameters,
             body=body
@@ -498,7 +498,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="DeleteContentPattern",
+            operation_id="entities_content_pattern_delete",
             keywords=kwargs,
             params=parameters
             )
@@ -523,7 +523,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="GetEnterpriseAccount",
+            operation_id="entities_enterprise_account_get",
             keywords=kwargs,
             params=parameters
             )
@@ -550,19 +550,20 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CreateEnterpriseAccount",
+            operation_id="entities_enterprise_account_create",
             keywords=kwargs,
             body=body
             )
 
-    @force_default(defaults=["body"], default_types=["dict"])
-    def update_enterprise_account(self: object, body: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    @force_default(defaults=["body", "parameters"], default_types=["dict", "dict"])
+    def update_enterprise_account(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
         """Update a enterprise account.
 
         Keyword arguments:
         id -- The id of the enterprise account to update.
         body -- Definition of enterprise-account to create
-
+        parameters -- Full parameters payload dictionary. Not required if using other keywords.
+        
         This method only supports keywords for providing arguments.
 
         Returns: dict object containing API response.
@@ -578,8 +579,9 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="UpdateEnterpriseAccount",
+            operation_id="entities_enterprise_account_patch",
             keywords=kwargs,
+            params=parameters,
             body=body
             )
 
@@ -603,7 +605,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="DeleteEnterpriseAccount",
+            operation_id="entities_enterprise_account_delete",
             keywords=kwargs,
             params=parameters
             )
@@ -628,7 +630,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="GetFileType",
+            operation_id="entities_file_type_get",
             keywords=kwargs,
             params=parameters
             )
@@ -653,7 +655,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="GetSensitivityLabelV2",
+            operation_id="entities_sensitivity_label_get_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -688,7 +690,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CreateSensitivityLabelV2",
+            operation_id="entities_sensitivity_label_create_v2",
             keywords=kwargs,
             body=body
             )
@@ -713,7 +715,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="DeleteSensitivityLabelV2",
+            operation_id="entities_sensitivity_label_delete_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -738,7 +740,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="GetPoliciesV2",
+            operation_id="entities_policy_get_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -845,7 +847,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CreatePolicyV2",
+            operation_id="entities_policy_post_v2",
             keywords=kwargs,
             params=parameters,
             body=body
@@ -949,7 +951,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="UpdatePoliciesV2",
+            operation_id="entities_policy_patch_v2",
             keywords=kwargs,
             params=parameters,
             body=body
@@ -976,7 +978,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="DeletePoliciesV2",
+            operation_id="entities_policy_delete_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -1001,7 +1003,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="GetWebLocationV2",
+            operation_id="entities_web_location_get_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -1045,7 +1047,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CreateWebLocationV2",
+            operation_id="entities_web_location_create_v2",
             keywords=kwargs,
             body=body
             )
@@ -1092,7 +1094,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="UpdateWebLocationV2",
+            operation_id="entities_web_location_patch_v2",
             keywords=kwargs,
             params=parameters,
             body=body
@@ -1117,7 +1119,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="DeleteWebLocationV2",
+            operation_id="entities_web_location_delete_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -1154,7 +1156,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="QueryClassificationsV2",
+            operation_id="queries_classification_get_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -1188,7 +1190,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="QueryCloudApplicationsV2",
+            operation_id="queries_cloud_application_get_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -1224,7 +1226,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="QueryContentPatternsV2",
+            operation_id="queries_content_pattern_get_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -1258,7 +1260,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="QueryEnterpriseAccountsV2",
+            operation_id="queries_enterprise_account_get_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -1290,7 +1292,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="QueryFileTypeV2",
+            operation_id="queries_file_type_get_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -1323,7 +1325,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="QuerySensitivityLabelV2",
+            operation_id="queries_sensitivity_label_get_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -1377,7 +1379,7 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="QueryPoliciesV2",
+            operation_id="queries_policy_get_v2",
             keywords=kwargs,
             params=parameters
             )
@@ -1409,44 +1411,44 @@ class DataProtectionConfiguration(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="QueryWebLocationsV2",
+            operation_id="queries_web_location_get_v2",
             keywords=kwargs,
             params=parameters
             )
 
-    GetClassificationV2 = get_classification
-    CreateClassificationV2 = create_classification
-    UpdateClassificationsV2 = update_classifications
-    DeleteClassificationV2 = delete_classification
-    GetCloudApplication = get_cloud_application
-    CreateCloudApplication = create_cloud_application
-    UpdateCloudApplication = update_cloud_application
-    DeleteCloudApplication = delete_cloud_application
-    GetContentPattern = get_content_pattern
-    CreateContentPattern = create_content_pattern
-    UpdateContentPattern = update_content_pattern
-    DeleteContentPattern = delete_content_pattern
-    GetEnterpriseAccount = get_enterprise_account
-    CreateEnterpriseAccount = create_enterprise_account
-    UpdateEnterpriseAccount = update_enterprise_account
-    DeleteEnterpriseAccount = delete_enterprise_account
-    GetFileType = get_file_type
-    GetSensitivityLabelV2 = get_sensitivity_label
-    CreateSensitivityLabelV2 = create_sensitivity_label
-    DeleteSensitivityLabelV2 = delete_sensitivity_label
-    GetPoliciesV2 = get_policies
-    CreatePolicyV2 = create_policy
-    UpdatePoliciesV2 = update_policies
-    DeletePoliciesV2 = delete_policies
-    GetWebLocationV2 = get_web_location
-    CreateWebLocationV2 = create_web_location
-    UpdateWebLocationV2 = update_web_location
-    DeleteWebLocationV2 = delete_web_location
-    QueryClassificationsV2 = query_classifications
-    QueryCloudApplicationsV2 = query_cloud_applications
-    QueryContentPatternsV2 = query_content_patterns
-    QueryEnterpriseAccountsV2 = query_enterprise_accounts
-    QueryFileTypeV2 = query_file_type
-    QuerySensitivityLabelV2 = query_sensitivity_label
-    QueryPoliciesV2 = query_policies
-    QueryWebLocationsV2 = query_web_locations
+    entities_classification_get_v2 = get_classification
+    entities_classification_post_v2 = create_classification
+    entities_classification_patch_v2 = update_classifications
+    entities_classification_delete_v2 = delete_classification
+    entities_cloud_application_get = get_cloud_application
+    entities_cloud_application_create = create_cloud_application
+    entities_cloud_application_patch = update_cloud_application
+    entities_cloud_application_delete = delete_cloud_application
+    entities_content_pattern_get = get_content_pattern
+    entities_content_pattern_create = create_content_pattern
+    entities_content_pattern_patch = update_content_pattern
+    entities_content_pattern_delete = delete_content_pattern
+    entities_enterprise_account_get = get_enterprise_account
+    entities_enterprise_account_create = create_enterprise_account
+    entities_enterprise_account_patch = update_enterprise_account
+    entities_enterprise_account_delete = delete_enterprise_account
+    entities_file_type_get = get_file_type
+    entities_sensitivity_label_get_v2 = get_sensitivity_label
+    entities_sensitivity_label_create_v2 = create_sensitivity_label
+    entities_sensitivity_label_delete_v2 = delete_sensitivity_label
+    entities_policy_get_v2 = get_policies
+    entities_policy_post_v2 = create_policy
+    entities_policy_patch_v2 = update_policies
+    entities_policy_delete_v2 = delete_policies
+    entities_web_location_get_v2 = get_web_location
+    entities_web_location_create_v2 = create_web_location
+    entities_web_location_patch_v2 = update_web_location
+    entities_web_location_delete_v2 = delete_web_location
+    queries_classification_get_v2 = query_classifications
+    queries_cloud_application_get_v2 = query_cloud_applications
+    queries_content_pattern_get_v2 = query_content_patterns
+    queries_enterprise_account_get_v2 = query_enterprise_accounts
+    queries_file_type_get_v2 = query_file_type
+    queries_sensitivity_label_get_v2 = query_sensitivity_label
+    queries_policy_get_v2 = query_policies
+    queries_web_location_get_v2 = query_web_locations

@@ -23,8 +23,8 @@ class TestCloudSecurityAssets:
     def test_all_code_paths(self):
         error_checks = True
         tests = {
-            "cloud_compliance_framework_posture_summaries": falcon.cloud_compliance_framework_posture_summaries(ids = "1234567"),
-            "cloud_compliance_rule_posture_summaries": falcon.cloud_compliance_rule_posture_summaries(ids = "1234567")
+            "cloud_compliance_framework_posture_summaries": falcon.framework_posture_summaries(ids = "1234567"),
+            "cloud_compliance_rule_posture_summaries": falcon.rule_posture_summaries(ids = "1234567")
         }
         for key in tests:
             if tests[key]["status_code"] not in AllowedResponses:

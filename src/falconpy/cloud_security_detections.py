@@ -55,7 +55,7 @@ class CloudSecurityDetections(ServiceClass):
     - a valid token provided by the authentication service class (oauth2.py)
     """
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def cspm_evaluations_iom_entities(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def get_iom_entities(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
         """Gets IOMs based on the provided IDs
 
         Keyword arguments:
@@ -74,13 +74,13 @@ class CloudSecurityDetections(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CSPMEvaluationsIOMEntities",
+            operation_id="cspm_evaluations_iom_entities",
             keywords=kwargs,
             params=parameters
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def cspm_evaluations_iom_queries(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def query_iom_entities(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
         """Gets a list of IOM IDs for the given parameters, filters and sort criteria.
 
         Keyword arguments:
@@ -139,10 +139,10 @@ class CloudSecurityDetections(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CSPMEvaluationsIOMQueries",
+            operation_id="cspm_evaluations_iom_queries",
             keywords=kwargs,
             params=parameters
             )
 
-    CSPMEvaluationsIOMEntities = cspm_evaluations_iom_entities
-    CSPMEvaluationsIOMQueries = cspm_evaluations_iom_queries
+    cspm_evaluations_iom_entities = get_iom_entities
+    cspm_evaluations_iom_queries = query_iom_entities

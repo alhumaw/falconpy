@@ -92,7 +92,7 @@ class CloudSecurity(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CombinedCloudRisks",
+            operation_id="combined_cloud_risks",
             keywords=kwargs,
             params=parameters
             )
@@ -133,7 +133,7 @@ class CloudSecurity(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="ListCloudGroups",
+            operation_id="ListCloudGroupsExternal",
             keywords=kwargs,
             params=parameters
             )
@@ -158,7 +158,7 @@ class CloudSecurity(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="ListCloudGroupsByID",
+            operation_id="ListCloudGroupsByIDExternal",
             keywords=kwargs,
             params=parameters
             )
@@ -231,7 +231,7 @@ class CloudSecurity(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CreateCloudGroup",
+            operation_id="CreateCloudGroupExternal",
             keywords=kwargs,
             params=parameters,
             body=body
@@ -303,7 +303,7 @@ class CloudSecurity(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="UpdateCloudGroup",
+            operation_id="UpdateCloudGroupExternal",
             keywords=kwargs,
             body=group
             )
@@ -328,7 +328,7 @@ class CloudSecurity(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="DeleteCloudGroups",
+            operation_id="DeleteCloudGroupsExternal",
             keywords=kwargs,
             params=parameters
             )
@@ -369,15 +369,15 @@ class CloudSecurity(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="ListCloudGroupIDs",
+            operation_id="ListCloudGroupIDsExternal",
             keywords=kwargs,
             params=parameters
             )
 
-    CombinedCloudRisks = combined_cloud_risks
-    ListCloudGroups = list_cloud_groups
-    ListCloudGroupsByID = list_cloud_groups_by_id
-    CreateCloudGroup = create_cloud_group
-    UpdateCloudGroup = update_cloud_group
-    DeleteCloudGroups = delete_cloud_groups
-    ListGroupIDs = list_group_ids
+    combined_cloud_risks = combined_cloud_risks
+    ListCloudGroupsExternal = list_cloud_groups
+    ListCloudGroupsByIDExternal = list_cloud_groups_by_id
+    CreateCloudGroupExternal = create_cloud_group
+    UpdateCloudGroupExternal = update_cloud_group
+    DeleteCloudGroupsExternal = delete_cloud_groups
+    ListCloudGroupIDsExternal = list_group_ids

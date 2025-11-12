@@ -1,5 +1,5 @@
 # test_cloud_security_rules_admin.py
-# This class tests the CloudSecurityRulesAdmin service class
+# This class tests the CorrelationRulesAdmin service class
 
 # import json
 import os
@@ -23,7 +23,7 @@ class TestCloudSecurityAssets:
     def test_all_code_paths(self):
         error_checks = True
         tests = {
-            "cspm_evaluations_iom_entities": falcon.change_correlation_rule_owner(body={}),
+            "entities_rules_ownership_put_v1": falcon.change_correlation_rule_owner(body={}),
         }
         for key in tests:
             if tests[key]["status_code"] not in AllowedResponses:

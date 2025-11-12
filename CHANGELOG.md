@@ -1,42 +1,42 @@
 # Version 1.5.5
 ## Added features and functionality
 + Added: Added the new __Data Protection Configuration__ service collection with 36 operations.
-    - _GetClassificationV2_
-    - _CreateClassificationV2_
-    - _UpdateClassificationsV2_
-    - _DeleteClassificationV2_
-    - _GetCloudApplication_
-    - _CreateCloudApplication_
-    - _UpdateCloudApplication_
-    - _DeleteCloudApplication_
-    - _GetContentPattern_
-    - _CreateContentPattern_
-    - _UpdateContentPattern_
-    - _DeleteContentPattern_
-    - _GetEnterpriseAccount_
-    - _CreateEnterpriseAccount_
-    - _UpdateEnterpriseAccount_
-    - _DeleteEnterpriseAccount_
-    - _GetFileType_
-    - _GetSensitivityLabelV2_
-    - _CreateSensitivityLabelV2_
-    - _DeleteSensitivityLabelV2_
-    - _GetPoliciesV2_
-    - _CreatePolicyV2_
-    - _UpdatePoliciesV2_
-    - _DeletePoliciesV2_
-    - _GetWebLocationV2_
-    - _CreateWebLocationV2_
-    - _UpdateWebLocationV2_
-    - _DeleteWebLocationV2_
-    - _QueryClassificationsV2_
-    - _QueryCloudApplicationsV2_
-    - _QueryContentPatternsV2_
-    - _QueryEnterpriseAccountsV2_
-    - _QueryFileTypeV2_
-    - _QuerySensitivityLabelV2_
-    - _QueryPoliciesV2_
-    - _QueryWebLocationsV2_
+    - _entities_classification_get_v2_
+    - _entities_classification_post_v2_
+    - _entities_classification_patch_v2_
+    - _entities_classification_delete_v2_
+    - _entities_cloud_application_get_
+    - _entities_cloud_application_create_
+    - _entities_cloud_application_patch_
+    - _entities_cloud_application_delete_
+    - _entities_content_pattern_get_
+    - _entities_content_pattern_create_
+    - _entities_content_pattern_patch_
+    - _entities_content_pattern_delete_
+    - _entities_enterprise_account_get_
+    - _entities_enterprise_account_create_
+    - _entities_enterprise_account_patch_
+    - _entities_enterprise_account_delete_
+    - _entities_file_type_get_
+    - _entities_sensitivity_label_get_v2_
+    - _entities_sensitivity_label_create_v2_
+    - _entities_sensitivity_label_delete_v2_
+    - _entities_policy_get_v2_
+    - _entities_policy_post_v2_
+    - _entities_policy_patch_v2_
+    - _entities_policy_delete_v2_
+    - _entities_web_location_get_v2_
+    - _entities_web_location_create_v2_
+    - _entities_web_location_patch_v2_
+    - _entities_web_location_delete_v2_
+    - _queries_classification_get_v2_
+    - _queries_cloud_application_get_v2_
+    - _queries_content_pattern_get_v2_
+    - _queries_enterprise_account_get_v2_
+    - _queries_file_type_get_v2_
+    - _queries_sensitivity_label_get_v2_
+    - _queries_policy_get_v2_
+    - _queries_web_location_get_v2_
     - `__init__.py`
     - `data_protection_configuration.py`
     - `_endpoint/__init__.py`
@@ -50,7 +50,7 @@
 
 
 + Added: Added the new __Correlation Rules Admin__ service collection with 1 operation.
-    - _ChangeCorrelationRuleOwner_
+    - _entities\_rules\_ownership\_put\_v1_
     - `__init__.py`
     - `correlation_rules_admin.py`
     - `_endpoint/__init__.py`
@@ -63,8 +63,8 @@
     - `tests/test_correlation_rules_admin.py`
 
 + Added: Added the new __Cloud Security Detections__ service collection with 2 operations.
-    - _CSPMEvaluationsIOMEntities_
-    - _CSPMEvaluationsIOMQueries_
+    - _cspm\_evaluations\_iom\_entities_
+    - _cspm\_evaluations\_iom\_queries_
     - `__init__.py`
     - `cloud_security_detections.py`
     - `_endpoint/__init__.py`
@@ -77,8 +77,8 @@
 
 
 + Added: Added the new __Cloud Security Compliance__ service collection with 2 operations.
-    - _CloudComplianceFrameworkPostureSummaries_
-    - _CloudComplianceRulePostureSummaries_
+    - _cloud\_compliance\_framework\_posture\_summaries_
+    - _cloud\_compliance\_rule\_posture\_summaries_
     - `__init__.py`
     - `cloud_security_compliance.py`
     - `_endpoint/__init__.py`
@@ -89,13 +89,13 @@
     - `tests/test_cloud_security_compliance.py`
 
 + Added: Added the new __Cloud Security__ service collection with 7 operations.
-    - _CombinedCloudRisks_
-    - _ListCloudGroups_
-    - _ListCloudGroupsByID_
-    - _CreateCloudGroup_
-    - _UpdateCloudGroup_
-    - _DeleteCloudGroups_
-    - _ListCloudGroupIDs_
+    - _combined_cloud_risks_
+    - _ListCloudGroupsExternal_
+    - _ListCloudGroupsByIDExternal_
+    - _CreateCloudGroupExternal_
+    - _UpdateCloudGroupExternal_
+    - _DeleteCloudGroupsExternal_
+    - _ListCloudGroupIDsExternal_
     - `__init__.py`
     - `cloud_security.py`
     - `_endpoint/__init__.py`
@@ -124,7 +124,7 @@
     - _UpdateRuleOverride_
     - _DeleteRuleOverride_
     - _GetRule_
-    - _CreateRuleMixin0_
+    - _CreateRule_
     - _UpdateRule_
     - _DeleteRuleMixin0_
     - _QueryComplianceControls_
