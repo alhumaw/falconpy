@@ -1,5 +1,54 @@
 # Version 1.5.5
 ## Added features and functionality
++ Added: Added the new __Data Protection Configuration__ service collection with 36 operations.
+    - _GetClassificationV2_
+    - _CreateClassificationV2_
+    - _UpdateClassificationsV2_
+    - _DeleteClassificationV2_
+    - _GetCloudApplication_
+    - _CreateCloudApplication_
+    - _UpdateCloudApplication_
+    - _DeleteCloudApplication_
+    - _GetContentPattern_
+    - _CreateContentPattern_
+    - _UpdateContentPattern_
+    - _DeleteContentPattern_
+    - _GetEnterpriseAccount_
+    - _CreateEnterpriseAccount_
+    - _UpdateEnterpriseAccount_
+    - _DeleteEnterpriseAccount_
+    - _GetFileType_
+    - _GetSensitivityLabelV2_
+    - _CreateSensitivityLabelV2_
+    - _DeleteSensitivityLabelV2_
+    - _GetPoliciesV2_
+    - _CreatePolicyV2_
+    - _UpdatePoliciesV2_
+    - _DeletePoliciesV2_
+    - _GetWebLocationV2_
+    - _CreateWebLocationV2_
+    - _UpdateWebLocationV2_
+    - _DeleteWebLocationV2_
+    - _QueryClassificationsV2_
+    - _QueryCloudApplicationsV2_
+    - _QueryContentPatternsV2_
+    - _QueryEnterpriseAccountsV2_
+    - _QueryFileTypeV2_
+    - _QuerySensitivityLabelV2_
+    - _QueryPoliciesV2_
+    - _QueryWebLocationsV2_
+    - `__init__.py`
+    - `data_protection_configuration.py`
+    - `_endpoint/__init__.py`
+    - `_endpoint/_data_protection_configuration.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/_data_protection_configuration.py`
+    - `_payload/__init__.py`
+    - `_payload/_data_protection_configuration.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_data_protection_configuration.py`
+
+
 + Added: Added the new __Correlation Rules Admin__ service collection with 1 operation.
     - _ChangeCorrelationRuleOwner_
     - `__init__.py`

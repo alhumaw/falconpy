@@ -1,4 +1,4 @@
-"""Internal payload handling library - Cloud Policies.
+"""Internal payload handling library - Cloud Security.
 
  _______                        __ _______ __        __ __
 |   _   .----.-----.--.--.--.--|  |   _   |  |_.----|__|  |--.-----.
