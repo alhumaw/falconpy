@@ -1,5 +1,34 @@
 # Version 1.5.5
 ## Added features and functionality
++ Added: Added the new __SaaS Security__ service collection with 24 operations.
+    - _GetMetricsV3_
+    - _GetAlertsV3_
+    - _GetAppInventoryUsers_
+    - _GetAppInventory_
+    - _GetSecurityCheckAffectedV3_
+    - _DismissAffectedEntityV3_
+    - _DismissSecurityCheckV3_
+    - _GetSecurityChecksV3_
+    - _GetSecurityCheckComplianceV3_
+    - _IntegrationBuilderEndTransactionV3_
+    - _IntegrationBuilderResetV3_
+    - _IntegrationBuilderGetStatusV3_
+    - _IntegrationBuilderUploadV3_
+    - _GetAssetInventoryV3_
+    - _GetDeviceInventoryV3_
+    - _GetIntegrationsV3_
+    - _GetActivityMonitorV3_
+    - _GetSupportedSaasV3_
+    - _GetSystemLogsV3_
+    - _GetSystemUsersV3_
+    - _GetUserInventoryV3_
+    - `__init__.py`
+    - `saas_security.py`
+    - `_endpoint/__init__.py`
+    - `_endpoint/_saas_security.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_saas_security.py`
+
 + Added: Added the new __Spotlight Vulnerability Metadata__ service collection with 1 operation.
     - _combineVulnMetadataExt_
     - `__init__.py`
@@ -82,8 +111,6 @@
     - `_endpoint/deprecated/_cloud_security_detections.py`
     > Unit testing expanded to complete code coverage.
     - `tests/test_cloud_security_detections.py`
-
-
 
 + Added: Added the new __Cloud Security Compliance__ service collection with 2 operations.
     - _cloud\_compliance\_framework\_posture\_summaries_
