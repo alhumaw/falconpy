@@ -1,5 +1,14 @@
 # Version 1.5.5
 ## Added features and functionality
++ Added: Added the new __Spotlight Vulnerability Metadata__ service collection with 1 operation.
+    - _combineVulnMetadataExt_
+    - `__init__.py`
+    - `spotlight_vulnerability_metadata.py`
+    - `_endpoint/__init__.py`
+    - `_endpoint/_spotlight_vulnerability_metadata.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_spotlight_vulnerability_metadata.py`
+
 + Added: Added the new __Data Protection Configuration__ service collection with 36 operations.
     - _entities_classification_get_v2_
     - _entities_classification_post_v2_

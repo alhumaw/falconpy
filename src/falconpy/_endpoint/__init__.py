@@ -137,6 +137,7 @@ from ._recon import _recon_endpoints
 from ._report_executions import _report_executions_endpoints
 from ._response_policies import _response_policies_endpoints
 from ._sample_uploads import _sample_uploads_endpoints
+from ._saas_security import _saas_security_endpoints
 from ._scheduled_reports import _scheduled_reports_endpoints
 from ._sensor_download import _sensor_download_endpoints
 from ._sensor_update_policies import _sensor_update_policies_endpoints
@@ -145,6 +146,7 @@ from ._sensor_visibility_exclusions import _sensor_visibility_exclusions_endpoin
 from ._serverless_vulnerabilities import _serverless_vulnerabilities_endpoints
 from ._spotlight_evaluation_logic import _spotlight_evaluation_logic_endpoints
 from ._spotlight_vulnerabilities import _spotlight_vulnerabilities_endpoints
+from ._spotlight_vulnerability_metadata import _spotlight_vulnerability_metadata_endpoints
 from ._tailored_intelligence import _tailored_intelligence_endpoints
 from ._threatgraph import _threatgraph_endpoints
 from ._unidentified_containers import _unidentified_containers_endpoints
@@ -238,6 +240,7 @@ api_endpoints.extend(_recon_endpoints)
 api_endpoints.extend(_report_executions_endpoints)
 api_endpoints.extend(_response_policies_endpoints)
 api_endpoints.extend(_sample_uploads_endpoints)
+api_endpoints.extend(_saas_security_endpoints)
 api_endpoints.extend(_scheduled_reports_endpoints)
 api_endpoints.extend(_sensor_download_endpoints)
 api_endpoints.extend(_sensor_update_policies_endpoints)
@@ -246,6 +249,7 @@ api_endpoints.extend(_sensor_visibility_exclusions_endpoints)
 api_endpoints.extend(_serverless_vulnerabilities_endpoints)
 api_endpoints.extend(_spotlight_evaluation_logic_endpoints)
 api_endpoints.extend(_spotlight_vulnerabilities_endpoints)
+api_endpoints.extend(_spotlight_vulnerability_metadata_endpoints)
 api_endpoints.extend(_tailored_intelligence_endpoints)
 api_endpoints.extend(_threatgraph_endpoints)
 api_endpoints.extend(_unidentified_containers_endpoints)
