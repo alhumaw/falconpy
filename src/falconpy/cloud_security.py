@@ -46,17 +46,17 @@ class CloudSecurity(ServiceClass):
     """The only requirement to instantiate an instance of this class is one of the following.
 
     - a valid client_id and client_secret provided as keywords.
-    - a credential dictionary with client_id and client_secret containing valid API credentials
+    - a credential dictionary with client_id and client_secret containing valid API credentials.
       {
           "client_id": "CLIENT_ID_HERE",
           "client_secret": "CLIENT_SECRET_HERE"
       }
-    - a previously-authenticated instance of the authentication service class (oauth2.py)
-    - a valid token provided by the authentication service class (oauth2.py)
+    - a previously-authenticated instance of the authentication service class (oauth2.py).
+    - a valid token provided by the authentication service class (oauth2.py).
     """
     @force_default(defaults=["parameters"], default_types=["dict"])
     def combined_cloud_risks(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Gets cloud risks with full details based on filters and sort criteria
+        """Gets cloud risks with full details based on filters and sort criteria.
 
         Keyword arguments:
         filter -- FQL string to filter results in Falcon Query Language (FQL).
@@ -76,8 +76,9 @@ class CloudSecurity(ServiceClass):
                 cloud_provider      first_seen              last_seen
                 resolved_at         rule_name               service_category
                 severity            status
-        limit -- The maximum number of items to return. When not specified or 0, 500 is used. When larger than 1000, 1000 is used.
-        offset -- Offset returned risks
+        limit -- The maximum number of items to return. When not specified or 0, 500 is used. 
+        When larger than 1000, 1000 is used.
+        offset -- Offset returned risks.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -99,7 +100,7 @@ class CloudSecurity(ServiceClass):
 
     @force_default(defaults=["parameters"], default_types=["dict"])
     def list_cloud_groups(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Query Cloud Groups and returns entities
+        """Query Cloud Groups and returns entities.
 
         Keyword arguments:
         filter -- A valid FQL filter. Supports filtering groups by:
@@ -140,10 +141,10 @@ class CloudSecurity(ServiceClass):
 
     @force_default(defaults=["parameters"], default_types=["dict"])
     def list_cloud_groups_by_id(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """List Cloud Groups By ID
+        """List Cloud Groups By ID.
 
         Keyword arguments:
-        ids -- None
+        ids -- Cloud Groups UUIDs.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -214,7 +215,6 @@ class CloudSecurity(ServiceClass):
                         ]
                     }
                 }   
-        parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
 
@@ -232,8 +232,6 @@ class CloudSecurity(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="CreateCloudGroupExternal",
-            keywords=kwargs,
-            params=parameters,
             body=body
             )
 
@@ -304,16 +302,15 @@ class CloudSecurity(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="UpdateCloudGroupExternal",
-            keywords=kwargs,
             body=group
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
     def delete_cloud_groups(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Delete Cloud Groups in batch
+        """Delete Cloud Groups in batch.
 
         Keyword arguments:
-        ids -- Cloud Groups UUIDs to delete
+        ids -- Cloud Groups UUIDs to delete.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -335,7 +332,7 @@ class CloudSecurity(ServiceClass):
 
     @force_default(defaults=["parameters"], default_types=["dict"])
     def list_group_ids(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Query Cloud Groups and returns IDs
+        """Query Cloud Groups and returns IDs.
 
         Keyword arguments:
         filter -- A valid FQL filter. Supports filtering groups by:
