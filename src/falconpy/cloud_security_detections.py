@@ -46,17 +46,17 @@ class CloudSecurityDetections(ServiceClass):
     """The only requirement to instantiate an instance of this class is one of the following.
 
     - a valid client_id and client_secret provided as keywords.
-    - a credential dictionary with client_id and client_secret containing valid API credentials
+    - a credential dictionary with client_id and client_secret containing valid API credentials.
       {
           "client_id": "CLIENT_ID_HERE",
           "client_secret": "CLIENT_SECRET_HERE"
       }
-    - a previously-authenticated instance of the authentication service class (oauth2.py)
-    - a valid token provided by the authentication service class (oauth2.py)
+    - a previously-authenticated instance of the authentication service class (oauth2.py).
+    - a valid token provided by the authentication service class (oauth2.py).
     """
     @force_default(defaults=["parameters"], default_types=["dict"])
     def get_iom_entities(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
-        """Gets IOMs based on the provided IDs
+        """Gets IOMs based on the provided IDs.
 
         Keyword arguments:
         ids -- List of IOMs to return (maximum 100 IDs allowed).  Use POST method with same path if more entities are required.
@@ -122,9 +122,11 @@ class CloudSecurityDetections(ServiceClass):
                 tactic_id                 tactic_name               tag_key
                 tag_value                 tags                      technique_id
                 technique_name
-        limit -- The maximum number of items to return. When not specified or 0, 500 is used. When larger than 1000, 1000 is used.
+        limit -- The maximum number of items to return. When not specified or 0, 500 is used. 
+        When larger than 1000, 1000 is used.
         offset -- Offset returned assets
-        after -- token-based pagination. Use for paginating through an entire result set. Use only one of 'offset' and 'after' parameters for paginating
+        after -- token-based pagination. Use for paginating through an entire result set. 
+        Use only one of 'offset' and 'after' parameters for paginating
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
