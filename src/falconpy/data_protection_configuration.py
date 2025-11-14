@@ -40,33 +40,34 @@ from ._util import force_default, process_service_request
 from ._result import Result
 from ._service_class import ServiceClass
 from ._endpoint._data_protection_configuration import _data_protection_configuration_endpoints as Endpoints
-from ._payload._data_protection_configuration import (data_protection_classification_payload,
-                                                      data_protection_cloud_app_payload,
-                                                      data_protection_content_pattern_payload,
-                                                      data_protection_enterprise_account_payload,
-                                                      data_protection_sensitivity_label_payload,
-                                                      data_protection_policy_payload,
-                                                      data_protection_web_locations_payload
-                                                      )
+from ._payload._data_protection_configuration import(
+    data_protection_classification_payload,
+    data_protection_cloud_app_payload,
+    data_protection_content_pattern_payload,
+    data_protection_enterprise_account_payload,
+    data_protection_sensitivity_label_payload,
+    data_protection_policy_payload,
+    data_protection_web_locations_payload
+    )
 
 class DataProtectionConfiguration(ServiceClass):
     """The only requirement to instantiate an instance of this class is one of the following.
 
     - a valid client_id and client_secret provided as keywords.
-    - a credential dictionary with client_id and client_secret containing valid API credentials
+    - a credential dictionary with client_id and client_secret containing valid API credentials.
       {
           "client_id": "CLIENT_ID_HERE",
           "client_secret": "CLIENT_SECRET_HERE"
       }
-    - a previously-authenticated instance of the authentication service class (oauth2.py)
-    - a valid token provided by the authentication service class (oauth2.py)
+    - a previously-authenticated instance of the authentication service class (oauth2.py).
+    - a valid token provided by the authentication service class (oauth2.py).
     """
     @force_default(defaults=["parameters"], default_types=["dict"])
     def get_classification(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
         """Gets the classifications that match the provided ids.
 
         Keyword arguments:
-        ids -- IDs of the classifications to get
+        ids -- IDs of the classifications to get.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -158,7 +159,6 @@ class DataProtectionConfiguration(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="entities_classification_post_v2",
-            keywords=kwargs,
             body=body
             )
 
@@ -234,7 +234,6 @@ class DataProtectionConfiguration(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="entities_classification_patch_v2",
-            keywords=kwargs,
             body=body
             )
 
@@ -243,7 +242,7 @@ class DataProtectionConfiguration(ServiceClass):
         """Deletes classifications that match the provided ids.
 
         Keyword arguments:
-        ids -- IDs of the classifications to delete
+        ids -- IDs of the classifications to delete.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -321,17 +320,20 @@ class DataProtectionConfiguration(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="entities_cloud_application_create",
-            keywords=kwargs,
             body=body
             )
 
     @force_default(defaults=["body", "parameters"], default_types=["dict", "dict"])
-    def update_cloud_application(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def update_cloud_application(self: object,
+                                 body: dict = None,
+                                 parameters: dict = None,
+                                 **kwargs
+                                 ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Update a cloud application.
 
         Keyword arguments:
         id -- The cloud app id to update.
-        body -- The new cloud-application definition
+        body -- The new cloud-application definition.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -356,7 +358,10 @@ class DataProtectionConfiguration(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def delete_cloud_application(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def delete_cloud_application(self: object,
+                                 parameters: dict = None,
+                                 **kwargs
+                                 ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Delete cloud application.
 
         Keyword arguments:
@@ -439,7 +444,6 @@ class DataProtectionConfiguration(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="entities_content_pattern_create",
-            keywords=kwargs,
             body=body
             )
 
@@ -533,8 +537,17 @@ class DataProtectionConfiguration(ServiceClass):
         """Persist the given enterprise account for the provided entity instance.
 
         Keyword arguments:
-        body -- Definition of enterprise-account to create
-
+        body -- Definition of enterprise-account to create.
+        {
+            "description": "string",
+            "name": "string",
+            "urls": [
+                {
+                "fqdn": "string",
+                "path": "string"
+                }
+            ]
+        }
         This method only supports keywords for providing arguments.
 
         Returns: dict object containing API response.
@@ -556,12 +569,25 @@ class DataProtectionConfiguration(ServiceClass):
             )
 
     @force_default(defaults=["body", "parameters"], default_types=["dict", "dict"])
-    def update_enterprise_account(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def update_enterprise_account(self: object,
+                                  body: dict = None,
+                                  parameters: dict = None,
+                                  **kwargs
+                                  ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Update a enterprise account.
 
         Keyword arguments:
         id -- The id of the enterprise account to update.
-        body -- Definition of enterprise-account to create
+        body -- Definition of enterprise-account to create.
+        {
+            "application_group_id": "string",
+            "domains": [
+                "string"
+            ],
+            "id": "string",
+            "name": "string",
+            "plugin_config_id": "string"
+        }
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
         
         This method only supports keywords for providing arguments.
@@ -586,7 +612,10 @@ class DataProtectionConfiguration(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def delete_enterprise_account(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def delete_enterprise_account(self: object,
+                                  parameters: dict = None,
+                                  **kwargs
+                                  ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Delete enterprise account.
 
         Keyword arguments:
@@ -691,12 +720,14 @@ class DataProtectionConfiguration(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="entities_sensitivity_label_create_v2",
-            keywords=kwargs,
             body=body
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def delete_sensitivity_label(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def delete_sensitivity_label(self: object,
+                                 parameters: dict = None,
+                                 **kwargs
+                                 ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Delete sensitivity labels matching the IDs (V2).
 
         Keyword arguments:
@@ -725,7 +756,7 @@ class DataProtectionConfiguration(ServiceClass):
         """Gets policies that match the provided ids.
 
         Keyword arguments:
-        ids -- IDs of the policies to get
+        ids -- IDs of the policies to get.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -747,14 +778,14 @@ class DataProtectionConfiguration(ServiceClass):
 
     @force_default(defaults=["body", "parameters"], default_types=["dict", "dict"])
     def create_policy(self: object,
-                                body: dict = None,
-                                parameters: dict = None,
-                                **kwargs
-                                ) -> Union[Dict[str, Union[int, dict]], Result]:
+                      body: dict = None,
+                      parameters: dict = None,
+                      **kwargs
+                      ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Create policies.
 
         Keyword arguments:
-        platform_name -- platform name of the policies to update, either 'win' or 'mac'
+        platform_name -- platform name of the policies to update, either 'win' or 'mac'.
         body -- Full body payload provided as a dictionary. Not required if using other keywords.
         {
             "resources": [
@@ -843,7 +874,7 @@ class DataProtectionConfiguration(ServiceClass):
         """
         if not body:
             body = data_protection_policy_payload(passed_keywords=kwargs)
-        
+
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
@@ -854,11 +885,15 @@ class DataProtectionConfiguration(ServiceClass):
             )
 
     @force_default(defaults=["body","parameters"], default_types=["dict", "dict"])
-    def update_policies(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def update_policies(self: object,
+                        body: dict = None,
+                        parameters: dict = None,
+                        **kwargs
+                        ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Update policies.
 
         Keyword arguments:
-        platform_name -- platform name of the policies to update, either 'win' or 'mac'
+        platform_name -- platform name of the policies to update, either 'win' or 'mac'.
         body -- Full body payload provided as a dictionary. Not required if using other keywords.
         {
             "resources": [
@@ -962,8 +997,8 @@ class DataProtectionConfiguration(ServiceClass):
         """Deletes policies that match the provided ids.
 
         Keyword arguments:
-        ids -- IDs of the policies to delete
-        platform_name -- platform name of the policies to update, either 'win' or 'mac'
+        ids -- IDs of the policies to delete.
+        platform_name -- platform name of the policies to update, either 'win' or 'mac'.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -1048,12 +1083,15 @@ class DataProtectionConfiguration(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="entities_web_location_create_v2",
-            keywords=kwargs,
             body=body
             )
 
     @force_default(defaults=["body", "parameters"], default_types=["dict", "dict"])
-    def update_web_location(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def update_web_location(self: object,
+                            body: dict = None,
+                            parameters: dict = None,
+                            **kwargs
+                            ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Update a web-location.
 
         Keyword arguments:
@@ -1115,7 +1153,8 @@ class DataProtectionConfiguration(ServiceClass):
         HTTP Method: DELETE
 
         Swagger URL
-        https://assets.falcon.crowdstrike.com/support/api/swagger.html#/data-protection-configuration/entities.web-location.delete-v2        """
+        https://assets.falcon.crowdstrike.com/support/api/swagger.html#/data-protection-configuration/entities.web-location.delete-v2
+        """
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
@@ -1129,7 +1168,7 @@ class DataProtectionConfiguration(ServiceClass):
         """Search for classifications that match the provided criteria.
 
         Keyword arguments:
-        filter -- Filter results by specific attributes, allowed attributes are 
+        filter -- Filter results by specific attributes, allowed attributes are:
             created_by                  modified_by 
             modified_at                 properties.content_patterns 
             properties.file_types       properties.evidence_duplication_enabled 
@@ -1137,9 +1176,9 @@ class DataProtectionConfiguration(ServiceClass):
             properties.web_sources      name 
             created_at
 
-        offset -- The offset to start retrieving records from
-        limit -- The maximum records to return
-        sort -- The property to sort by, allowed fields are
+        offset -- The offset to start retrieving records from.
+        limit -- The maximum records to return.
+        sort -- The property to sort by, allowed fields are:
             name        created_at 
             modified_at
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
@@ -1162,19 +1201,23 @@ class DataProtectionConfiguration(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def query_cloud_applications(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def query_cloud_applications(self: object,
+                                 parameters: dict = None,
+                                 **kwargs
+                                 ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Get all cloud-application IDs matching the query with filter.
 
         Keyword arguments:
-        filter -- Optional filter for searching cloud applications. Allowed filters are 
+        filter -- Optional filter for searching cloud applications. Allowed filters are:
                 name                    type
                 deleted                 supports_network_inspection
                 application_group_id
-        sort -- The sort instructions to order by on. Allowed values are
+        sort -- The sort instructions to order by on. Allowed values are:
                 name                    type
                 deleted                 supports_network_inspection
                 application_group_id 
-        limit -- The number of items to return in this response (default: 100, max: 500). Use with the offset parameter to manage pagination of results.
+        limit -- The number of items to return in this response (default: 100, max: 500). 
+        Use with the offset parameter to manage pagination of results.
         offset -- The offset to start retrieving records from. Use with the limit parameter to manage pagination of results.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
@@ -1200,17 +1243,18 @@ class DataProtectionConfiguration(ServiceClass):
         """Get all content-pattern IDs matching the query with filter.
 
         Keyword arguments:
-        filter -- The filter to use when finding content patterns. Allowed filters are 
+        filter -- The filter to use when finding content patterns. Allowed filters are:
                   name          type 
                   category      region
                   example       created_at
                   updated_at    deleted'
-        sort -- The sort instructions to order by on. Allowed values are
+        sort -- The sort instructions to order by on. Allowed values are:
                   name          type 
                   category      region
                   example       created_at
                   updated_at    deleted'
-        limit -- The number of items to return in this response (default: 100, max: 500). Use with the offset parameter to manage pagination of results.
+        limit -- The number of items to return in this response (default: 100, max: 500).
+        Use with the offset parameter to manage pagination of results.
         offset -- The offset to start retrieving records from. Use with the limit parameter to manage pagination of results.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
@@ -1232,19 +1276,23 @@ class DataProtectionConfiguration(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def query_enterprise_accounts(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def query_enterprise_accounts(self: object,
+                                  parameters: dict = None,
+                                  **kwargs
+                                  ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Get all enterprise-account IDs matching the query with filter.
 
         Keyword arguments:
-        filter -- The filter to use when finding enterprise accounts. Allowed filters are 
+        filter -- The filter to use when finding enterprise accounts. Allowed filters are:
                   name          application_group_id
                   deleted       created_at
                   updated_at
-        sort -- The sort instructions to order by on. Allowed values are
+        sort -- The sort instructions to order by on. Allowed values are:
                   name          application_group_id
                   deleted       created_at
                   updated_at
-        limit -- The number of items to return in this response (default: 100, max: 500). Use with the offset parameter to manage pagination of results.
+        limit -- The number of items to return in this response (default: 100, max: 500). 
+        Use with the offset parameter to manage pagination of results.
         offset -- The offset to start retrieving records from. Use with the limit parameter to manage pagination of results.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
@@ -1276,7 +1324,8 @@ class DataProtectionConfiguration(ServiceClass):
         sort -- The sort instructions to order by on. Allowed values are
                   name          created_at
                   updated_at
-        limit -- The number of items to return in this response (default: 100, max: 500). Use with the offset parameter to manage pagination of results.
+        limit -- The number of items to return in this response (default: 100, max: 500).
+        Use with the offset parameter to manage pagination of results.
         offset -- The offset to start retrieving records from. Use with the limit parameter to manage pagination of results.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
@@ -1302,14 +1351,15 @@ class DataProtectionConfiguration(ServiceClass):
         """Get all sensitivity label IDs matching the query with filter.
 
         Keyword arguments:
-        filter -- The filter to use when finding sensitivity labels. The only allowed filters are 
+        filter -- The filter to use when finding sensitivity labels. The only allowed filters are:
                   name          display_name
                   external_id   deleted
-        sort -- The sort instructions to order by on. Allowed values are
+        sort -- The sort instructions to order by on. Allowed values are:
                   name          display_name
                   deleted       created_at
                   updated_at
-        limit -- The number of items to return in this response (default: 100, max: 500). Use with the offset parameter to manage pagination of results.
+        limit -- The number of items to return in this response (default: 100, max: 500). 
+        Use with the offset parameter to manage pagination of results.
         offset -- The offset to start retrieving records from. Use with the limit parameter to manage pagination of results.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
@@ -1335,34 +1385,34 @@ class DataProtectionConfiguration(ServiceClass):
         """Search for policies that match the provided criteria.
 
         Keyword arguments:
-        platform_name -- platform name of the policies to search, either 'win' or 'mac'
-        filter -- Filter results by specific attributes , allowed attributes are
-                  properties.max_file_size_to_inspect                       description
-                  is_default                                                properties.be_upload_timeout_duration_seconds 
-                  created_by                                                modified_at 
-                  properties.enable_content_inspection                      properties.similarity_threshold 
-                  properties.block_notifications                            properties.custom_allow_notification 
-                  properties.evidence_duplication_enabled_default           properties.be_paste_timeout_response
-                  properties.inspection_depth                               properties.classifications
-                  properties.be_paste_clipboard_max_size                    properties.be_paste_clipboard_over_size_behaviour_block
-                  properties.evidence_storage_free_disk_perc                properties.min_confidence_level
-                  properties.browsers_without_active_extension              properties.besplash_enabled
-                  created_at                                                modified_by
-                  properties.enable_context_inspection                      properties.enable_network_inspection
-                  properties.besplash_message_source                        properties.besplash_custom_message
-                  properties.be_paste_clipboard_min_size_unit               properties.be_paste_clipboard_max_size_unit
-                  properties.network_inspection_files_exceeding_size_limit  properties.max_file_size_to_inspect_unit
-                  properties.similarity_detection                           properties.enable_end_user_notifications_unsupported_browser
-                  properties.allow_notifications                            properties.evidence_encrypted_enabled
-                  properties.be_exclude_domains                             properties.be_paste_timeout_duration_milliseconds
-                  properties.unsupported_browsers_action                    properties.enable_clipboard_inspection
-                  properties.custom_block_notification                      properties.evidence_download_enabled
-                  name                                                      properties.be_upload_timeout_response 
-                  properties.be_paste_clipboard_min_size                    precedence is_enabled 
-                  properties.block_all_data_access                          properties.evidence_storage_max_size]
-        offset -- The offset to start retrieving records from
-        limit -- The maximum records to return
-        sort -- The property to sort by, allowed fields are
+        platform_name -- platform name of the policies to search, either 'win' or 'mac'.
+        filter -- Filter results by specific attributes, allowed attributes are:
+            properties.max_file_size_to_inspect                       description
+            is_default                                                properties.be_upload_timeout_duration_seconds 
+            created_by                                                modified_at 
+            properties.enable_content_inspection                      properties.similarity_threshold 
+            properties.block_notifications                            properties.custom_allow_notification 
+            properties.evidence_duplication_enabled_default           properties.be_paste_timeout_response
+            properties.inspection_depth                               properties.classifications
+            properties.be_paste_clipboard_max_size                    properties.be_paste_clipboard_over_size_behaviour_block
+            properties.evidence_storage_free_disk_perc                properties.min_confidence_level
+            properties.browsers_without_active_extension              properties.besplash_enabled
+            created_at                                                modified_by
+            properties.enable_context_inspection                      properties.enable_network_inspection
+            properties.besplash_message_source                        properties.besplash_custom_message
+            properties.be_paste_clipboard_min_size_unit               properties.be_paste_clipboard_max_size_unit
+            properties.network_inspection_files_exceeding_size_limit  properties.max_file_size_to_inspect_unit
+            properties.similarity_detection                           properties.enable_end_user_notifications_unsupported_browser
+            properties.allow_notifications                            properties.evidence_encrypted_enabled
+            properties.be_exclude_domains                             properties.be_paste_timeout_duration_milliseconds
+            properties.unsupported_browsers_action                    properties.enable_clipboard_inspection
+            properties.custom_block_notification                      properties.evidence_download_enabled
+            name                                                      properties.be_upload_timeout_response 
+            properties.be_paste_clipboard_min_size                    precedence is_enabled 
+            properties.block_all_data_access                          properties.evidence_storage_max_size
+        offset -- The offset to start retrieving records from.
+        limit -- The maximum records to return.
+        sort -- The property to sort by, allowed fields are:
                 name        precedence 
                 created_at  modified_at
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
@@ -1389,13 +1439,14 @@ class DataProtectionConfiguration(ServiceClass):
         """Get web-location IDs matching the query with filter.
 
         Keyword arguments:
-        filter -- The filter to use when finding web locations. Allowed filters are
+        filter -- The filter to use when finding web locations. Allowed filters are:
                   name                      type
                   deleted                   application_id
                   provider_location_id      enterprise_account_id
-        type -- The type of entity to query. Allowed values are 
+        type -- The type of entity to query. Allowed values are:
                 predefined  custom
-        limit -- The number of items to return in this response (default: 100, max: 500). Use with the offset parameter to manage pagination of results.
+        limit -- The number of items to return in this response (default: 100, max: 500). 
+        Use with the offset parameter to manage pagination of results.
         offset -- The offset to start retrieving records from. Use with the limit parameter to manage pagination of results.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 

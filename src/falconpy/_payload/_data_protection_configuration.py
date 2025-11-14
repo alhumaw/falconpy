@@ -92,29 +92,24 @@ def data_protection_classification_payload(passed_keywords: dict) -> Dict[str, L
     }
     """
     returned_payload = {}
-    
-    if passed_keywords.get("resources", None) is not None:
-        returned_payload["resources"] = passed_keywords.get("resources", None)
-        return returned_payload
-    
     resources = []
     resource = {}
-    
+
     if passed_keywords.get("name", None) is not None:
         resource["name"] = passed_keywords.get("name", None)
-    
+
     classification_properties = {}
-    
+
     array_fields = ["content_patterns", "file_types", "sensitivity_labels", "web_sources"]
     for field in array_fields:
         if passed_keywords.get(field, None) is not None:
             classification_properties[field] = passed_keywords.get(field, None)
-    
+
     simple_fields = ["evidence_duplication_enabled", "protection_mode"]
     for field in simple_fields:
         if passed_keywords.get(field, None) is not None:
             classification_properties[field] = passed_keywords.get(field, None)
-    
+
     if passed_keywords.get("rules", None) is not None:
         classification_properties["rules"] = passed_keywords.get("rules", None)
     else:
@@ -123,7 +118,7 @@ def data_protection_classification_payload(passed_keywords: dict) -> Dict[str, L
         for field in rule_array_fields:
             if passed_keywords.get(field, None) is not None:
                 rule[field] = passed_keywords.get(field, None)
-        
+
         rule_string_fields = [
             "created_time_stamp", "description", "detection_severity", "id", 
             "modified_time_stamp", "response_action", "user_scope", "web_locations_scope"
@@ -131,7 +126,7 @@ def data_protection_classification_payload(passed_keywords: dict) -> Dict[str, L
         for field in rule_string_fields:
             if passed_keywords.get(field, None) is not None:
                 rule[field] = passed_keywords.get(field, None)
-        
+
         rule_boolean_fields = [
             "enable_printer_egress", "enable_usb_devices", "enable_web_locations",
             "notify_end_user", "trigger_detection"
@@ -139,23 +134,23 @@ def data_protection_classification_payload(passed_keywords: dict) -> Dict[str, L
         for field in rule_boolean_fields:
             if passed_keywords.get(field, None) is not None:
                 rule[field] = passed_keywords.get(field, None)
-        
+
         if rule:
             classification_properties["rules"] = [rule]
-    
+
     if classification_properties:
         resource["classification_properties"] = classification_properties
-    
+
     if resource:
         resources.append(resource)
-    
+
     if resources:
         returned_payload["resources"] = resources
-    
+
     return returned_payload
 
 def data_protection_cloud_app_payload(passed_keywords: dict) -> Dict[str, List[Dict[str, Union[str, int, bool, list, dict]]]]:
-    """Persist the given cloud application for the provided entity instance
+    """Persist the given cloud application for the provided entity instance.
     {
         "description": "string",
         "name": "string",
@@ -178,7 +173,7 @@ def data_protection_cloud_app_payload(passed_keywords: dict) -> Dict[str, List[D
     for key in url_keys:
         if passed_keywords.get(key, None) is not None:
             url[key] = passed_keywords.get(key, None)
-    
+
     urls.append(url)
     returned_payload["urls"] = urls
 
@@ -203,11 +198,12 @@ def data_protection_content_pattern_payload(passed_keywords: dict) -> Dict[str, 
     for key in keys:
         if passed_keywords.get(key, None) is not None:
             returned_payload[key] = passed_keywords.get(key, None)
-    
+
     return returned_payload
 
-def data_protection_enterprise_account_payload(passed_keywords: dict
-                                               ) -> Dict[str, List[Dict[str, Union[str, int, bool, list, dict]]]]:
+def data_protection_enterprise_account_payload(
+        passed_keywords: dict
+        ) -> Dict[str, List[Dict[str, Union[str, int, bool, list, dict]]]]:
     """Persist the given content pattern for the provided entity instance.
     {
         "application_group_id": "string",
@@ -223,12 +219,13 @@ def data_protection_enterprise_account_payload(passed_keywords: dict
     for key in keys:
         if passed_keywords.get(key, None) is not None:
             returned_payload[key] = passed_keywords.get(key, None)
-    
+
     return returned_payload
 
 
-def data_protection_sensitivity_label_payload(passed_keywords: dict
-                                               ) -> Dict[str, List[Dict[str, Union[str, int, bool, list, dict]]]]:
+def data_protection_sensitivity_label_payload(
+        passed_keywords: dict
+        ) -> Dict[str, List[Dict[str, Union[str, int, bool, list, dict]]]]:
     """Create new sensitivity label (V2)
     {
         "co_authoring": true,
@@ -249,7 +246,7 @@ def data_protection_sensitivity_label_payload(passed_keywords: dict
     for key in keys:
         if passed_keywords.get(key, None) is not None:
             returned_payload[key] = passed_keywords.get(key, None)
-    
+
     return returned_payload
 
 def data_protection_policy_payload(passed_keywords: dict) -> Dict[str, List[Dict[str, Union[str, int, bool, list, dict]]]]:
@@ -330,21 +327,21 @@ def data_protection_policy_payload(passed_keywords: dict) -> Dict[str, List[Dict
     }
     """
     returned_payload = {}
-    
+
     if passed_keywords.get("resources", None) is not None:
         returned_payload["resources"] = passed_keywords.get("resources", None)
         return returned_payload
-    
+
     resources = []
     resource = {}
-    
+
     resource_fields = ["description", "name", "precedence"]
     for field in resource_fields:
         if passed_keywords.get(field, None) is not None:
             resource[field] = passed_keywords.get(field, None)
-    
+
     policy_properties = {}
-    
+
     string_fields = [
         "allow_notifications", "be_exclude_domains", "be_paste_clipboard_max_size_unit",
         "be_paste_clipboard_min_size_unit", "be_paste_timeout_response", "be_splash_custom_message",
@@ -357,7 +354,7 @@ def data_protection_policy_payload(passed_keywords: dict) -> Dict[str, List[Dict
     for field in string_fields:
         if passed_keywords.get(field, None) is not None:
             policy_properties[field] = passed_keywords.get(field, None)
-    
+
     integer_fields = [
         "be_paste_clipboard_max_size", "be_paste_clipboard_min_size", "be_paste_timeout_duration_milliseconds",
         "be_upload_timeout_duration_seconds", "euj_dialog_timeout", "euj_response_cache_timeout",
@@ -366,7 +363,7 @@ def data_protection_policy_payload(passed_keywords: dict) -> Dict[str, List[Dict
     for field in integer_fields:
         if passed_keywords.get(field, None) is not None:
             policy_properties[field] = passed_keywords.get(field, None)
-    
+
     boolean_fields = [
         "be_paste_clipboard_over_size_behaviour_block", "be_splash_enabled", "block_all_data_access",
         "enable_clipboard_inspection", "enable_content_inspection", "enable_context_inspection",
@@ -377,10 +374,10 @@ def data_protection_policy_payload(passed_keywords: dict) -> Dict[str, List[Dict
     for field in boolean_fields:
         if passed_keywords.get(field, None) is not None:
             policy_properties[field] = passed_keywords.get(field, None)
-    
+
     if passed_keywords.get("classifications", None) is not None:
         policy_properties["classifications"] = passed_keywords.get("classifications", None)
-    
+
     if passed_keywords.get("euj_dropdown_options", None) is not None:
         policy_properties["euj_dropdown_options"] = passed_keywords.get("euj_dropdown_options", None)
     elif any(passed_keywords.get(key, None) is not None for key in ["justifications"]):
@@ -389,24 +386,26 @@ def data_protection_policy_payload(passed_keywords: dict) -> Dict[str, List[Dict
             euj_dropdown["justifications"] = passed_keywords.get("justifications", None)
         if euj_dropdown:
             policy_properties["euj_dropdown_options"] = euj_dropdown
-    
+
     if passed_keywords.get("euj_header_text", None) is not None:
         policy_properties["euj_header_text"] = passed_keywords.get("euj_header_text", None)
     elif passed_keywords.get("headers", None) is not None:
         policy_properties["euj_header_text"] = {"headers": passed_keywords.get("headers", None)}
-    
+
     if policy_properties:
         resource["policy_properties"] = policy_properties
-    
+
     if resource:
         resources.append(resource)
-    
+
     if resources:
         returned_payload["resources"] = resources
-    
+
     return returned_payload
 
-def data_protection_web_locations_payload(passed_keywords: dict) -> Dict[str, List[Dict[str, Union[str, int, bool, list, dict]]]]:
+def data_protection_web_locations_payload(
+        passed_keywords: dict
+        ) -> Dict[str, List[Dict[str, Union[str, int, bool, list, dict]]]]:
     """Persist the given web-locations.
     {
     "web_locations": [
