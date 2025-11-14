@@ -46,16 +46,19 @@ class CloudSecurityCompliance(ServiceClass):
     """The only requirement to instantiate an instance of this class is one of the following.
 
     - a valid client_id and client_secret provided as keywords.
-    - a credential dictionary with client_id and client_secret containing valid API credentials
+    - a credential dictionary with client_id and client_secret containing valid API credentials/.
       {
           "client_id": "CLIENT_ID_HERE",
           "client_secret": "CLIENT_SECRET_HERE"
       }
-    - a previously-authenticated instance of the authentication service class (oauth2.py)
-    - a valid token provided by the authentication service class (oauth2.py)
+    - a previously-authenticated instance of the authentication service class (oauth2.py).
+    - a valid token provided by the authentication service class (oauth2.py).
     """
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def framework_posture_summaries(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def framework_posture_summaries(self: object,
+                                    parameters: dict = None,
+                                    **kwargs
+                                    ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Get sections and requirements with scores for benchmarks.
 
         Keyword arguments:
