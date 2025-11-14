@@ -46,13 +46,13 @@ class CorrelationRulesAdmin(ServiceClass):
     """The only requirement to instantiate an instance of this class is one of the following.
 
     - a valid client_id and client_secret provided as keywords.
-    - a credential dictionary with client_id and client_secret containing valid API credentials
+    - a credential dictionary with client_id and client_secret containing valid API credentials.
       {
           "client_id": "CLIENT_ID_HERE",
           "client_secret": "CLIENT_SECRET_HERE"
       }
-    - a previously-authenticated instance of the authentication service class (oauth2.py)
-    - a valid token provided by the authentication service class (oauth2.py)
+    - a previously-authenticated instance of the authentication service class (oauth2.py).
+    - a valid token provided by the authentication service class (oauth2.py).
     """
     @force_default(defaults=["body"], default_types=["dict"])
     def change_correlation_rule_owner(self: object, body: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
@@ -83,7 +83,6 @@ class CorrelationRulesAdmin(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="entities_rules_ownership_put_v1",
-            keywords=kwargs,
             body=body
             )
 

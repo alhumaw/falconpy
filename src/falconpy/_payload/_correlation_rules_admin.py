@@ -47,7 +47,6 @@ def correlation_rules_admin_payload(passed_keywords: dict) -> Dict[str, List[Dic
         "user_id": "string",
         "user_uuid": "string"
     }
-
     """
     returned_payload = {}
     keys = ["api_client_id", "id", "user_id", "user_uuid"]
