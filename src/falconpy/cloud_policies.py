@@ -40,13 +40,14 @@ from ._util import force_default, process_service_request
 from ._result import Result
 from ._service_class import ServiceClass
 from ._endpoint._cloud_policies import _cloud_policies_endpoints as Endpoints
-from ._payload._cloud_policies import (cloud_policies_rule_assign_payload,
-                                       cloud_policies_compliance_control_payload,
-                                       cloud_policies_evaluation_payload,
-                                       cloud_policies_rule_override_payload,
-                                       cloud_policies_rule_create_payload,
-                                       cloud_policies_rule_update_payload
-                                       )
+from ._payload._cloud_policies import(
+    cloud_policies_rule_assign_payload,
+    cloud_policies_compliance_control_payload,
+    cloud_policies_evaluation_payload,
+    cloud_policies_rule_override_payload,
+    cloud_policies_rule_create_payload,
+    cloud_policies_rule_update_payload
+    )
 
 class CloudPolicies(ServiceClass):
     """The only requirement to instantiate an instance of this class is one of the following.
@@ -69,7 +70,7 @@ class CloudPolicies(ServiceClass):
         """Assign rules to a compliance control (full replace).
 
         Keyword arguments:
-        ids -- The UUID of the compliance control to assign rules to
+        ids -- The UUID of the compliance control to assign rules to.
         body -- Full body payload as a JSON formatted dictionary. Not required if using other keywords.
                 {
                     "rule_ids": [
@@ -104,7 +105,7 @@ class CloudPolicies(ServiceClass):
         """Get compliance controls by ID.
 
         Keyword arguments:
-        ids -- The uuids of compliance controls to retrieve
+        ids -- The uuids of compliance controls to retrieve.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -153,16 +154,19 @@ class CloudPolicies(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="CreateComplianceControl",
-            keywords=kwargs,
             body=body
             )
 
     @force_default(defaults=["body", "parameters"], default_types=["dict", "dict"])
-    def update_compliance_control(self: object, body: dict = None, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def update_compliance_control(self: object,
+                                  body: dict = None,
+                                  parameters: dict = None,
+                                  **kwargs
+                                  ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Update a custom compliance control.
 
         Keyword arguments:
-        ids -- The uuid of compliance control to update
+        ids -- The uuid of compliance control to update.
         body -- Full body payload dictionary in JSON format. Not required if using other keywords.
                 {
                     "description": "string",
@@ -192,11 +196,14 @@ class CloudPolicies(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def delete_compliance_control(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def delete_compliance_control(self: object,
+                                  parameters: dict = None,
+                                  **kwargs
+                                  ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Delete custom compliance controls.
 
         Keyword arguments:
-        ids -- The uuids of compliance control to delete
+        ids -- The uuids of compliance control to delete.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -225,8 +232,8 @@ class CloudPolicies(ServiceClass):
         """Rename a section in a custom compliance framework.
 
         Keyword arguments:
-        ids -- The uuid of compliance framework containing the section to rename
-        sectionName -- The current name of the section to rename
+        ids -- The uuid of compliance framework containing the section to rename.
+        sectionName -- The current name of the section to rename.
         body -- Full body payload dictionary in JSON format. Not required if using other keywords.
                 {
                     "section_name": "string"
@@ -255,11 +262,14 @@ class CloudPolicies(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def get_compliance_frameworks(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def get_compliance_frameworks(self: object,
+                                  parameters: dict = None,
+                                  **kwargs
+                                  ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Get compliance frameworks by ID.
 
         Keyword arguments:
-        ids -- The uuids of compliance frameworks to retrieve
+        ids -- The uuids of compliance frameworks to retrieve.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -307,7 +317,6 @@ class CloudPolicies(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="CreateComplianceFramework",
-            keywords=kwargs,
             body=body
             )
 
@@ -320,7 +329,7 @@ class CloudPolicies(ServiceClass):
         """Update a custom compliance framework.
 
         Keyword arguments:
-        ids -- The uuids of compliance framework to update
+        ids -- The uuids of compliance framework to update.
         body -- Full body payload dictionary in JSON format. Not required if using other keywords.
                 {
                     "active": true,
@@ -351,11 +360,14 @@ class CloudPolicies(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def delete_compliance_framework(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def delete_compliance_framework(self: object,
+                                    parameters: dict = None,
+                                    **kwargs
+                                    ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Delete a custom compliance framework and all associated controls and rule assignments.
 
         Keyword arguments:
-        ids -- The uuids of compliance framework to delete
+        ids -- The uuids of compliance framework to delete.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -384,8 +396,8 @@ class CloudPolicies(ServiceClass):
         """Gets evaluation results based on the provided rule.
 
         Keyword arguments:
-        cloud_provider -- Cloud Service Provider of the provided IDs
-        resource_type -- Resource Type of the provided IDs
+        cloud_provider -- Cloud Service Provider of the provided IDs.
+        resource_type -- Resource Type of the provided IDs.
         ids -- List of assets to evaluate (maximum 100 IDs allowed).
         body -- Full body payload dictionary in JSON format. Not required if using other keywords.
                 {
@@ -420,7 +432,7 @@ class CloudPolicies(ServiceClass):
         """Get a rule override.
 
         Keyword arguments:
-        ids -- The uuids of rule overrides to retrieve
+        ids -- The uuids of rule overrides to retrieve.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -477,7 +489,6 @@ class CloudPolicies(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="CreateRuleOverride",
-            keywords=kwargs,
             body=body
             )
 
@@ -518,7 +529,6 @@ class CloudPolicies(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="UpdateRuleOverride",
-            keywords=kwargs,
             body=body
             )
 
@@ -527,7 +537,7 @@ class CloudPolicies(ServiceClass):
         """Delete a rule override.
 
         Keyword arguments:
-        ids -- The uuids of rule overrides to delete
+        ids -- The uuids of rule overrides to delete.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -552,7 +562,7 @@ class CloudPolicies(ServiceClass):
         """Get a rule by id.
 
         Keyword arguments:
-        ids -- The uuids of rules to retrieve
+        ids -- The uuids of rules to retrieve.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -618,8 +628,7 @@ class CloudPolicies(ServiceClass):
         return process_service_request(
             calling_object=self,
             endpoints=Endpoints,
-            operation_id="CreateRule",
-            keywords=kwargs,
+            operation_id="CreateRuleMixin0",
             body=body
             )
 
@@ -629,31 +638,31 @@ class CloudPolicies(ServiceClass):
 
         Keyword arguments:
         body -- Full body payload dictionary in JSON format. Not required if using other keywords.
+        {
+            "alert_info": "string",
+            "attack_types": [
+                    "string"
+            ],
+            "category": "string",
+            "controls": [
                 {
-                    "alert_info": "string",
-                    "attack_types": [
-                            "string"
-                    ],
-                    "category": "string",
-                    "controls": [
-                        {
-                            "authority": "string",
-                            "code": "string"
-                        }
-                    ],
-                    "description": "string",
-                    "name": "string",
-                    "rule_logic_list": [
-                        {
-                            "logic": "string",
-                            "platform": "string",
-                            "remediation_info": "string",
-                            "remediation_url": "string"
-                        }
-                    ],
-                    "severity": 0,
-                    "uuid": "string"
+                    "authority": "string",
+                    "code": "string"
                 }
+            ],
+            "description": "string",
+            "name": "string",
+            "rule_logic_list": [
+                {
+                    "logic": "string",
+                    "platform": "string",
+                    "remediation_info": "string",
+                    "remediation_url": "string"
+                }
+            ],
+            "severity": 0,
+            "uuid": "string"
+        }
 
         This method only supports keywords for providing arguments.
 
@@ -671,7 +680,6 @@ class CloudPolicies(ServiceClass):
             calling_object=self,
             endpoints=Endpoints,
             operation_id="UpdateRule",
-            keywords=kwargs,
             body=body
             )
 
@@ -680,7 +688,7 @@ class CloudPolicies(ServiceClass):
         """Delete a rule.
 
         Keyword arguments:
-        ids -- The uuids of rules to delete
+        ids -- The uuids of rules to delete.
         parameters -- Full parameters payload dictionary. Not required if using other keywords.
 
         This method only supports keywords for providing arguments.
@@ -701,7 +709,10 @@ class CloudPolicies(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def query_compliance_controls(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def query_compliance_controls(self: object,
+                                  parameters: dict = None,
+                                  **kwargs
+                                  ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Query for compliance controls by various parameters.
 
         Keyword arguments:
@@ -741,7 +752,10 @@ class CloudPolicies(ServiceClass):
             )
 
     @force_default(defaults=["parameters"], default_types=["dict"])
-    def query_compliance_frameworks(self: object, parameters: dict = None, **kwargs) -> Union[Dict[str, Union[int, dict]], Result]:
+    def query_compliance_frameworks(self: object,
+                                    parameters: dict = None,
+                                    **kwargs
+                                    ) -> Union[Dict[str, Union[int, dict]], Result]:
         """Query for compliance frameworks by various parameters.
 
         Keyword arguments:
@@ -842,7 +856,7 @@ Use the `|asc` or `|desc` suffix to specify sort direction.
     UpdateRuleOverride = update_rule_override
     DeleteRuleOverride = delete_rule_override
     GetRule = get_rule
-    CreateRule = create_rule
+    CreateRuleMixin0 = create_rule
     UpdateRule = update_rule
     DeleteRuleMixin0 = delete_rule
     QueryComplianceControls = query_compliance_controls

@@ -26,6 +26,7 @@ class TestCloudPolicies:
                         )
     def test_all_code_paths(self):
         error_checks = True
+
         tests = {
             "ReplaceControlRules": falcon.ReplaceControlRules(body={}),
             "GetComplianceControls": falcon.GetComplianceControls(ids="1234567"),

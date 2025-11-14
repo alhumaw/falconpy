@@ -38,7 +38,6 @@ For more information, please refer to <https://unlicense.org>
 
 from typing import Dict, List, Union
 
-
 def cloud_policies_rule_assign_payload(passed_keywords: dict) -> Dict[str, List[Dict[str, Union[str, int]]]]:
     """Assign rules to a compliance control (full replace).
 
@@ -86,7 +85,7 @@ def cloud_policies_evaluation_payload(passed_keywords: dict) -> Dict[str, Union[
     return returned_payload
 
 def cloud_policies_rule_override_payload(passed_keywords: dict) -> Dict[str, Union[dict, str]]:
-    """Create a new rule override
+    """Create a new rule override.
     {
         "overrides": [
             {
@@ -115,11 +114,11 @@ def cloud_policies_rule_override_payload(passed_keywords: dict) -> Dict[str, Uni
         if passed_keywords.get(key, None) is not None:
             override[key] = passed_keywords.get(key, None)
     returned_payload["overrides"] = [override]
-    
+
     return returned_payload
 
 def cloud_policies_rule_create_payload(passed_keywords: dict) -> Dict[str, Union[dict, str]]:
-    """Create a new rule
+    """Create a new rule.
     {
         "alert_info": "string",
         "attack_types": "string",
@@ -159,11 +158,11 @@ def cloud_policies_rule_create_payload(passed_keywords: dict) -> Dict[str, Union
     for key in keys:
         if passed_keywords.get(key, None) is not None:
             returned_payload[key] = passed_keywords.get(key, None)
-    
+
     return returned_payload
 
 def cloud_policies_rule_update_payload(passed_keywords: dict) -> Dict[str, Union[dict, str, int, list]]:
-    """Update a rule
+    """Update a rule.
     {
         "alert_info": "string",
         "attack_types": [
@@ -191,15 +190,15 @@ def cloud_policies_rule_update_payload(passed_keywords: dict) -> Dict[str, Union
     }
     """
     returned_payload = {}
-    
+
     simple_keys = ["alert_info", "category", "description", "name", "severity", "uuid"]
     for key in simple_keys:
         if passed_keywords.get(key, None) is not None:
             returned_payload[key] = passed_keywords.get(key, None)
-    
+
     if passed_keywords.get("attack_types", None) is not None:
         returned_payload["attack_types"] = passed_keywords.get("attack_types", None)
-    
+
     if passed_keywords.get("controls", None) is not None:
         returned_payload["controls"] = passed_keywords.get("controls", None)
     else:
@@ -210,7 +209,7 @@ def cloud_policies_rule_update_payload(passed_keywords: dict) -> Dict[str, Union
                 control[key] = passed_keywords.get(key, None)
         if control:
             returned_payload["controls"] = [control]
-    
+
     if passed_keywords.get("rule_logic_list", None) is not None:
         returned_payload["rule_logic_list"] = passed_keywords.get("rule_logic_list", None)
     else:
@@ -221,5 +220,5 @@ def cloud_policies_rule_update_payload(passed_keywords: dict) -> Dict[str, Union
                 rule_logic[key] = passed_keywords.get(key, None)
         if rule_logic:
             returned_payload["rule_logic_list"] = [rule_logic]
-    
+
     return returned_payload
