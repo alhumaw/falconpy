@@ -22,19 +22,19 @@
     - _GetSystemLogsV3_
     - _GetSystemUsersV3_
     - _GetUserInventoryV3_
-    - `__init__.py`
-    - `saas_security.py`
     - `_endpoint/__init__.py`
     - `_endpoint/_saas_security.py`
+    - `__init__.py`
+    - `saas_security.py`
     > Unit testing expanded to complete code coverage.
     - `tests/test_saas_security.py`
 
 + Added: Added the new __Spotlight Vulnerability Metadata__ service collection with 1 operation.
     - _combineVulnMetadataExt_
-    - `__init__.py`
-    - `spotlight_vulnerability_metadata.py`
     - `_endpoint/__init__.py`
     - `_endpoint/_spotlight_vulnerability_metadata.py`
+    - `__init__.py`
+    - `spotlight_vulnerability_metadata.py`
     > Unit testing expanded to complete code coverage.
     - `tests/test_spotlight_vulnerability_metadata.py`
 
@@ -75,52 +75,52 @@
     - _queries_sensitivity_label_get_v2_
     - _queries_policy_get_v2_
     - _queries_web_location_get_v2_
-    - `__init__.py`
-    - `data_protection_configuration.py`
     - `_endpoint/__init__.py`
     - `_endpoint/_data_protection_configuration.py`
     - `_endpoint/deprecated/__init__.py`
     - `_endpoint/deprecated/_data_protection_configuration.py`
     - `_payload/__init__.py`
     - `_payload/_data_protection_configuration.py`
+    - `__init__.py`
+    - `data_protection_configuration.py`
     > Unit testing expanded to complete code coverage.
     - `tests/test_data_protection_configuration.py`
 
 
 + Added: Added the new __Correlation Rules Admin__ service collection with 1 operation.
     - _entities\_rules\_ownership\_put\_v1_
-    - `__init__.py`
-    - `correlation_rules_admin.py`
     - `_endpoint/__init__.py`
     - `_endpoint/_correlation_rules_admin.py`
     - `_endpoint/deprecated/__init__.py`
     - `_endpoint/deprecated/_correlation_rules_admin.py`
     - `_payload/__init__.py`
     - `_payload/_correlation_rules_admin.py`
+    - `__init__.py`
+    - `correlation_rules_admin.py`
     > Unit testing expanded to complete code coverage.
     - `tests/test_correlation_rules_admin.py`
 
 + Added: Added the new __Cloud Security Detections__ service collection with 2 operations.
     - _cspm\_evaluations\_iom\_entities_
     - _cspm\_evaluations\_iom\_queries_
-    - `__init__.py`
-    - `cloud_security_detections.py`
     - `_endpoint/__init__.py`
     - `_endpoint/_cloud_security_detections.py`
     - `_endpoint/deprecated/__init__.py`
     - `_endpoint/deprecated/_cloud_security_detections.py`
+    - `__init__.py`
+    - `cloud_security_detections.py`
     > Unit testing expanded to complete code coverage.
     - `tests/test_cloud_security_detections.py`
 
 + Added: Added the new __Cloud Security Compliance__ service collection with 2 operations.
     - _cloud\_compliance\_framework\_posture\_summaries_
     - _cloud\_compliance\_rule\_posture\_summaries_
-    - `__init__.py`
-    - `cloud_security_compliance.py`
     - `_endpoint/__init__.py`
     - `_endpoint/_cloud_security_compliance.py`
     - `_endpoint/deprecated/__init__.py`
     - `_endpoint/deprecated/_cloud_security_compliance.py`
+    - `__init__.py`
+    - `cloud_security_compliance.py`
     > Unit testing expanded to complete code coverage.
     - `tests/test_cloud_security_compliance.py`
 
@@ -132,14 +132,14 @@
     - _UpdateCloudGroupExternal_
     - _DeleteCloudGroupsExternal_
     - _ListCloudGroupIDsExternal_
-    - `__init__.py`
-    - `cloud_security.py`
     - `_endpoint/__init__.py`
     - `_endpoint/_cloud_security.py`
-    - `_payload/__init__.py`
-    - `_payload/_cloud_security`
     - `_endpoint/deprecated/__init__.py`
     - `_endpoint/deprecated/_cloud_security.py`
+    - `_payload/__init__.py`
+    - `_payload/_cloud_security`
+    - `__init__.py`
+    - `cloud_security.py`
     > Unit testing expanded to complete code coverage.
     - `tests/test_cloud_security.py`
 
@@ -166,12 +166,12 @@
     - _QueryComplianceControls_
     - _QueryComplianceFrameworks_
     - _QueryRule_
-    - `__init__.py`
-    - `cloud_policies.py`
     - `_endpoint/__init__.py`
     - `_endpoint/_cloud_policies.py`
     - `_payload/__init__.py`
     - `_payload/_cloud_policies.py`
+    - `__init__.py`
+    - `cloud_policies.py`
     > Unit testing expanded to complete code coverage.
     - `tests/test_cloud_policies.py`
 
