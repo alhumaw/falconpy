@@ -17,7 +17,7 @@ sys.path.append(os.path.abspath('src'))
 auth = Authorization.TestAuthorization()
 config = auth.getConfigObject()
 falcon = CloudPolicies(auth_object=config)
-AllowedResponses = [200, 201, 207, 400, 404, 429, 500]
+AllowedResponses = [200, 201, 207, 400, 401, 404, 429, 500]
 
 
 class TestCloudPolicies:
@@ -38,7 +38,7 @@ class TestCloudPolicies:
             "CreateComplianceFramework": falcon.CreateComplianceFramework(body={}),
             "UpdateComplianceFramework": falcon.UpdateComplianceFramework(body={}),
             "DeleteComplianceFramework": falcon.DeleteComplianceFramework(ids="1234567"),
-#           "GetEvaluationResult": falcon.GetEvaluationResult(body={}),
+            "GetEvaluationResult": falcon.GetEvaluationResult(body={}),
             "GetRuleOverride": falcon.GetRuleOverride(ids="1234567"),
             "CreateRuleOverride": falcon.CreateRuleOverride(body={}),
             "UpdateRuleOverride": falcon.UpdateRuleOverride(body={}),
