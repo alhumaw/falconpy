@@ -992,7 +992,6 @@ class CaseManagement(ServiceClass):
         if file:
             # Pop the path variables from the keywords dictionary
             # before processing query string arguments.
-            kwargs.pop("repository")
             try:
                 with open(file, "rb") as upload_file:
                     # Create a multipart form payload for our upload file
