@@ -40,6 +40,12 @@ from ._aspm import (
     aspm_application_payload,
     retrieve_relay_node_payload
 )
+from ._case_management import(
+    case_management_notification_groups_payload,
+    case_management_create_notification_payload,
+    case_management_sla_payload,
+    case_management_template_payload
+    )
 from ._correlation_rules import correlation_rules_payload, correlation_rules_export_payload
 from ._host_group import host_group_create_payload, host_group_update_payload
 from ._recon import (
@@ -215,5 +221,6 @@ __all__ = [
     "cloud_policies_evaluation_payload", "cloud_security_create_group_payload", "correlation_rules_admin_payload", 
     "data_protection_classification_payload", "data_protection_cloud_app_payload", "data_protection_content_pattern_payload",
     "data_protection_enterprise_account_payload", "data_protection_sensitivity_label_payload", "data_protection_policy_payload",
-    "data_protection_web_locations_payload"
+    "data_protection_web_locations_payload", "case_management_notification_groups_payload", 
+    "case_management_create_notification_payload", "case_management_sla_payload", "case_management_template_payload"
 ]

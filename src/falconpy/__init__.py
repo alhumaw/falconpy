@@ -110,6 +110,7 @@ from .api_integrations import APIIntegrations
 from .api_complete import APIHarness, APIHarnessV2
 from .aspm import ASPM
 from .cao_hunting import CAOHunting
+from .case_management import CaseManagement
 from .certificate_based_exclusions import CertificateBasedExclusions
 from .cloud_aws_registration import CloudAWSRegistration
 from .cloud_azure_registration import CloudAzureRegistration
@@ -260,7 +261,7 @@ __all__ = [
     "InvalidRoute", "InvalidServiceCollection", "InvalidOperationSearch", "ITAutomation", "F4IT",
     "CloudPolicies", "CloudSecurity", "CloudSecurityCompliance", "CloudSecurityDetections",
     "CorrelationRulesAdmin", "DataProtectionConfiguration", "SaasSecurity", 
-    "SpotlightVulnerabilityMetadata"
+    "SpotlightVulnerabilityMetadata", "CaseManagement"
     ]
 """
 This is free and unencumbered software released into the public domain.

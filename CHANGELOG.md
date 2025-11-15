@@ -1,5 +1,57 @@
 # Version 1.5.5
 ## Added features and functionality
+
++ Added: Added the new __Case Management__ service collection with 39 operations.
+    - _aggregates_file_details_post_v1_
+    - _combined_file_details_get_v1_
+    - _entities_file_details_get_v1_
+    - _entities_file_details_patch_v1_
+    - _entities_files_bulk_download_post_v1_
+    - _entities_files_download_get_v1_
+    - _entities_files_upload_post_v1_
+    - _entities_files_delete_v1_
+    - _queries_file_details_get_v1_
+    - _aggregates_notification_groups_post_v1_
+    - _aggregates_notification_groups_post_v2_
+    - _aggregates_slas_post_v1_
+    - _aggregates_templates_post_v1_
+    - _entities_fields_get_v1_
+    - _entities_notification_groups_get_v1_
+    - _entities_notification_groups_post_v1_
+    - _entities_notification_groups_patch_v1_
+    - _entities_notification_groups_delete_v1_
+    - _entities_notification_groups_get_v2_
+    - _entities_notification_groups_post_v2_
+    - _entities_notification_groups_patch_v2_
+    - _entities_notification_groups_delete_v2_
+    - _entities_slas_get_v1_
+    - _entities_slas_post_v1_
+    - _entities_slas_patch_v1_
+    - _entities_slas_delete_v1_
+    - _entities_template_snapshots_get_v1_
+    - _entities_templates_export_get_v1_
+    - _entities_templates_import_post_v1_
+    - _entities_templates_get_v1_
+    - _entities_templates_post_v1_
+    - _entities_templates_patch_v1_
+    - _entities_templates_delete_v1_
+    - _queries_fields_get_v1_
+    - _queries_notification_groups_get_v1_
+    - _queries_notification_groups_get_v2_
+    - _queries_slas_get_v1_
+    - _queries_template_snapshots_get_v1_
+    - _queries_templates_get_v1_
+    - `_endpoint/__init__.py`
+    - `_endpoint/_case_management.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/_case_management.py`
+    - `_payload/__init__.py`
+    - `_payload/_case_management.py`
+    - `__init__.py`
+    - `case_management.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_case_management.py`
+
 + Added: Added the new __SaaS Security__ service collection with 24 operations.
     - _GetMetricsV3_
     - _GetAlertsV3_
