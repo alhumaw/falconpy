@@ -227,6 +227,12 @@
     > Unit testing expanded to complete code coverage.
     - `tests/test_cloud_policies.py`
 
+## Other 
++ Deprecated: Moved the _get\_/executor\_nodes/{ID:[0-9]+}/instances/csv_, _delete\_/group/{ID:[0-9]+}_, _post\_/group/{ID:[0-9]+}/update_default_, _get\_/group/{ID:[0-9]+}/v2_, and _post\_/group/{ID:[0-9]+}/v2_ operations within the __ASPM__ service collection to a deprecated status.
+    - `_endpoint/__init__.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/aspm.py`
+
 # Version 1.5.4
 ## Added features and functionality
 + Added: Added _tag_key_ and _tag_value_ as allowed values for the `filter` parameter in the _cloud_security_assets_combined_compliance_by_account_ operation within the __Cloud Security Assets__ service collection.
