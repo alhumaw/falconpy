@@ -136,6 +136,7 @@ from .cspm_registration import CSPMRegistration
 from .custom_ioa import CustomIOA
 from .custom_storage import CustomStorage
 from .d4c_registration import D4CRegistration
+from .data_protection_configuration import DataProtectionConfiguration
 from .delivery_settings import DeliverySettings
 from .deployments import Deployments
 from .detects import Detects
@@ -256,7 +257,7 @@ __all__ = [
     "Color", "Indicator", "random_string", "KubernetesContainerCompliance", "find_operation",
     "InvalidRoute", "InvalidServiceCollection", "InvalidOperationSearch", "ITAutomation", "F4IT",
     "CloudSecurityCompliance", "CloudPolicies", "CloudSecurity", "CloudSecurityDetections",
-    "CorrelationRulesAdmin"
+    "CorrelationRulesAdmin", "DataProtectionConfiguration"
     ]
 """
 This is free and unencumbered software released into the public domain.

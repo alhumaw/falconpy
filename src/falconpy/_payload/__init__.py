@@ -82,6 +82,15 @@ from ._container import (
     inventory_scan_payload
     )
 from ._content_update_policy import content_update_policy_action_payload, content_update_policy_payload
+from ._data_protection_configuration import(
+    data_protection_classification_payload,
+    data_protection_cloud_app_payload,
+    data_protection_content_pattern_payload,
+    data_protection_enterprise_account_payload,
+    data_protection_sensitivity_label_payload,
+    data_protection_policy_payload,
+    data_protection_web_locations_payload
+    )
 from ._delivery_settings import delivery_settings_payload
 from ._detects import update_detects_payload
 from ._identity_protection import idp_policy_payload
@@ -201,9 +210,10 @@ __all__ = [
     "retrieve_relay_node_payload", "inventory_scan_payload", "cloud_azure_registration_create_payload",
     "task_payload", "task_execution_payload", "execution_results_search_payload", "rerun_payload",
     "scheduled_task_payload", "automation_policy_payload", "policy_host_group_payload",
-    "automation_live_query_payload", "cloud_policies_rule_assign_payload", 
-    "cloud_policies_compliance_control_payload", "cloud_policies_evaluation_payload",
-    "cloud_policies_rule_override_payload", "cloud_policies_rule_create_payload",
-    "cloud_policies_rule_update_payload", "cloud_security_create_group_payload",
-    "correlation_rules_admin_payload"
+    "automation_live_query_payload", "cloud_policies_rule_assign_payload", "cloud_policies_compliance_control_payload",
+    "cloud_policies_evaluation_payload", "cloud_policies_rule_override_payload", "cloud_policies_rule_create_payload",
+    "cloud_policies_rule_update_payload", "cloud_security_create_group_payload", "correlation_rules_admin_payload",
+    "data_protection_classification_payload", "data_protection_cloud_app_payload", "data_protection_content_pattern_payload",
+    "data_protection_enterprise_account_payload", "data_protection_sensitivity_label_payload", 
+    "data_protection_policy_payload", "data_protection_web_locations_payload"
 ]
