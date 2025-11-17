@@ -199,6 +199,7 @@ from .sensor_usage import SensorUsage
 from .sensor_visibility_exclusions import SensorVisibilityExclusions
 from .serverless_vulnerabilities import ServerlessVulnerabilities
 from .spotlight_vulnerabilities import SpotlightVulnerabilities
+from .spotlight_vulnerability_metadata import SpotlightVulnerabilityMetadata
 from .spotlight_evaluation_logic import SpotlightEvaluationLogic
 from .tailored_intelligence import TailoredIntelligence
 from .threatgraph import ThreatGraph
@@ -257,7 +258,7 @@ __all__ = [
     "Color", "Indicator", "random_string", "KubernetesContainerCompliance", "find_operation",
     "InvalidRoute", "InvalidServiceCollection", "InvalidOperationSearch", "ITAutomation", "F4IT",
     "CloudSecurityCompliance", "CloudPolicies", "CloudSecurity", "CloudSecurityDetections",
-    "CorrelationRulesAdmin", "DataProtectionConfiguration"
+    "CorrelationRulesAdmin", "DataProtectionConfiguration", "SpotlightVulnerabilityMetadata"
     ]
 """
 This is free and unencumbered software released into the public domain.
