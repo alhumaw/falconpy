@@ -26,6 +26,7 @@ from .deprecated import _cloud_oci_registration_deprecated
 from .deprecated import _cloud_security_deprecated
 from .deprecated import _cloud_security_assets_deprecated
 from .deprecated import _cloud_security_compliance_deprecated
+from .deprecated import _cloud_security_detections_deprecated
 from .deprecated import _correlation_rules_deprecated
 from .deprecated import _custom_ioa_deprecated
 from .deprecated import _d4c_registration_deprecated
@@ -60,6 +61,7 @@ from ._cloud_oci_registration import _cloud_oci_registration_endpoints
 from ._cloud_policies import _cloud_policies_endpoints
 from ._cloud_security_assets import _cloud_security_assets_endpoints
 from ._cloud_security_compliance import _cloud_security_compliance_endpoints
+from ._cloud_security_detections import _cloud_security_detections_endpoints
 from ._cloud_security import _cloud_security_endpoints
 from ._cloud_connect_aws import _cloud_connect_aws_endpoints
 from ._cloud_snapshots import _cloud_snapshots_endpoints
@@ -160,6 +162,7 @@ api_endpoints.extend(_cloud_oci_registration_endpoints)
 api_endpoints.extend(_cloud_policies_endpoints)
 api_endpoints.extend(_cloud_security_assets_endpoints)
 api_endpoints.extend(_cloud_security_compliance_endpoints)
+api_endpoints.extend(_cloud_security_detections_endpoints)
 api_endpoints.extend(_cloud_security_endpoints)
 api_endpoints.extend(_cloud_snapshots_endpoints)
 api_endpoints.extend(_container_image_compliance_endpoints)
@@ -253,6 +256,7 @@ deprecated_endpoints.extend(_cloud_azure_registration_deprecated)
 deprecated_endpoints.extend(_cloud_oci_registration_deprecated)
 deprecated_endpoints.extend(_cloud_security_assets_deprecated)
 deprecated_endpoints.extend(_cloud_security_compliance_deprecated)
+deprecated_endpoints.extend(_cloud_security_detections_deprecated)
 deprecated_endpoints.extend(_cloud_security_deprecated)
 deprecated_endpoints.extend(_correlation_rules_deprecated)
 deprecated_endpoints.extend(_certificate_based_exclusions_deprecated)
