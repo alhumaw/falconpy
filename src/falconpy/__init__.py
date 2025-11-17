@@ -191,6 +191,7 @@ from .real_time_response import RealTimeResponse
 from .recon import Recon
 from .report_executions import ReportExecutions
 from .response_policies import ResponsePolicies
+from .saas_security import SaasSecurity
 from .sample_uploads import SampleUploads
 from .scheduled_reports import ScheduledReports
 from .sensor_download import SensorDownload
@@ -258,7 +259,8 @@ __all__ = [
     "Color", "Indicator", "random_string", "KubernetesContainerCompliance", "find_operation",
     "InvalidRoute", "InvalidServiceCollection", "InvalidOperationSearch", "ITAutomation", "F4IT",
     "CloudSecurityCompliance", "CloudPolicies", "CloudSecurity", "CloudSecurityDetections",
-    "CorrelationRulesAdmin", "DataProtectionConfiguration", "SpotlightVulnerabilityMetadata"
+    "CorrelationRulesAdmin", "DataProtectionConfiguration", "SpotlightVulnerabilityMetadata",
+    "SaasSecurity"
     ]
 """
 This is free and unencumbered software released into the public domain.
