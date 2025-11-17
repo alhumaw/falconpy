@@ -61,6 +61,14 @@ from ._cloud_oci_registration import (
     cloud_oci_validate_payload,
     cloud_oci_create_payload
     )
+from ._cloud_policies import(
+    cloud_policies_rule_assign_payload,
+    cloud_policies_compliance_control_payload,
+    cloud_policies_evaluation_payload,
+    cloud_policies_rule_override_payload,
+    cloud_policies_rule_create_payload,
+    cloud_policies_rule_update_payload
+    )
 from ._container import (
     image_payload,
     registry_payload,
@@ -191,5 +199,8 @@ __all__ = [
     "retrieve_relay_node_payload", "inventory_scan_payload", "cloud_azure_registration_create_payload",
     "task_payload", "task_execution_payload", "execution_results_search_payload", "rerun_payload",
     "scheduled_task_payload", "automation_policy_payload", "policy_host_group_payload",
-    "automation_live_query_payload"
+    "automation_live_query_payload", "cloud_policies_rule_assign_payload", 
+    "cloud_policies_compliance_control_payload", "cloud_policies_evaluation_payload",
+    "cloud_policies_rule_override_payload", "cloud_policies_rule_create_payload",
+    "cloud_policies_rule_update_payload"
 ]
