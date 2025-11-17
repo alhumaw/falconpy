@@ -16,12 +16,138 @@
     - `_endpoint/_cao_hunting.py`
     - `cao_hunting.py`
 
++ Added: Added the new __Case Management__ service collection with 39 operations.
+    - _aggregates_file_details_post_v1_
+    - _combined_file_details_get_v1_
+    - _entities_file_details_get_v1_
+    - _entities_file_details_patch_v1_
+    - _entities_files_bulk_download_post_v1_
+    - _entities_files_download_get_v1_
+    - _entities_files_upload_post_v1_
+    - _entities_files_delete_v1_
+    - _queries_file_details_get_v1_
+    - _aggregates_notification_groups_post_v1_
+    - _aggregates_notification_groups_post_v2_
+    - _aggregates_slas_post_v1_
+    - _aggregates_templates_post_v1_
+    - _entities_fields_get_v1_
+    - _entities_notification_groups_get_v1_
+    - _entities_notification_groups_post_v1_
+    - _entities_notification_groups_patch_v1_
+    - _entities_notification_groups_delete_v1_
+    - _entities_notification_groups_get_v2_
+    - _entities_notification_groups_post_v2_
+    - _entities_notification_groups_patch_v2_
+    - _entities_notification_groups_delete_v2_
+    - _entities_slas_get_v1_
+    - _entities_slas_post_v1_
+    - _entities_slas_patch_v1_
+    - _entities_slas_delete_v1_
+    - _entities_template_snapshots_get_v1_
+    - _entities_templates_export_get_v1_
+    - _entities_templates_import_post_v1_
+    - _entities_templates_get_v1_
+    - _entities_templates_post_v1_
+    - _entities_templates_patch_v1_
+    - _entities_templates_delete_v1_
+    - _queries_fields_get_v1_
+    - _queries_notification_groups_get_v1_
+    - _queries_notification_groups_get_v2_
+    - _queries_slas_get_v1_
+    - _queries_template_snapshots_get_v1_
+    - _queries_templates_get_v1_
+    - `_endpoint/__init__.py`
+    - `_endpoint/_case_management.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/_case_management.py`
+    - `_payload/__init__.py`
+    - `_payload/_case_management.py`
+    - `__init__.py`
+    - `case_management.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_case_management.py`
+
 + Added: Added new _cloud_registration_azure_trigger_health_check_ operation to the __Cloud Azure Registration__ service collection.
     - `_endpoint/_cloud_azure_registration.py`
     - `_endpoint/deprecated/_cloud_azure_registration.py`
     - `cloud_azure_registration.py`
     > Unit testing expanded to complete code coverage.
     - `tests/test_cloud_azure_registration.py`
+
++ Added: Added the new __Cloud Security Compliance__ service collection with 2 operations.
+    - _cloud_compliance_framework_posture_summaries_
+    - _cloud_compliance_rule_posture_summaries_
+    - `_endpoint/__init__.py`
+    - `_endpoint/_cloud_security_compliance.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/_cloud_security_compliance.py`
+    - `__init__.py`
+    - `cloud_security_compliance.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_cloud_security_compliance.py`
+
++ Added: Added the new __Cloud Security Detections__ service collection with 2 operations.
+    - _cspm_evaluations_iom_entities_
+    - _cspm_evaluations_iom_queries_
+    - `_endpoint/__init__.py`
+    - `_endpoint/_cloud_security_detections.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/_cloud_security_detections.py`
+    - `__init__.py`
+    - `cloud_security_detections.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_cloud_security_detections.py`
+
++ Added: Added the new __Cloud Policies__ service collection with 22 operations.
+    - _ReplaceControlRules_
+    - _GetComplianceControls_
+    - _CreateComplianceControl_
+    - _UpdateComplianceControl_
+    - _DeleteComplianceControl_
+    - _RenameSectionComplianceFramework_
+    - _GetComplianceFrameworks_
+    - _CreateComplianceFramework_
+    - _UpdateComplianceFramework_
+    - _DeleteComplianceFramework_
+    - _GetEvaluationResult_
+    - _GetRuleOverride_
+    - _CreateRuleOverride_
+    - _UpdateRuleOverride_
+    - _DeleteRuleOverride_
+    - _GetRule_
+    - _CreateRule_
+    - _UpdateRule_
+    - _DeleteRuleMixin0_
+    - _QueryComplianceControls_
+    - _QueryComplianceFrameworks_
+    - _QueryRule_
+    - `_endpoint/__init__.py`
+    - `_endpoint/_cloud_policies.py`
+    - `_payload/__init__.py`
+    - `_payload/_cloud_policies.py`
+    - `__init__.py`
+    - `cloud_policies.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_cloud_policies.py`
+
++ Added: Added the new __Cloud Security__ service collection with 7 operations.
+    - _combined_cloud_risks_
+    - _ListCloudGroupsExternal_
+    - _ListCloudGroupsByIDExternal_
+    - _CreateCloudGroupExternal_
+    - _UpdateCloudGroupExternal_
+    - _DeleteCloudGroupsExternal_
+    - _ListCloudGroupIDsExternal_
+    - `_endpoint/__init__.py`
+    - `_endpoint/_cloud_security.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/_cloud_security.py`
+    - `_payload/__init__.py`
+    - `_payload/_cloud_security`
+    - `__init__.py`
+    - `cloud_security.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_cloud_security.py`
 
 + Added: Added new filter option (`control.extension.status`) as an allowed value to the _cloud_security_assets_combined_compliance_by_account_ operation within the __Cloud Security Assets__ service collection.
     - `_endpoint/_cloud_security_assets.py`
@@ -49,9 +175,70 @@
     > Unit testing expanded to complete code coverage.
     - `tests/test_cloud_snapshots.py`
 
++ Added: Added the new __Correlation Rules Admin__ service collection with 1 operation.
+    - _entities_rules_ownership_put_v1_
+    - `_endpoint/__init__.py`
+    - `_endpoint/_correlation_rules_admin.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/_correlation_rules_admin.py`
+    - `_payload/__init__.py`
+    - `_payload/_correlation_rules_admin.py`
+    - `__init__.py`
+    - `correlation_rules_admin.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_correlation_rules_admin.py`
+
 + Added: Added `dspm_host_account_id`, `dspm_host_integration_role_name`, and `dspm_host_scanner_role_name` arguments to the _GetD4CAWSAccountScriptsAttachment_ operation within the __D4C Registration__ service collection.
     - `_endpoint/_d4c_registration.py`
     - `d4c_registration.py`
+
++ Added: Added the new __Data Protection Configuration__ service collection with 36 operations.
+    - _entities_classification_get_v2_
+    - _entities_classification_post_v2_
+    - _entities_classification_patch_v2_
+    - _entities_classification_delete_v2_
+    - _entities_cloud_application_get_
+    - _entities_cloud_application_create_
+    - _entities_cloud_application_patch_
+    - _entities_cloud_application_delete_
+    - _entities_content_pattern_get_
+    - _entities_content_pattern_create_
+    - _entities_content_pattern_patch_
+    - _entities_content_pattern_delete_
+    - _entities_enterprise_account_get_
+    - _entities_enterprise_account_create_
+    - _entities_enterprise_account_patch_
+    - _entities_enterprise_account_delete_
+    - _entities_file_type_get_
+    - _entities_sensitivity_label_get_v2_
+    - _entities_sensitivity_label_create_v2_
+    - _entities_sensitivity_label_delete_v2_
+    - _entities_policy_get_v2_
+    - _entities_policy_post_v2_
+    - _entities_policy_patch_v2_
+    - _entities_policy_delete_v2_
+    - _entities_web_location_get_v2_
+    - _entities_web_location_create_v2_
+    - _entities_web_location_patch_v2_
+    - _entities_web_location_delete_v2_
+    - _queries_classification_get_v2_
+    - _queries_cloud_application_get_v2_
+    - _queries_content_pattern_get_v2_
+    - _queries_enterprise_account_get_v2_
+    - _queries_file_type_get_v2_
+    - _queries_sensitivity_label_get_v2_
+    - _queries_policy_get_v2_
+    - _queries_web_location_get_v2_
+    - `_endpoint/__init__.py`
+    - `_endpoint/_data_protection_configuration.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/_data_protection_configuration.py`
+    - `_payload/__init__.py`
+    - `_payload/_data_protection_configuration.py`
+    - `__init__.py`
+    - `data_protection_configuration.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_data_protection_configuration.py`
 
 + Added: Added `facet` argument to the _combined_applications_ operation within the __Discover__ service collection.
     - `_endpoint/_discover.py`
@@ -110,12 +297,50 @@
 + Updated: Adds the `file_name` argument to the _UploadFileQuickScanPro_ operation within the __Quick Scan Pro__ service collection.
     - `_endpoint/_quick_scan_pro.py`
 
++ Added: Added the new __SaaS Security__ service collection with 24 operations.
+    - _GetMetricsV3_
+    - _GetAlertsV3_
+    - _GetAppInventoryUsers_
+    - _GetAppInventory_
+    - _GetSecurityCheckAffectedV3_
+    - _DismissAffectedEntityV3_
+    - _DismissSecurityCheckV3_
+    - _GetSecurityChecksV3_
+    - _GetSecurityCheckComplianceV3_
+    - _IntegrationBuilderEndTransactionV3_
+    - _IntegrationBuilderResetV3_
+    - _IntegrationBuilderGetStatusV3_
+    - _IntegrationBuilderUploadV3_
+    - _GetAssetInventoryV3_
+    - _GetDeviceInventoryV3_
+    - _GetIntegrationsV3_
+    - _GetActivityMonitorV3_
+    - _GetSupportedSaasV3_
+    - _GetSystemLogsV3_
+    - _GetSystemUsersV3_
+    - _GetUserInventoryV3_
+    - `_endpoint/__init__.py`
+    - `_endpoint/_saas_security.py`
+    - `__init__.py`
+    - `saas_security.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_saas_security.py`
+
 + Added: Added new _GetSensorUsageHourly_ operation to the __Sensor Usage__ service collection.
     - `_endpoint/_sensor_usage.py`
     - `sensor_usage.py`
     > Unit testing expanded to complete code coverage.
     - `tests/test_sensor_usage.py`
     > Thanks go out to @atav982 for submitting this update! 🙇
+
++ Added: Added the new __Spotlight Vulnerability Metadata__ service collection with 1 operation.
+    - _combineVulnMetadataExt_
+    - `_endpoint/__init__.py`
+    - `_endpoint/_spotlight_vulnerability_metadata.py`
+    - `__init__.py`
+    - `spotlight_vulnerability_metadata.py`
+    > Unit testing expanded to complete code coverage.
+    - `tests/test_spotlight_vulnerability_metadata.py`
 
 + Added: Added "uuid" as an allowed `filter` value in the _queryUserV1_ operation within the __User Management__ service collection.
     - `_endpoint/_user_management.py`
@@ -153,6 +378,11 @@
 
 
 ## Other
++ Deprecated: Moved the _get\_/executor\_nodes/{ID:[0-9]+}/instances/csv_, _delete\_/group/{ID:[0-9]+}_, _post\_/group/{ID:[0-9]+}/update_default_, _get\_/group/{ID:[0-9]+}/v2_, and _post\_/group/{ID:[0-9]+}/v2_ operations within the __ASPM__ service collection to a deprecated status.
+    - `_endpoint/__init__.py`
+    - `_endpoint/deprecated/__init__.py`
+    - `_endpoint/deprecated/aspm.py`
+
 + Updated: Cosmetic updates to operation descriptions for the _GetIntelligenceQueries_ and _SearchIntelligenceQueries_ operations within the __CAO Hunting__ service collection.
     - `_endpoint/_cao_hunting.py`
 
