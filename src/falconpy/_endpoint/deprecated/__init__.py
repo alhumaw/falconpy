@@ -40,6 +40,7 @@ from ._cloud_security_compliance import _cloud_security_compliance_endpoints
 from ._cloud_security_detections import _cloud_security_detections_endpoints
 from ._custom_ioa import _custom_ioa_endpoints
 from ._correlation_rules import _correlation_rules_endpoints
+from ._correlation_rules_admin import _correlation_rules_admin_endpoints
 from ._d4c_registration import _d4c_registration_endpoints
 from ._datascanner import _datascanner_endpoints
 from ._device_content import _device_content_endpoints
@@ -69,6 +70,7 @@ _cloud_security_assets_deprecated = _cloud_security_assets_endpoints
 _cloud_security_compliance_deprecated = _cloud_security_compliance_endpoints
 _cloud_security_detections_deprecated = _cloud_security_detections_endpoints
 _correlation_rules_deprecated = _correlation_rules_endpoints
+_correlation_rules_admin_deprecated = _correlation_rules_admin_endpoints
 _custom_ioa_deprecated = _custom_ioa_endpoints
 _d4c_registration_deprecated = _d4c_registration_endpoints
 _datascanner_deprecated = _datascanner_endpoints

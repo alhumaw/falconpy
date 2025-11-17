@@ -41,6 +41,7 @@ from ._aspm import (
     retrieve_relay_node_payload
 )
 from ._correlation_rules import correlation_rules_payload, correlation_rules_export_payload
+from ._correlation_rules_admin import correlation_rules_admin_payload
 from ._host_group import host_group_create_payload, host_group_update_payload
 from ._recon import (
     recon_action_payload,
@@ -203,5 +204,6 @@ __all__ = [
     "automation_live_query_payload", "cloud_policies_rule_assign_payload", 
     "cloud_policies_compliance_control_payload", "cloud_policies_evaluation_payload",
     "cloud_policies_rule_override_payload", "cloud_policies_rule_create_payload",
-    "cloud_policies_rule_update_payload", "cloud_security_create_group_payload"
+    "cloud_policies_rule_update_payload", "cloud_security_create_group_payload",
+    "correlation_rules_admin_payload"
 ]
