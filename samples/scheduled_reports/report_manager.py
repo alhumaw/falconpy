@@ -143,7 +143,7 @@ class Reports:
         
         Returns: list containing requested data from API.
         """
-        response = self.falcon.query_reports(limit=10000000)
+        response = self.falcon.query_reports(limit=2000)
         code = response.get('status_code', 500)
         if code == 200:
             report_ids = response['body']['resources']
