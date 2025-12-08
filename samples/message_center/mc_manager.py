@@ -127,7 +127,7 @@ class MessageCenterManager:
         self.message_center = message_center
         self.user_management = user_management
 
-    def query_messages(self, filter: str = None):
+    def query_messages(self, filter: str = None) -> list:
         """Query messages.
 
         Parameters:
