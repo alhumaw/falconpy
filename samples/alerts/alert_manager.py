@@ -12,16 +12,19 @@ to query, retrieve, and manage security alerts.
 
 USAGE EXAMPLES:
     # List alerts with filter
-    python alert_manager.py -k $KEY -s $SECRET --list --filter "product:'automated-lead'"
+    python3 alert_manager.py -k $KEY -s $SECRET --list --filter "product:'automated-lead'"
     
     # View specific alert details
-    python alert_manager.py -k $KEY -s $SECRET --view <composite_id>
+    python3 alert_manager.py -k $KEY -s $SECRET --view <composite_id>
     
     # Update alert status
-    python alert_manager.py -k $KEY -s $SECRET --update <composite_id> --status closed
+    python3 alert_manager.py -k $KEY -s $SECRET --update <composite_id> --status closed
     
     # Export to JSON
-    python alert_manager.py -k $KEY -s $SECRET --list --filter "severity:'High'" --export
+    python3 alert_manager.py -k $KEY -s $SECRET --list --filter "severity:'High'" --export
+
+    # Identify CAP_SYS_ADMIN alerts for vulnerable containers
+    python3 alert_manager.py -k $KEY -s $SECRET --filter "description:*'*CAP_SYS_ADMIN*'" -l
 
 Creation date: 12.4.25 - alhumaw
 """
