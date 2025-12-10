@@ -40,12 +40,6 @@ except ImportError as no_stix2:
                      "Install it with `python3 -m pip install stix2`."
                      ) from no_stix2
 try:
-    from tabulate import tabulate
-except ImportError as no_tabulate:
-    raise SystemExit("The tabulate library must be installed.\n"
-                     "Install it with `python3 -m pip install tabulate`."
-                     ) from no_tabulate
-try:
     from falconpy import ThreatGraph, Hosts, APIError
 except ImportError as no_falconpy:
     raise SystemExit("The CrowdStrike FalconPy library must be installed.\n"
@@ -56,20 +50,19 @@ except ImportError as no_falconpy:
 def parse_command_line() -> Namespace:
     """Parse any provided command line arguments and return the namespace."""
     parser = ArgumentParser(description=__doc__, formatter_class=RawTextHelpFormatter)
-    
+
     require = parser.add_argument_group("required arguments")
     require.add_argument("-k", "--client_id", required=True, help="CrowdStrike API client ID")
     require.add_argument("-s", "--client_secret", required=True, help="CrowdStrike API client secret")
-    
+
     parser.add_argument("-d", "--debug", help="Enable API debugging", action="store_true", default=False)
-    
+
     action_group = parser.add_mutually_exclusive_group(required=True)
     action_group.add_argument("-f", "--file", help="The file containing the IOCs")
     parser.add_argument("-o", "--output", default=None, help="File name to output results.")
     parser.add_argument("--type", default="json", help="Type of export: csv, json(default).", choices=['json', 'csv'])
     parsed = parser.parse_args()
 
-    
     if parsed.debug:
         logging.basicConfig(level=logging.DEBUG)
 
@@ -79,7 +72,7 @@ def parse_command_line() -> Namespace:
     return parsed
 
 
-def connect_api(key: str, secret: str, debug: bool):
+def connect_api(key: str, secret: str, debug: bool) -> tuple:
     """Connect to the CrowdStrike API and return an MessageCenter instance.
     
     Parameters:
@@ -92,7 +85,10 @@ def connect_api(key: str, secret: str, debug: bool):
     try:
         if debug:
             logging.basicConfig(level=logging.DEBUG)
-        return ThreatGraph(client_id=key, client_secret=secret, debug=debug), Hosts(client_id=key, client_secret=secret, debug=debug)
+        return (
+            ThreatGraph(client_id=key, client_secret=secret, debug=debug),
+            Hosts(client_id=key, client_secret=secret, debug=debug)
+            )
     except APIError as e:
         print(f"Failed to connect to API: {e}")
         return e
@@ -128,11 +124,11 @@ class STIXHandler:
         self.file_name = file_name
         self.objects = {}
 
-    def parse_file(self) -> None:
+    def parse_file(self):
         """Parse the file to instantiate a STIX2 object."""
         indicators = {}
         try:
-            with open(self.file_name, "r") as f:
+            with open(self.file_name, "r", encoding='utf-8') as f:
                 file = f.read()
                 indicators = json.loads(file)
         except FileNotFoundError:
@@ -147,9 +143,8 @@ class STIXHandler:
         if stix_obj.type == 'bundle':
             obj = stix_obj.objects
             return self._set_objects(stix_obj=obj)
-        else:
-            obj = [stix_obj]
-            return self._set_objects(stix_obj=obj)
+        obj = [stix_obj]
+        return self._set_objects(stix_obj=obj)
 
     def _set_objects(self, stix_obj: list[str]):
         print(f"\n[1] Collecting indicators from file: {self.file_name}....")
@@ -425,7 +420,7 @@ class ThreatGraphManager:
                                     filename = file['path'].split('\\')[-1] if file['path'] else 'Unknown'
                                     print(f"\t\t\t\t\t- {filename}")
                 else:
-                    print(f"\n\t\tProcess Activity: No process details available")
+                    print("\n\t\tProcess Activity: No process details available")
 
         # Summary
         total_obs = len(self.observations)
