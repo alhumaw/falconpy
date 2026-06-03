@@ -281,6 +281,14 @@ _workflows_endpoints = [
         "description": "When enabled, prevents saving workflow after validating",
         "name": "validate_only",
         "in": "query"
+      },
+      {
+        "type": "boolean",
+        "default": False,
+        "description": "When true, populates the definition model with Activity metadata which includes "
+        "Activity Dependency and Vendor",
+        "name": "include_activity_metadata",
+        "in": "query"
       }
     ]
   ],
@@ -301,6 +309,27 @@ _workflows_endpoints = [
       {
         "name": "body",
         "in": "body",
+        "required": True
+      }
+    ]
+  ],
+  [
+    "WorkflowDefinitionsDelete",
+    "DELETE",
+    "/workflows/entities/definitions/v1",
+    "Accepts a list of workflow definition IDs and deletes those definitions and all their associated versions.",
+    "workflows",
+    [
+      {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "collectionFormat": "multi",
+        "maxItems": 5000,
+        "description": "IDs of the workflow definitions to delete",
+        "name": "ids",
+        "in": "query",
         "required": True
       }
     ]
@@ -476,6 +505,18 @@ _workflows_endpoints = [
         "name": "ids",
         "in": "query",
         "required": True
+      },
+      {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "collectionFormat": "csv",
+        "maxItems": 4,
+        "description": "Fields to omit from the response; valid values are (trigger, activities, flows, "
+        "submodels). When specified, the corresponding node-level details are skipped.",
+        "name": "skip_fields",
+        "in": "query"
       }
     ]
   ],
