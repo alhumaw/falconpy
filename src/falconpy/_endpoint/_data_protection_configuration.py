@@ -432,7 +432,7 @@ _data_protection_configuration_endpoints = [
     "entities_local_application_group_get",
     "GET",
     "/data-protection/entities/local-application-groups/v1",
-    "Get particular local application groups",
+    "Get specific local application groups",
     "data_protection_configuration",
     [
       {
@@ -720,7 +720,7 @@ _data_protection_configuration_endpoints = [
         "items": {
           "type": "string"
         },
-        "collectionFormat": "csv",
+        "collectionFormat": "multi",
         "description": "The ids of the web-location to delete.",
         "name": "ids",
         "in": "query",
@@ -760,9 +760,9 @@ _data_protection_configuration_endpoints = [
       {
         "type": "string",
         "description": "Filter results by specific attributes , allowed attributes are [name created_at "
-        "created_by properties.content_patterns properties.content_patterns_operator properties.file_types "
-        "properties.sensitivity_labels modified_by modified_at properties.evidence_duplication_enabled "
-        "properties.protection_mode properties.web_sources]",
+        "modified_by modified_at properties.content_patterns properties.evidence_duplication_enabled "
+        "properties.protection_mode properties.web_sources created_by properties.content_patterns_operator "
+        "properties.file_types properties.sensitivity_labels]",
         "name": "filter",
         "in": "query"
       },
@@ -1060,23 +1060,24 @@ _data_protection_configuration_endpoints = [
       {
         "type": "string",
         "description": "Filter results by specific attributes , allowed attributes are "
-        "[properties.similarity_detection properties.network_inspection_files_exceeding_size_limit "
-        "properties.classifications properties.be_paste_clipboard_min_size_unit properties.be_paste_clipboard_max_size "
-        "modified_by properties.inspection_depth properties.allow_notifications properties.besplash_custom_message "
-        "description is_default created_by properties.unsupported_browsers_action properties.similarity_threshold "
-        "properties.enable_clipboard_inspection properties.evidence_duplication_enabled_default "
-        "properties.be_exclude_domains precedence properties.evidence_encrypted_enabled "
-        "properties.be_upload_timeout_duration_seconds properties.be_paste_timeout_response "
-        "properties.be_paste_clipboard_max_size_unit properties.be_paste_clipboard_over_size_behaviour_block "
-        "properties.max_file_size_to_inspect is_enabled properties.min_confidence_level "
-        "properties.max_file_size_to_inspect_unit properties.browsers_without_active_extension "
-        "properties.block_all_data_access properties.enable_end_user_notifications_unsupported_browser "
-        "properties.block_notifications properties.evidence_download_enabled name created_at modified_at "
-        "properties.custom_block_notification properties.enable_network_inspection properties.besplash_enabled "
-        "properties.be_paste_timeout_duration_milliseconds properties.be_paste_clipboard_min_size "
-        "properties.custom_allow_notification properties.besplash_message_source properties.be_upload_timeout_response "
-        "properties.evidence_storage_free_disk_perc properties.evidence_storage_max_size "
-        "properties.enable_content_inspection properties.enable_context_inspection]",
+        "[properties.evidence_storage_free_disk_perc properties.max_file_size_to_inspect properties.euj_dialog_timeout "
+        "created_by properties.classifications properties.be_exclude_domains properties.besplash_message_source "
+        "properties.be_paste_timeout_response properties.screen_capture_duration_post_event "
+        "properties.enable_screen_capture name properties.min_confidence_level properties.evidence_encrypted_enabled "
+        "properties.be_upload_timeout_response properties.be_paste_timeout_duration_milliseconds "
+        "properties.be_paste_clipboard_max_size_unit properties.screen_capture_duration_pre_event is_default "
+        "properties.max_file_size_to_inspect_unit properties.similarity_threshold properties.inspection_depth "
+        "properties.network_inspection_files_exceeding_size_limit precedence is_enabled modified_by "
+        "properties.enable_content_inspection properties.block_all_data_access properties.custom_block_notification "
+        "properties.enable_network_inspection properties.besplash_enabled description "
+        "properties.enable_context_inspection properties.browsers_without_active_extension "
+        "properties.enable_end_user_notifications_unsupported_browser properties.be_paste_clipboard_max_size "
+        "properties.be_paste_clipboard_over_size_behaviour_block properties.evidence_storage_max_size created_at "
+        "properties.similarity_detection properties.enable_clipboard_inspection properties.allow_notifications "
+        "properties.block_notifications properties.evidence_download_enabled "
+        "properties.be_upload_timeout_duration_seconds properties.be_paste_clipboard_min_size modified_at "
+        "properties.custom_allow_notification properties.evidence_duplication_enabled_default "
+        "properties.besplash_custom_message properties.be_paste_clipboard_min_size_unit]",
         "name": "filter",
         "in": "query"
       },
