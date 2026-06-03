@@ -105,6 +105,7 @@ from ._ngsiem import (
     SessionManager
 )
 from ._helper import random_string, Indicator, Color, find_operation
+from .access_scopes import AccessScopes
 from .admission_control_policies import AdmissionControlPolicies
 from .alerts import Alerts
 from .api_integrations import APIIntegrations
@@ -276,7 +277,8 @@ __all__ = [
     "SpotlightVulnerabilityMetadata", "ServerlessExports", "ServerlessVulnerabilities",
     "NetworkScanGlobalConfigs", "NetworkScanNetworks", "NetworkScanScanRunReports",
     "NetworkScanScanRuns", "NetworkScanScanners", "NetworkScanScans",
-    "NetworkScanTemplates", "NetworkScanZones", "NetworkScan"
+    "NetworkScanTemplates", "NetworkScanZones", "NetworkScan",
+    "AccessScopes"
     ]
 """
 This is free and unencumbered software released into the public domain.
