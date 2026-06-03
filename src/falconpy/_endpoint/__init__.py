@@ -66,6 +66,7 @@ from .deprecated import _user_management_deprecated
 from .deprecated import _deprecated_operation_mapping
 from .deprecated import _deprecated_class_mapping
 from .deprecated import _zero_trust_assessment_deprecated
+from .deprecated import _falcon_complete_dashboard_deprecated
 
 from ._access_scopes import _access_scopes_endpoints
 from ._admission_control_policies import _admission_control_policies_endpoints
@@ -350,6 +351,7 @@ deprecated_endpoints.extend(_scheduled_reports_deprecated)
 deprecated_endpoints.extend(_user_management_deprecated)
 deprecated_endpoints.extend(_workflows_deprecated)
 deprecated_endpoints.extend(_zero_trust_assessment_deprecated)
+deprecated_endpoints.extend(_falcon_complete_dashboard_deprecated)
 
 # Mapping of manually deprecated endpoints
 operation_deprecation_mapping = _deprecated_operation_mapping
