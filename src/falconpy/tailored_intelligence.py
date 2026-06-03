@@ -131,6 +131,7 @@ class TailoredIntelligence(ServiceClass):
         q -- Match phrase_prefix query criteria; included fields: _all (all filter string fields indexed)
         sort -- The property to sort by. FQL syntax (e.g. updated_date|desc).
                 Available fields: created_date, source_type, updated_date
+        Authorization -- Bearer Token String.
 
         This method only supports keywords for providing arguments.
 
@@ -202,6 +203,7 @@ class TailoredIntelligence(ServiceClass):
                 customer_id     updated_date
                 name            value
                 rule_type
+        Authorization -- Bearer Token String.
 
         This method only supports keywords for providing arguments.
 
