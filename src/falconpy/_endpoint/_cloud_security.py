@@ -47,9 +47,10 @@ _cloud_security_endpoints = [
       {
         "type": "string",
         "description": "FQL string to filter results in Falcon Query Language (FQL). Supported fields:   "
-        "account_id  account_name  asset_gcrn  asset_id  asset_name  asset_region  asset_type  cloud_group  "
-        "cloud_provider  first_seen  last_seen  resolved_at  risk_factor  rule_id  rule_name  service_category  "
-        "severity  status  suppressed_by  suppressed_reason  tags",
+        "account_id  account_name  adversary  asset_gcrn  asset_id  asset_name  asset_region  asset_type  cloud_group  "
+        "cloud_provider  first_seen  groups  groups.business_impact  groups.business_unit  groups.environment  "
+        "last_seen  resolved_at  risk_factor  rule_id  rule_name  service_category  severity  status  suppressed_by  "
+        "suppressed_reason  tags  threat_actors",
         "name": "filter",
         "in": "query"
       },
@@ -62,18 +63,18 @@ _cloud_security_endpoints = [
         "in": "query"
       },
       {
-        "maximum": 1000,
-        "minimum": 0,
         "type": "integer",
         "default": 500,
+        "maximum": 1000,
+        "minimum": 0,
         "description": "The maximum number of items to return. When not specified or 0, 500 is used. When "
         "larger than 1000, 1000 is used.",
         "name": "limit",
         "in": "query"
       },
       {
-        "minimum": 0,
         "type": "integer",
+        "minimum": 0,
         "description": "Offset returned risks",
         "name": "offset",
         "in": "query"
@@ -90,7 +91,7 @@ _cloud_security_endpoints = [
       {
         "type": "string",
         "description": "A valid FQL filter. Supports filtering groups by:\nGroup properties:  name  "
-        "description  created_at  updated_at\n\nSelector properties:  cloud_provider  account_id  region  "
+        "description  created_at  updated_at\n\nSelector properties:  cloud_provider  account_id  region  gcrn  "
         "cloud_provider_tag  image_registry  image_repository  image_tag  selector.kubernetes_resource.cluster  "
         "selector.kubernetes_resource.namespace\n\nGroup tags:  business_unit  business_impact  environment",
         "name": "filter",
@@ -105,16 +106,16 @@ _cloud_security_endpoints = [
       },
       {
         "type": "string",
-        "format": "int64",
         "default": "0",
+        "format": "int64",
         "description": "The starting position of the list operation.",
         "name": "offset",
         "in": "query"
       },
       {
         "type": "string",
-        "format": "int64",
         "default": "100",
+        "format": "int64",
         "description": "The maximum number of cloud groups to retrieve.",
         "name": "limit",
         "in": "query"
@@ -154,20 +155,6 @@ _cloud_security_endpoints = [
     ]
   ],
   [
-    "UpdateCloudGroupExternal",
-    "PATCH",
-    "/cloud-security/entities/cloud-groups/v1",
-    "Update Cloud Group",
-    "cloud_security",
-    [
-      {
-        "name": "group",
-        "in": "body",
-        "required": True
-      }
-    ]
-  ],
-  [
     "DeleteCloudGroupsExternal",
     "DELETE",
     "/cloud-security/entities/cloud-groups/v1",
@@ -187,6 +174,20 @@ _cloud_security_endpoints = [
     ]
   ],
   [
+    "UpdateCloudGroupExternal",
+    "PATCH",
+    "/cloud-security/entities/cloud-groups/v1",
+    "Update Cloud Group",
+    "cloud_security",
+    [
+      {
+        "name": "group",
+        "in": "body",
+        "required": True
+      }
+    ]
+  ],
+  [
     "ListCloudGroupIDsExternal",
     "GET",
     "/cloud-security/queries/cloud-groups/v1",
@@ -196,7 +197,7 @@ _cloud_security_endpoints = [
       {
         "type": "string",
         "description": "A valid FQL filter. Supports filtering groups by:\nGroup properties:  name  "
-        "description  created_at  updated_at\n\nSelector properties:  cloud_provider  account_id  region  "
+        "description  created_at  updated_at\n\nSelector properties:  cloud_provider  account_id  region  gcrn  "
         "cloud_provider_tag  image_registry  image_repository  image_tag  selector.kubernetes_resource.cluster  "
         "selector.kubernetes_resource.namespace\n\nGroup tags:  business_unit  business_impact  environment",
         "name": "filter",
@@ -211,16 +212,16 @@ _cloud_security_endpoints = [
       },
       {
         "type": "string",
-        "format": "int64",
         "default": "0",
+        "format": "int64",
         "description": "The starting position of the list operation.",
         "name": "offset",
         "in": "query"
       },
       {
         "type": "string",
-        "format": "int64",
         "default": "100",
+        "format": "int64",
         "description": "The maximum number of cloud groups to retrieve.",
         "name": "limit",
         "in": "query"
