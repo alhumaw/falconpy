@@ -2330,6 +2330,8 @@ class DataProtectionConfiguration(ServiceClass):
         offset : int
             The offset to start retrieving records from. Integer.
             Use with the limit parameter to manage pagination of results.
+        sort : str
+            The sort instructions to order by on. Allowed values are 'name', 'created' and 'last_updated'.
         parameters : dict
             Full parameters payload. Not required if using other keywords.
 
@@ -2374,6 +2376,8 @@ class DataProtectionConfiguration(ServiceClass):
         offset : int
             The offset to start retrieving records from. Integer.
             Use with the limit parameter to manage pagination of results.
+        sort : str
+            The sort instructions to order by on. Allowed values are 'name', 'executable_name', 'created' and 'last_updated'.
         parameters : dict
             Full parameters payload. Not required if using other keywords.
 
@@ -2488,6 +2492,9 @@ class DataProtectionConfiguration(ServiceClass):
         offset : int
             The offset to start retrieving records from. Integer.
             Use with the limit parameter to manage pagination of results.
+        sort : str
+            The sort instructions to order by on. Allowed values are 'name', 'type', 'deleted', 'application_id',
+            'provider_location_id', 'enterprise_account_id', 'created' and 'last_updated'.
         parameters : dict
             Full parameters payload. Not required if using other keywords.
 
@@ -2517,7 +2524,7 @@ class DataProtectionConfiguration(ServiceClass):
 
         Swagger URL
         -----------
-        https://assets.falcon.crowdstrike.com/support/api/swagger.html#/data-protection-configuration/entities_web_location_group_create
+        https://assets.falcon.crowdstrike.com/support/api/swagger.html#/data-protection-configuration/entities.web-location-group.create
 
         Keyword arguments
         -----------------
@@ -2566,7 +2573,7 @@ class DataProtectionConfiguration(ServiceClass):
 
         Swagger URL
         -----------
-        https://assets.falcon.crowdstrike.com/support/api/swagger.html#/data-protection-configuration/entities_web_location_group_delete
+        https://assets.falcon.crowdstrike.com/support/api/swagger.html#/data-protection-configuration/entities.web-location-group.delete
 
         Keyword arguments
         -----------------
@@ -2605,7 +2612,7 @@ class DataProtectionConfiguration(ServiceClass):
 
         Swagger URL
         -----------
-        https://assets.falcon.crowdstrike.com/support/api/swagger.html#/data-protection-configuration/entities_web_location_group_get
+        https://assets.falcon.crowdstrike.com/support/api/swagger.html#/data-protection-configuration/entities.web-location-group.get
 
         Keyword arguments
         -----------------
@@ -2644,7 +2651,7 @@ class DataProtectionConfiguration(ServiceClass):
 
         Swagger URL
         -----------
-        https://assets.falcon.crowdstrike.com/support/api/swagger.html#/data-protection-configuration/entities_web_location_group_patch
+        https://assets.falcon.crowdstrike.com/support/api/swagger.html#/data-protection-configuration/entities.web-location-group.patch
 
         Keyword arguments
         -----------------
@@ -2698,7 +2705,7 @@ class DataProtectionConfiguration(ServiceClass):
 
         Swagger URL
         -----------
-        https://assets.falcon.crowdstrike.com/support/api/swagger.html#/data-protection-configuration/queries_web_location_group_get
+        https://assets.falcon.crowdstrike.com/support/api/swagger.html#/data-protection-configuration/queries.web-location-group.get
 
         Keyword arguments
         -----------------

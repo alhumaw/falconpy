@@ -78,10 +78,15 @@ from ._admission_control_policies import _admission_control_policies_endpoints
 from ._agent_invocation import _agent_invocation_endpoints
 from ._agent_templates import _agent_templates_endpoints
 from ._agent_versions import _agent_versions_endpoints
+from ._agents import _agents_endpoints
+from ._aidr import _aidr_endpoints
 from ._alerts import _alerts_endpoints
 from ._api_clients import _api_clients_endpoints
 from ._api_integrations import _api_integrations_endpoints
+from ._application_abuse_exclusions import _application_abuse_exclusions_endpoints
 from ._aspm import _aspm_endpoints
+from ._audit import _audit_endpoints
+from ._browser_security import _browser_security_endpoints
 from ._cao_hunting import _cao_hunting_endpoints
 from ._case_management import _case_management_endpoints
 from ._certificate_based_exclusions import _certificate_based_exclusions_endpoints
@@ -98,6 +103,7 @@ from ._cloud_security_detections import _cloud_security_detections_endpoints
 from ._cloud_security_registration_combined import _cloud_security_registration_combined_endpoints
 from ._cloud_security_risks import _cloud_security_risks_endpoints
 from ._cloud_snapshots import _cloud_snapshots_endpoints
+from ._code_security import _code_security_endpoints
 from ._container_image_compliance import _container_image_compliance_endpoints
 from ._configuration_assessment_evaluation_logic import _configuration_assessment_evaluation_logic_endpoints
 from ._configuration_assessment import _configuration_assessment_endpoints
@@ -161,6 +167,8 @@ from ._ml_exclusions import _ml_exclusions_endpoints
 from ._mobile_enrollment import _mobile_enrollment_endpoints
 from ._models import _models_endpoints
 from ._mssp import _mssp_endpoints
+from ._network_containment import _network_containment_endpoints
+from ._network_scan_detections import _network_scan_detections_endpoints
 from ._network_scan_global_configs import _network_scan_global_configs_endpoints
 from ._network_scan_networks import _network_scan_networks_endpoints
 from ._network_scan_scan_run_reports import _network_scan_scan_run_reports_endpoints
@@ -193,6 +201,7 @@ from ._sensor_usage import _sensor_usage_endpoints
 from ._sensor_visibility_exclusions import _sensor_visibility_exclusions_endpoints
 from ._serverless_exports import _serverless_exports_endpoints
 from ._serverless_vulnerabilities import _serverless_vulnerabilities_endpoints
+from ._skills import _skills_endpoints
 from ._spans import _spans_endpoints
 from ._spotlight_evaluation_logic import _spotlight_evaluation_logic_endpoints
 from ._spotlight_vulnerability_metadata import _spotlight_vulnerability_metadata_endpoints
@@ -212,10 +221,15 @@ api_endpoints.extend(_admission_control_policies_endpoints)
 api_endpoints.extend(_agent_invocation_endpoints)
 api_endpoints.extend(_agent_templates_endpoints)
 api_endpoints.extend(_agent_versions_endpoints)
+api_endpoints.extend(_agents_endpoints)
+api_endpoints.extend(_aidr_endpoints)
 api_endpoints.extend(_alerts_endpoints)
 api_endpoints.extend(_api_clients_endpoints)
 api_endpoints.extend(_api_integrations_endpoints)
+api_endpoints.extend(_application_abuse_exclusions_endpoints)
 api_endpoints.extend(_aspm_endpoints)
+api_endpoints.extend(_audit_endpoints)
+api_endpoints.extend(_browser_security_endpoints)
 api_endpoints.extend(_cao_hunting_endpoints)
 api_endpoints.extend(_case_management_endpoints)
 api_endpoints.extend(_certificate_based_exclusions_endpoints)
@@ -232,6 +246,7 @@ api_endpoints.extend(_cloud_security_detections_endpoints)
 api_endpoints.extend(_cloud_security_registration_combined_endpoints)
 api_endpoints.extend(_cloud_security_risks_endpoints)
 api_endpoints.extend(_cloud_snapshots_endpoints)
+api_endpoints.extend(_code_security_endpoints)
 api_endpoints.extend(_container_image_compliance_endpoints)
 api_endpoints.extend(_configuration_assessment_evaluation_logic_endpoints)
 api_endpoints.extend(_configuration_assessment_endpoints)
@@ -295,6 +310,8 @@ api_endpoints.extend(_ml_exclusions_endpoints)
 api_endpoints.extend(_mobile_enrollment_endpoints)
 api_endpoints.extend(_models_endpoints)
 api_endpoints.extend(_mssp_endpoints)
+api_endpoints.extend(_network_containment_endpoints)
+api_endpoints.extend(_network_scan_detections_endpoints)
 api_endpoints.extend(_network_scan_global_configs_endpoints)
 api_endpoints.extend(_network_scan_networks_endpoints)
 api_endpoints.extend(_network_scan_scan_run_reports_endpoints)
@@ -327,6 +344,7 @@ api_endpoints.extend(_sensor_usage_endpoints)
 api_endpoints.extend(_sensor_visibility_exclusions_endpoints)
 api_endpoints.extend(_serverless_exports_endpoints)
 api_endpoints.extend(_serverless_vulnerabilities_endpoints)
+api_endpoints.extend(_skills_endpoints)
 api_endpoints.extend(_spans_endpoints)
 api_endpoints.extend(_spotlight_evaluation_logic_endpoints)
 api_endpoints.extend(_spotlight_vulnerability_metadata_endpoints)

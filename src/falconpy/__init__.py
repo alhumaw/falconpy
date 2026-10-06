@@ -54,6 +54,7 @@ from ._error import (
     SDKError,
     SDKWarning,
     NoContentWarning,
+    NonJsonContentWarning,
     SSLDisabledWarning,
     RegionSelectError,
     InvalidCredentials,
@@ -110,11 +111,17 @@ from .admission_control_policies import AdmissionControlPolicies
 from .agent_invocation import AgentInvocation
 from .agent_templates import AgentTemplates
 from .agent_versions import AgentVersions
+from .agentic_studio import AgenticStudio
+from .agents import Agents
+from .aidr import AIDR
 from .alerts import Alerts
 from .api_clients import APIClients
 from .api_integrations import APIIntegrations
 from .api_complete import APIHarness, APIHarnessV2
+from .application_abuse_exclusions import ApplicationAbuseExclusions
 from .aspm import ASPM
+from .audit import Audit
+from .browser_security import BrowserSecurity
 from .cao_hunting import CAOHunting
 from .case_management import CaseManagement
 from .certificate_based_exclusions import CertificateBasedExclusions
@@ -130,6 +137,7 @@ from .cloud_security_detections import CloudSecurityDetections
 from .cloud_security_registration_combined import CloudSecurityRegistrationCombined
 from .cloud_security_risks import CloudSecurityRisks
 from .cloud_snapshots import CloudSnapshots
+from .code_security import CodeSecurity
 from .container_image_compliance import ContainerImageCompliance, ComplianceAssessments
 from .configuration_assessment_evaluation_logic import ConfigurationAssessmentEvaluationLogic
 from .configuration_assessment import ConfigurationAssessment
@@ -137,6 +145,7 @@ from .container_alerts import ContainerAlerts
 from .container_detections import ContainerDetections
 from .container_images import ContainerImages
 from .container_packages import ContainerPackages
+from .container_security import ContainerSecurity
 from .container_vulnerabilities import ContainerVulnerabilities
 from .correlation_rules import CorrelationRules
 from .correlation_rules_admin import CorrelationRulesAdmin
@@ -165,8 +174,10 @@ from .falconx_sandbox import FalconXSandbox
 from .fdr import FDR
 from .federated_connections import FederatedConnections
 from .filevantage import FileVantage
+from .firewall import Firewall
 from .firewall_management import FirewallManagement
 from .firewall_policies import FirewallPolicies
+from .foundry import Foundry
 from .foundry_logscale import FoundryLogScale
 from .foundry_lookup_files import FoundryLookupFiles
 from .host_group import HostGroup
@@ -194,6 +205,8 @@ from .ml_exclusions import MLExclusions
 from .mobile_enrollment import MobileEnrollment
 from .models import Models
 from .mssp import FlightControl
+from .network_containment import NetworkContainment
+from .network_scan_detections import NetworkScanDetections
 from .network_scan_global_configs import NetworkScanGlobalConfigs
 from .network_scan_networks import NetworkScanNetworks
 from .network_scan_scan_run_reports import NetworkScanScanRunReports
@@ -225,9 +238,12 @@ from .sensor_download import SensorDownload
 from .sensor_update_policy import SensorUpdatePolicy, SensorUpdatePolicies
 from .sensor_usage import SensorUsage
 from .sensor_visibility_exclusions import SensorVisibilityExclusions
+from .serverless import Serverless
 from .serverless_exports import ServerlessExports
 from .serverless_vulnerabilities import ServerlessVulnerabilities
+from .skills import Skills
 from .spans import Spans
+from .spotlight import Spotlight
 from .spotlight_vulnerabilities import SpotlightVulnerabilities
 from .spotlight_vulnerability_metadata import SpotlightVulnerabilityMetadata
 from .spotlight_evaluation_logic import SpotlightEvaluationLogic
@@ -264,7 +280,8 @@ __all__ = [
     "SpotlightVulnerabilities", "SpotlightEvaluationLogic", "UserManagement", "MAX_DEBUG_RECORDS",
     "ZeroTrustAssessment", "PreventionPolicies", "SensorUpdatePolicies", "MessageCenter",
     "FileVantage", "MobileEnrollment", "ContainerBaseURL", "TailoredIntelligence", "ODS", "FDR",
-    "Result", "APIError", "SDKError", "SDKWarning", "NoContentWarning", "SSLDisabledWarning",
+    "Result", "APIError", "SDKError", "SDKWarning", "NoContentWarning", "NonJsonContentWarning",
+    "SSLDisabledWarning",
     "RegionSelectError", "InvalidCredentials", "InvalidMethod", "InvalidOperation",
     "TokenNotSpecified", "KeywordsOnly", "ALLOWED_METHODS", "USER_AGENT", "APIRequest",
     "ExpandedResult", "CannotRevokeToken", "Headers", "Meta", "Resources",
@@ -305,8 +322,21 @@ __all__ = [
     "AgentTemplates", "AgentVersions",
     "Models", "ScanningOrchestrator",
     "Spans", "Stream",
-    "Tools"
+    "Tools", "Agents",
+    "AIDR", "ApplicationAbuseExclusions",
+    "Audit", "BrowserSecurity",
+    "CodeSecurity", "NetworkContainment",
+    "NetworkScanDetections", "Skills",
+    "Guardian", "Seraphic",
+    "AgenticStudio",
+    "ContainerSecurity",
+    "Spotlight",
+    "Serverless",
+    "Firewall",
+    "Foundry"
     ]
+Seraphic = BrowserSecurity
+Guardian = AIDR
 """
 This is free and unencumbered software released into the public domain.
 

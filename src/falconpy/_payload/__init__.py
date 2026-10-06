@@ -19,10 +19,36 @@
                                                         |::.|     CrowdStrike Falcon      |::.|
                                                         `---' OAuth2 API SDK for Python 3 `---'
 """
-from ._agent_invocation import invoke_agent_version_external_v1_payload, invoke_published_agent_external_v1_payload
+from ._agent_invocation import (
+    invoke_agent_version_external_v1_payload,
+    invoke_published_agent_external_v1_payload,
+    update_agent_invocation_payload,
+    )
+from ._agents import create_or_update_agent_payload, update_agent_payload
 from ._api_clients import create_api_client_payload, update_api_client_payload
+from ._application_abuse_exclusions import (
+    create_app_abuse_exclusion_payload,
+    create_app_abuse_report_payload,
+    update_app_abuse_exclusions_payload,
+    )
+from ._audit import create_audit_query_job_payload
+from ._browser_security import (
+    activate_agents_payload,
+    add_url_domain_list_payload,
+    apply_agent_tasks_payload,
+    classify_domains_payload,
+    create_destination_group_payload,
+    deactivate_agents_payload,
+    query_combined_seraphic_agents_payload,
+    query_destination_groups_payload,
+    query_seraphic_agents_payload,
+    query_seraphic_rules_payload,
+    update_destination_group_payload,
+    update_seraphic_rule_payload,
+    )
 from ._cloud_security_assets import cloud_security_assets_entities_post_payload
 from ._cloud_security_detections import cspm_evaluations_iom_entities_post_payload
+from ._code_security import exchange_github_app_code_payload, register_scm_app_payload
 from ._falcon_id import update_third_party_passkey_registry_payload
 from ._federated_connections import patch_federated_connections_config_payload, post_federated_connections_config_payload
 from ._generic import (
@@ -72,6 +98,8 @@ from ._host_group import host_group_create_payload, host_group_update_payload
 from ._hosts import devices_actions_delete_v1_payload
 from ._intel import cao_incidents_aggregates_v1_payload, cao_incidents_entities_v1_payload
 from ._knowledge_bases import entities_knowledge_bases_create_v1_payload, entities_knowledge_bases_update_v1_payload
+from ._network_containment import create_allowlist_rules_payload, update_allowlist_rules_payload
+from ._network_scan_detections import aggregate_netscan_detections_payload
 from ._profile_groups import (
     create_group_v1_mixin0_payload,
     get_group_users_v1_payload,
@@ -101,6 +129,7 @@ from ._cloud_azure_registration import (
 from ._cloud_google_cloud_registration import (
     cloud_google_registration_create_payload,
     cloud_registration_gcp_post_terraform_script_payload,
+    generate_gcp_infra_manager_script_payload,
     )
 from ._cloud_oci_registration import (
     cloud_oci_refresh_payload,
@@ -200,6 +229,7 @@ from ._ngsiem import (
     bulk_add_saved_query_labels_payload,
     bulk_create_dashboards_from_template_payload,
     bulk_create_lookup_files_payload,
+    bulk_create_persisted_aggregations_payload,
     bulk_create_saved_queries_from_template_payload,
     bulk_remove_dashboard_labels_payload,
     bulk_remove_lookup_file_labels_payload,
@@ -208,9 +238,11 @@ from ._ngsiem import (
     bulk_update_dashboards_from_template_payload,
     bulk_update_lookup_file_labels_payload,
     bulk_update_lookup_files_payload,
+    bulk_update_persisted_aggregations_payload,
     bulk_update_saved_queries_from_template_payload,
     bulk_update_saved_query_labels_payload,
     create_parser_extension_payload,
+    create_persisted_aggregation_payload,
     ngsiem_auto_update_policy_payload,
     ngsiem_bulk_install_parsers_payload,
     ngsiem_clone_parser_payload,
@@ -219,12 +251,21 @@ from ._ngsiem import (
     ngsiem_install_parser_payload,
     ngsiem_parser_payload,
     ngsiem_search_payload,
+    rollback_parser_payload,
     update_dashboard_labels_payload,
     update_file_labels_payload,
     update_parser_extension_payload,
+    update_persisted_aggregation_payload,
     update_saved_query_labels_payload,
     )
 from ._prevention_policy import prevention_policy_payload
+from ._saas_security import (
+    create_app_journal_comment_payload,
+    create_check_journal_comment_payload,
+    create_user_journal_comment_payload,
+    restore_affected_entity_payload,
+    set_check_param_payload,
+    )
 from ._scanning_orchestrator import create_schedules_payload, trigger_scan_by_schedule_payload, update_schedules_payload
 from ._sensor_update_policy import sensor_policy_payload, maintenance_token_payload
 from ._response_policy import response_policy_payload
@@ -289,6 +330,12 @@ from ._ods import scheduled_scan_payload
 from ._cloud_snapshots import (
     snapshot_registration_payload,
     snapshot_launch_payload
+    )
+from ._user_management import (
+    get_user_allowed_actions_payload,
+    get_user_invitations_payload,
+    retrieve_users_v2_payload,
+    update_user_roles_payload,
     )
 from ._workflows import (
     workflow_deprovision_payload,
@@ -395,5 +442,24 @@ __all__ = [
     "bulk_update_saved_query_labels_payload", "update_dashboard_labels_payload",
     "update_file_labels_payload", "update_saved_query_labels_payload",
     "create_schedules_payload", "trigger_scan_by_schedule_payload",
-    "update_schedules_payload"
+    "update_schedules_payload", "update_agent_invocation_payload",
+    "create_or_update_agent_payload", "update_agent_payload",
+    "create_app_abuse_exclusion_payload", "create_app_abuse_report_payload",
+    "update_app_abuse_exclusions_payload", "create_audit_query_job_payload",
+    "activate_agents_payload", "add_url_domain_list_payload",
+    "apply_agent_tasks_payload", "classify_domains_payload",
+    "create_destination_group_payload", "deactivate_agents_payload",
+    "query_combined_seraphic_agents_payload", "query_destination_groups_payload",
+    "query_seraphic_agents_payload", "query_seraphic_rules_payload",
+    "update_destination_group_payload", "update_seraphic_rule_payload",
+    "generate_gcp_infra_manager_script_payload", "exchange_github_app_code_payload",
+    "register_scm_app_payload", "create_allowlist_rules_payload",
+    "update_allowlist_rules_payload", "aggregate_netscan_detections_payload",
+    "bulk_create_persisted_aggregations_payload", "bulk_update_persisted_aggregations_payload",
+    "create_persisted_aggregation_payload", "rollback_parser_payload",
+    "update_persisted_aggregation_payload", "create_app_journal_comment_payload",
+    "create_check_journal_comment_payload", "create_user_journal_comment_payload",
+    "restore_affected_entity_payload", "set_check_param_payload",
+    "get_user_allowed_actions_payload", "get_user_invitations_payload",
+    "retrieve_users_v2_payload", "update_user_roles_payload"
 ]

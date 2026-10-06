@@ -61,7 +61,8 @@ from .._constant import (
     ALLOWED_METHODS as _ALLOWED_METHODS,
     USER_AGENT as _USER_AGENT,
     MAX_DEBUG_RECORDS,
-    GLOBAL_API_MAX_RETURN
+    GLOBAL_API_MAX_RETURN,
+    MAX_ERROR_PAYLOAD_LENGTH
 )
 from .._error import (
     RegionSelectError,
@@ -70,6 +71,7 @@ from .._error import (
     KeywordsOnly,
     APIError,
     NoContentWarning,
+    NonJsonContentWarning,
     PayloadValidationError,
     InvalidBaseURL,
     SSLDisabledWarning,
@@ -325,6 +327,16 @@ def calc_content_return(resp: requests.Response,
     # Catch and log API response errors
     try:
         if resp.status_code >= 400:
+            if not isinstance(returned, dict):
+                # An error was returned as content we could not parse as JSON,
+                # leaving us with a binary payload. Normalize it to the standard
+                # error format so the status code and the response headers - which
+                # carry the trace ID needed to research the failure - are retained
+                # instead of being discarded by an unhandled exception. (Issue #1508)
+                returned = Result()(status_code=resp.status_code,
+                                    headers=resp.headers,
+                                    body=build_error_body_from_payload(returned, resp.status_code)
+                                    )
             _message = None
             _errors = returned.get("body", {}).get("errors", [])
             if _errors:
@@ -478,11 +490,24 @@ def perform_request(endpoint: str = "",  # noqa: C901
                 api.log_error(returned.get("status_code"), bad_region.message, returned)
 
             except JSONDecodeError as json_decode_error:
-                # No response content, but a successful request was made
+                # The response body could not be parsed as JSON. This is raised
+                # both for a genuinely empty body and for a non-empty body that
+                # simply is not JSON (for example, the plain-text diagnostics
+                # NGSIEM returns for a CQL syntax error). Distinguish the two so
+                # a body that was received is surfaced, not discarded. [Issue 1498]
                 if "/identity-protection/combined/graphql/v1" in api.endpoint:  # pragma: no cover
                     raise SDKError(message=f"{str(json_decode_error)}",
                                    headers=api.debug_headers
                                    ) from json_decode_error
+
+                raw_body = (response.text or "").strip()
+                if raw_body:
+                    api.log_warning("WARNING: Non-JSON response body received "
+                                    f"(status code: {response.status_code}).")
+                    raise NonJsonContentWarning(headers=response.headers,
+                                                code=response.status_code,
+                                                body=raw_body
+                                                ) from json_decode_error
 
                 api.log_warning("WARNING: No content was received for this request.")
                 raise NoContentWarning(headers=response.headers,
@@ -545,6 +570,26 @@ def log_api_activity(content_return: Union[dict, bytes], content_type: str, api:
             api.log_util.debug("RESULT: %s", content_return)
         else:
             api.log_util.debug("RESULT: binary response received from API")
+
+
+def build_error_body_from_payload(payload: Union[bytes, str], status_code: int) -> dict:
+    """Wrap a non-JSON response payload in the standard error format.
+
+    Error responses are not always JSON. Proxies, load balancers and WAF
+    appliances positioned in front of the API can answer with HTML error
+    pages, empty bodies or unexpected content types. These payloads reach
+    the SDK as raw binary content instead of a dictionary. (Issue #1508)
+    """
+    if isinstance(payload, bytes):
+        message = payload.decode("utf-8", errors="replace").strip()
+    else:
+        message = str(payload).strip()
+    if not message:
+        message = "No content was received for this request."
+    if len(message) > MAX_ERROR_PAYLOAD_LENGTH:
+        message = f"{message[:MAX_ERROR_PAYLOAD_LENGTH]}..."
+
+    return {"errors": [{"code": status_code, "message": message}], "resources": []}
 
 
 def generate_error_result(
