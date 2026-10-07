@@ -1,20 +1,20 @@
-"""Type stubs for agent_versions."""
+"""Type stubs for eval_cases."""
 from typing import Dict, List, Optional, Union
 from ._service_class import ServiceClass
 from ._result import Result
 
 
-class AgentVersions(ServiceClass):
+class EvalCases(ServiceClass):
 
-    def get_agent_versions_v1(
+    def get_eval_cases(
         self,
-        *args: Union[str, List[str]],
+        *,
         ids: Optional[Union[str, List[str]]] = None,
         project_id: Optional[str] = None,
         parameters: Optional[dict] = None,
     ) -> Union[Dict[str, Union[int, dict]], Result]: ...
 
-    def query_agent_versions_v1(
+    def query_eval_cases(
         self,
         *,
         offset: Optional[int] = None,
@@ -25,5 +25,5 @@ class AgentVersions(ServiceClass):
         parameters: Optional[dict] = None,
     ) -> Union[Dict[str, Union[int, dict]], Result]: ...
 
-    GetAgentVersionsV1 = get_agent_versions_v1
-    QueryAgentVersionsV1 = query_agent_versions_v1
+    EntitiesEvalCasesV1 = get_eval_cases
+    QueriesEvalCasesV1 = query_eval_cases
