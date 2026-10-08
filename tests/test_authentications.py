@@ -457,20 +457,29 @@ class TestUtilFunctionsCoverage:
         deprecated_class(False, None, "OldCls", "NewCls")
 
     def test_deprecated_operation_pythonic(self):
-        """deprecated_operation in pythonic mode issues a FutureWarning."""
+        """deprecated_operation in pythonic mode issues a DeprecationWarning."""
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter("always")
             deprecated_operation(True, None, "OldOp", "NewOp")
             assert len(w) == 1
-            assert issubclass(w[0].category, FutureWarning)
+            assert issubclass(w[0].category, DeprecationWarning)
 
     def test_deprecated_class_pythonic(self):
-        """deprecated_class in pythonic mode issues a FutureWarning."""
+        """deprecated_class in pythonic mode issues a DeprecationWarning."""
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter("always")
             deprecated_class(True, None, "OldCls", "NewCls")
             assert len(w) == 1
-            assert issubclass(w[0].category, FutureWarning)
+            assert issubclass(w[0].category, DeprecationWarning)
+
+    def test_deprecated_operation_warns_without_pythonic(self):
+        """deprecated_operation warns with default settings too, at the caller's line."""
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            deprecated_operation(False, None, "OldOp", "NewOp")
+            assert len(w) == 1
+            assert issubclass(w[0].category, DeprecationWarning)
+            assert w[0].filename == __file__
 
     def test_url_encoded_warning_with_logger(self):
         """Cover args_to_params URL-encoded warning with logger, non-pythonic (line 638)."""

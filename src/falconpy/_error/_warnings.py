@@ -138,8 +138,12 @@ class UnnecessaryEncodingUsed(SDKWarning):
     _message = "A provided argument utilizes unnecessary encoding."
 
 
-class SDKDeprecationWarning(FutureWarning):
-    """SDK specific deprecation warning."""
+class SDKDeprecationWarning(DeprecationWarning):
+    """SDK specific deprecation warning.
+
+    A DeprecationWarning, the category Python and other SDKs use for deprecated library APIs: shown by default
+    when your own code calls the deprecated operation or class, and by test runners such as pytest.
+    """
 
     _code = 299
     _message = "This method has been deprecated."

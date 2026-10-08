@@ -38,6 +38,8 @@ For more information, please refer to <https://unlicense.org>
 from __future__ import annotations
 import base64
 import functools
+import os
+import sys
 from warnings import warn
 from json import loads
 try:
@@ -995,22 +997,46 @@ def log_class_startup(interface: Union[FalconInterface, ServiceClass, APIHarness
     log_device.debug("VERSION: Currently running FalconPy v%s", version())
 
 
-def deprecated_operation(pythonic: bool, log: Logger, old: str, new: str):
-    """Provide a warning that the requested operation has been deprecated."""
-    if pythonic:
-        warn(DeprecatedOperation(operation=old, new_operation=new), FutureWarning)
-    else:
-        if log:
-            log.warning(DeprecatedOperation(operation=old, new_operation=new))
+# FalconPy's own source directory, so a warning can point past it to the line that called FalconPy.
+_PACKAGE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + os.sep
 
 
-def deprecated_class(pythonic: bool, log: Logger, old: str, new: str):
-    """Provide a warning that the constructed class has been deprecated."""
-    if pythonic:
-        warn(DeprecatedClass(class_name=old, new_class_name=new), FutureWarning)
-    else:
-        if log:
-            log.warning(DeprecatedClass(class_name=old, new_class_name=new))
+def _caller_stacklevel() -> int:
+    """Return the warning stacklevel of the first frame outside FalconPy.
+
+    The warning then names the developer's own line, as Python's warnings expect, however many FalconPy
+    functions sit between that line and the warning.
+    """
+    level = 1
+    frame = sys._getframe(1)  # pylint: disable=W0212
+    while frame is not None and frame.f_code.co_filename.startswith(_PACKAGE_DIR):
+        frame = frame.f_back
+        level += 1
+    return level
+
+
+def deprecated_operation(pythonic: bool, log: Logger, old: str, new: str):  # pylint: disable=W0613
+    """Warn that the requested operation has been deprecated.
+
+    Issued as a DeprecationWarning at the caller's line whether or not pythonic responses are enabled, and
+    also logged when debug logging is enabled.
+    """
+    warning = DeprecatedOperation(operation=old, new_operation=new)
+    warn(warning, stacklevel=_caller_stacklevel())
+    if log:
+        log.warning(warning)
+
+
+def deprecated_class(pythonic: bool, log: Logger, old: str, new: str):  # pylint: disable=W0613
+    """Warn that the constructed class has been deprecated.
+
+    Issued as a DeprecationWarning at the caller's line whether or not pythonic responses are enabled, and
+    also logged when debug logging is enabled.
+    """
+    warning = DeprecatedClass(class_name=old, new_class_name=new)
+    warn(warning, stacklevel=_caller_stacklevel())
+    if log:
+        log.warning(warning)
 
 
 def params_to_keywords(arg_list: list, param_dict: dict, keyword_dict: dict):
